@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="4dp">
+
+    <TextView
+        android:id="@+id/loanId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Id: 0" />
+
+    <TextView
+        android:id="@+id/loanHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Loan Holder: Arslan Mushtaq" />
+
+    <TextView
+        android:id="@+id/loanAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Loan Amount: Rs. 12,000" />
+
+    <TextView
+        android:id="@+id/receivedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Received on: 12 December, Thursday, 2020" />
+
+    <TextView
+        android:id="@+id/paymentDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        tools:text="Payment on: 20 December, Thursday, 2020" />
+
+</LinearLayout>
