@@ -1,43 +1,52 @@
 package tech.appclub.loanmanager
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import tech.appclub.loanmanager.adapters.loanlist.LoanRecyclerAdapter
-import tech.appclub.loanmanager.contracts.MainContract
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.*
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
-import tech.appclub.loanmanager.di.DependencyInjectorImpl
-import tech.appclub.loanmanager.presenter.loanlist.LoanListPresenter
-import tech.appclub.loanmanager.presenter.MainPresenter
 
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainActivity : AppCompatActivity() {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
-    private lateinit var presenter: MainContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Setting content view
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        setPresenter(MainPresenter(this,
-            DependencyInjectorImpl()
-        ))
-        presenter.onViewCreated()
+        // Setting toolbar
+        setSupportActionBar(this.binding.toolbar)
+
+        // Getting Navigation Host & Controller
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+        val navController = host.navController
+
+        // Setting App Bar Configuration
+        appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.home_destination, R.id.history_destination))
+
+        // Setting BottomNavMenu
+        this.binding.bottomNavigationView.setupWithNavController(navController)
+
+        // Setting up Action Bar
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
+                || super.onOptionsItemSelected(item)
     }
 
-    override fun displayLoans(loanListPresenter: LoanListPresenter) {
-         this.binding.loansRV.adapter =
-             LoanRecyclerAdapter(
-                 loanListPresenter
-             )
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
     }
 
-    override fun setPresenter(presenter: MainContract.Presenter) {
-        this.presenter = presenter
-    }
+
 }

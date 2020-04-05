@@ -1,21 +1,25 @@
 package tech.appclub.loanmanager.presenter.loanlist
 
 import tech.appclub.loanmanager.di.DependencyInjector
-import tech.appclub.loanmanager.repo.LoanRepository
-import tech.appclub.loanmanager.view.loanlist.LoanRowView
+import tech.appclub.loanmanager.contracts.LoanListContract
+import tech.appclub.loanmanager.presenter.loanlist.LoanListAdapterPresenter
 
+class LoanListPresenter(view: LoanListContract.View, private val dependencyInjector: DependencyInjector) :
+    LoanListContract.Presenter {
 
-class LoanListPresenter internal constructor(dependencyInjector: DependencyInjector) {
+    private var view: LoanListContract.View? = view
 
-    private val loanRepository: LoanRepository = dependencyInjector.loanRepository()
-
-    fun onBindLoanRowViewAtPosition(position: Int, holder: LoanRowView) {
-        val loan = loanRepository.loadLoans()[position]
-        holder.bind(loan)
+    override fun onViewCreated() {
+        view?.displayLoans(
+            LoanListAdapterPresenter(
+                dependencyInjector
+            )
+        )
     }
 
-    fun getLoanRowsCount(): Int {
-        return loanRepository.loadLoans().size
+    override fun onDestroy() {
+        this.view = null
     }
+
 
 }

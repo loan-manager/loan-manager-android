@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Loan Manager</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loan_menu_title">Loans</string>
+    <string name="history_menu_title">History</string>
+    <string name="history_fragment_title">Loan History</string>
 </resources>
