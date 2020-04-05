@@ -4,15 +4,6 @@ import tech.appclub.loanmanager.data.Loan
 import java.math.BigDecimal
 import java.util.*
 
-/*
-* FILE: LoanRepositoryImpl.kt
-* DESC: SAMPLE DATA FOR TESTING FUNCTIONALITY
-* VERSION: v1.0
-* PRODUCTION READY: FALSE
-* AUTHOR: Arslan Mushtaq
-* EMAIL: m.arslanmushtaqahmed@gmail.com
-* */
-
 class LoanRepositoryImpl : LoanRepository {
 
     override fun loadLoans(): List<Loan> {

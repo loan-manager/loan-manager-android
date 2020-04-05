@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:layout_marginBottom="4dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/loanId"
+    <data>
+
+        <variable
+            name="loan"
+            type="tech.appclub.loanmanager.data.Loan" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Id: 0" />
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <TextView
-        android:id="@+id/loanHolder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Loan Holder: Arslan Mushtaq" />
+        <TextView
+            android:id="@+id/loanHolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{loan.holder}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:text="Arslan Mushtaq" />
 
-    <TextView
-        android:id="@+id/loanAmount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Loan Amount: Rs. 12,000" />
+        <TextView
+            android:id="@+id/loanAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{loan.amount.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:text="Rs. 10,000" />
 
-    <TextView
-        android:id="@+id/receivedDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Received on: 12 December, Thursday, 2020" />
+        <TextView
+            android:id="@+id/receivedDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{loan.receivedOn.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:text="Received on 12 December, Thursday, 2020" />
 
-    <TextView
-        android:id="@+id/paymentDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        tools:text="Payment on: 20 December, Thursday, 2020" />
+        <TextView
+            android:id="@+id/paymentDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{loan.paymentOn.toString()}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            tools:text="Return on 20 December, Thursday, 2020" />
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
