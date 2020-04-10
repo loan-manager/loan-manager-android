@@ -3,12 +3,12 @@ package tech.appclub.loanmanager.viewholders.loanlist
 import androidx.recyclerview.widget.RecyclerView
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.LoanItemViewBinding
-import tech.appclub.loanmanager.view.loanlist.LoanRowView
+import tech.appclub.loanmanager.view.loanlist.LoanViewHolder
 
-class LoanViewHolder internal constructor(
+class LoanViewHolderImpl internal constructor(
     private val binding: LoanItemViewBinding
 ) : RecyclerView.ViewHolder(binding.root),
-    LoanRowView {
+    LoanViewHolder {
 
     override fun bind(loan: Loan) {
         binding.loan = loan;

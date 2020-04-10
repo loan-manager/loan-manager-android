@@ -4,7 +4,7 @@ import tech.appclub.loanmanager.data.Loan
 import java.math.BigDecimal
 import java.util.*
 
-interface LoanRowView {
+interface LoanViewHolder {
 
     fun bind(loan: Loan)
 

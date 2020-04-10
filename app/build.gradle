@@ -64,13 +64,23 @@ dependencies {
     // endregion
     // endregion
 
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
+
+    // endregion
+
     // region Material Components
     implementation 'com.google.android.material:material:1.2.0-alpha02'
 
     // endregion
 
+    // region Kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
+
+    // endregion
+
     // region Test Dependencies
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 

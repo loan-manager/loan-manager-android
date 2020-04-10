@@ -2,19 +2,20 @@ package tech.appclub.loanmanager.adapters.loanlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Spinner
 import androidx.recyclerview.widget.RecyclerView
 import tech.appclub.loanmanager.databinding.LoanItemViewBinding
 import tech.appclub.loanmanager.presenter.loanlist.LoanListAdapterPresenter
-import tech.appclub.loanmanager.viewholders.loanlist.LoanViewHolder
+import tech.appclub.loanmanager.viewholders.loanlist.LoanViewHolderImpl
 
 class LoanRecyclerAdapter internal constructor(
     private val loanListAdapterPresenter: LoanListAdapterPresenter
-) : RecyclerView.Adapter<LoanViewHolder>() {
+) : RecyclerView.Adapter<LoanViewHolderImpl>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolderImpl {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemBinding = LoanItemViewBinding.inflate(layoutInflater, parent, false)
-        return LoanViewHolder(
+        return LoanViewHolderImpl(
             itemBinding
         )
     }
@@ -23,8 +24,8 @@ class LoanRecyclerAdapter internal constructor(
         return loanListAdapterPresenter.getLoanRowsCount()
     }
 
-    override fun onBindViewHolder(holder: LoanViewHolder, position: Int) {
-        loanListAdapterPresenter.onBindLoanRowViewAtPosition(position, holder)
+    override fun onBindViewHolder(holderImpl: LoanViewHolderImpl, position: Int) {
+        loanListAdapterPresenter.onBindLoanRowViewAtPosition(position, holderImpl)
     }
 
 }

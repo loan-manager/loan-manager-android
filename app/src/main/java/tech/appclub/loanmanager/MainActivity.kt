@@ -9,7 +9,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val LOG_TAG = "LM"
+    }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         // Setting up Action Bar
         setupActionBarWithNavController(navController, appBarConfiguration)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

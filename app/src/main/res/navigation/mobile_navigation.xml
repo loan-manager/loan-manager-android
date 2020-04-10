@@ -33,6 +33,6 @@
     <fragment
         android:id="@+id/addLoanFragment"
         android:name="tech.appclub.loanmanager.ui.AddLoanFragment"
-        android:label="fragment_add_loan"
+        android:label="@string/add_loan_fragment_title"
         tools:layout="@layout/fragment_add_loan" />
 </navigation>

@@ -1,11 +1,12 @@
 package tech.appclub.loanmanager.presenter.loanlist
 
-import tech.appclub.loanmanager.di.DependencyInjector
 import tech.appclub.loanmanager.contracts.LoanListContract
-import tech.appclub.loanmanager.presenter.loanlist.LoanListAdapterPresenter
+import tech.appclub.loanmanager.di.DependencyInjector
 
-class LoanListPresenter(view: LoanListContract.View, private val dependencyInjector: DependencyInjector) :
-    LoanListContract.Presenter {
+class LoanListPresenter(
+    view: LoanListContract.View,
+    private val dependencyInjector: DependencyInjector
+) : LoanListContract.Presenter {
 
     private var view: LoanListContract.View? = view
 
