@@ -1,13 +1,20 @@
 package tech.appclub.loanmanager
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
+import tech.appclub.loanmanager.utils.FileHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +50,22 @@ class MainActivity : AppCompatActivity() {
         // Setting up Action Bar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        val type = Types.newParameterizedType(List::class.java, Country::class.java)
+        val jsonAdapter: JsonAdapter<List<Country>> = moshi.adapter(type)
+        val countryData = jsonAdapter.fromJson(readJSON())
+        if (countryData == null) {
+            Log.d(LOG_TAG, countryData?.size.toString())
+            return
+        }
+        Log.d(LOG_TAG, countryData.size.toString())
+
+    }
+
+    private fun readJSON(): String {
+        return FileHelper.getDataFromAssets(applicationContext, "countries.json")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

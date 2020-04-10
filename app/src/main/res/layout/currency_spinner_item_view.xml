@@ -6,7 +6,7 @@
     <data>
         <variable
             name="data"
-            type="tech.appclub.loanmanager.data.CountryData" />
+            type="tech.appclub.loanmanager.data.Country" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

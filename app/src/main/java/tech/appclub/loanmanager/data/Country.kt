@@ -1,7 +1,7 @@
 package tech.appclub.loanmanager.data
 
 
-class CountryData {
+class Country {
 
     var country: String? = null
     var code: String? = null
