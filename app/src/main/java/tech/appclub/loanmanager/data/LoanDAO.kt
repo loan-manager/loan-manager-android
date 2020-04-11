@@ -1,10 +1,7 @@
 package tech.appclub.loanmanager.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface LoanDAO {
@@ -13,9 +10,21 @@ interface LoanDAO {
     fun getAllLoans(): LiveData<List<Loan>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(loan: Loan)
+    fun insert(loan: Loan)
 
     @Query("DELETE FROM loan_table")
-    suspend fun deleteAll()
+    fun deleteAll()
+
+    @Delete
+    fun deleteLoan(loan: Loan)
+
+    @Update
+    fun updateLoan(loan: Loan)
+
+    @Query("SELECT COUNT(*) FROM loan_table")
+    fun totalLoanCount(): Int
+
+    @Query("SELECT SUM(loan_amount) FROM loan_table")
+    fun totalLoanAmount(): Double
 
 }

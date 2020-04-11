@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import tech.appclub.loanmanager.LoanViewModel
+import tech.appclub.loanmanager.viewmodel.LoanViewModel
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.LoanRecyclerAdapter
 import tech.appclub.loanmanager.databinding.FragmentHomeBinding
