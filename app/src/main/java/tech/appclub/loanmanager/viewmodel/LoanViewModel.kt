@@ -1,4 +1,4 @@
-package tech.appclub.loanmanager
+package tech.appclub.loanmanager.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -16,7 +16,7 @@ class LoanViewModel(application: Application): AndroidViewModel(application) {
     val allLoans: LiveData<List<Loan>>
 
     init {
-        val loanDao = LoanRoomDatabase.getDatabase(application, viewModelScope).loanDao()
+        val loanDao = LoanRoomDatabase.getDatabase(application).loanDao()
         repository = LoanRepository(loanDao)
         allLoans = repository.allLoans
     }

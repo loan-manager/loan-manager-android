@@ -8,28 +8,29 @@ import java.util.*
 
 @Entity(tableName = "loan_table")
 data class Loan(
-    @PrimaryKey
-    var id: Int = 0,
+
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
 
     @ColumnInfo(name = "loan_holder_name")
-    var holder: String = "",
+    var holder: String? = null,
 
     @ColumnInfo(name = "loan_amount")
-    var amount: Double = 0.0,
+    var amount: Double? = null,
 
     @ColumnInfo(name = "loan_received_date")
-    var receivedOn: Date = Date(),
+    var receivedOn: Date? = null,
 
     @ColumnInfo(name = "loan_payment_date")
-    var paymentOn: Date = Date(),
+    var paymentOn: Date? = null,
 
     @ColumnInfo(name = "loan_curreny_label")
-    var currency: String = "",
+    var currency: String? = null,
 
     @ColumnInfo(name = "loan_curreny_code")
-    var code: String = "",
+    var code: String? = null,
 
     @ColumnInfo(name = "loan_curreny_country")
-    var country: String = ""
+    var country: String? = null
 
 )
