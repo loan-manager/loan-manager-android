@@ -31,6 +31,9 @@ data class Loan(
     var code: String? = null,
 
     @ColumnInfo(name = "loan_curreny_country")
-    var country: String? = null
+    var country: String? = null,
+
+    @ColumnInfo(name = "loan_status")
+    var status: Int? = 0
 
 )

@@ -13,14 +13,18 @@ import tech.appclub.loanmanager.repo.LoanRepository
 class LoanViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: LoanRepository
-    val allLoans: LiveData<List<Loan>>
+    val unpaidLoans: LiveData<List<Loan>>
+    val paidLoans: LiveData<List<Loan>>
+    val totalLoans: LiveData<List<Loan>>
     val totalLoanCount: LiveData<Int>
     val grandLoanAmount: LiveData<Double>
 
     init {
         val loanDao = LoanRoomDatabase.getDatabase(application).loanDao()
         repository = LoanRepository(loanDao)
-        allLoans = repository.allLoans
+        unpaidLoans = repository.unpaidLoans
+        paidLoans = repository.paidLoans
+        totalLoans = repository.totalLoans
         totalLoanCount = repository.totalLoanCount
         grandLoanAmount = repository.grandLoanAmount
     }

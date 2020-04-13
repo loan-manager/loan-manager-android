@@ -1,20 +1,13 @@
 package tech.appclub.loanmanager
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
-import tech.appclub.loanmanager.utils.FileHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +35,13 @@ class MainActivity : AppCompatActivity() {
 
         // Setting App Bar Configuration
         appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.home_destination, R.id.history_destination))
+            AppBarConfiguration(
+                setOf(
+                    R.id.home_destination,
+                    R.id.history_destination,
+                    R.id.paid_loan_destination
+                )
+            )
 
         // Setting BottomNavMenu
         this.binding.bottomNavigationView.setupWithNavController(navController)
