@@ -11,9 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="12dp">
 
         <TextView
             android:id="@+id/country"
@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/currency"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:gravity="end|center"
             android:text="@{data.code}"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:text="@{data.currency}"
             tools:text="Pakistani Rupees"
+            android:textSize="12sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/country" />

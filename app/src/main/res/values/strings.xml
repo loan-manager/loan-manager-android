@@ -8,4 +8,14 @@
     <string name="history_menu_title">History</string>
     <string name="history_fragment_title">Loan History</string>
     <string name="add_loan_fragment_title">Add New Loan</string>
+    <string name="loan_holder_name">Loan Holder Name</string>
+    <string name="loan_amount">Loan Amount</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="select_received_date">Select Received Date</string>
+    <string name="select_payment_date">Select Payment Date</string>
+
+    <!-- Validation Errors -->
+    <string name="empty_error">Field cannot be empty</string>
+    <string name="start_date_hint">Wednesday, 1 January, 2020</string>
+    <string name="end_date_hint">Friday, 1 January, 2021</string>
 </resources>
