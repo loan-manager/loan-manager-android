@@ -6,6 +6,12 @@ import androidx.room.*
 @Dao
 interface LoanDAO {
 
+    @Query("SELECT * FROM loan_table WHERE loan_status = 0 ORDER BY loan_payment_date ASC")
+    fun getUnpaidLoans(): LiveData<List<Loan>>
+
+    @Query("SELECT * FROM loan_table WHERE loan_status = 1 ORDER BY loan_payment_date ASC")
+    fun getPaidLoans(): LiveData<List<Loan>>
+
     @Query("SELECT * FROM loan_table ORDER BY loan_payment_date ASC")
     fun getAllLoans(): LiveData<List<Loan>>
 
@@ -21,10 +27,10 @@ interface LoanDAO {
     @Update
     suspend fun updateLoan(loan: Loan)
 
-    @Query("SELECT COUNT(*) FROM loan_table")
+    @Query("SELECT COUNT(*) FROM loan_table WHERE loan_status = 0")
     fun totalLoanCount(): LiveData<Int>
 
-    @Query("SELECT SUM(loan_amount) FROM loan_table")
+    @Query("SELECT SUM(loan_amount) FROM loan_table WHERE loan_status = 0")
     fun grandLoanAmount(): LiveData<Double>
 
 }

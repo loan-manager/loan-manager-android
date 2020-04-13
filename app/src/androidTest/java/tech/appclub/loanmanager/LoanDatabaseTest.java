@@ -72,45 +72,45 @@ public class LoanDatabaseTest {
 
     @Test
     public void insertAndGetLoan() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertEquals(allLoans.get(0).getHolder(), allLoans.get(0).getHolder());
     }
 
     @Test
     public void deleteAllLoans() throws Exception {
         mLoanDAO.deleteAll();
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertEquals(0, allLoans.size());
     }
 
     @Test
     public void deleteLoan() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         mLoanDAO.deleteLoan(allLoans.get(1));
-        List<Loan> loans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> loans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertEquals(1, loans.size());
     }
 
     @Test
     public void updateLoan() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         Loan loanOne = allLoans.get(0);
         loanOne.setAmount(50.0);
         mLoanDAO.updateLoan(loanOne);
-        List<Loan> allUpdatedLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allUpdatedLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertEquals((Double) 50.0, allUpdatedLoans.get(0).getAmount());
     }
 
     @Test
     public void testTotalCount() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertEquals(mLoanDAO.totalLoanCount(), allLoans.size());
     }
 
     @SuppressWarnings("ConstantConditions")
     @Test
     public void testTotalLoanAmount() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         Double one = allLoans.get(0).getAmount();
         Double two = allLoans.get(0).getAmount();
         Double sum = one + two;
@@ -120,13 +120,13 @@ public class LoanDatabaseTest {
 
     @Test
     public void emptyTablesInDB() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         assertTrue(allLoans.size() > 0);
     }
 
     @Test
     public void idAutoIncrementing() throws Exception {
-        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getAllLoans());
+        List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
         Integer expectedId = 2;
         assertEquals(expectedId, allLoans.get(1).getId());
     }

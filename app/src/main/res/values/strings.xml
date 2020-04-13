@@ -18,4 +18,10 @@
     <string name="empty_error">Field cannot be empty</string>
     <string name="start_date_hint">Wednesday, 1 January, 2020</string>
     <string name="end_date_hint">Friday, 1 January, 2021</string>
+    <string name="edit">Edit</string>
+    <string name="paid">Paid</string>
+    <string name="remove">Remove</string>
+    <string name="loan_menu_paid">Paid Loans</string>
+    <string name="grand_amount">Grand Amount</string>
+    <string name="total_loans">Total Loans</string>
 </resources>
