@@ -50,22 +50,6 @@ class MainActivity : AppCompatActivity() {
         // Setting up Action Bar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        val type = Types.newParameterizedType(List::class.java, Country::class.java)
-        val jsonAdapter: JsonAdapter<List<Country>> = moshi.adapter(type)
-        val countryData = jsonAdapter.fromJson(readJSON())
-        if (countryData == null) {
-            Log.d(LOG_TAG, countryData?.size.toString())
-            return
-        }
-        Log.d(LOG_TAG, countryData.size.toString())
-
-    }
-
-    private fun readJSON(): String {
-        return FileHelper.getDataFromAssets(applicationContext, "countries.json")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

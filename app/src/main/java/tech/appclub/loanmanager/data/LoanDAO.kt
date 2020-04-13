@@ -10,21 +10,21 @@ interface LoanDAO {
     fun getAllLoans(): LiveData<List<Loan>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(loan: Loan)
+    suspend fun insert(loan: Loan)
 
     @Query("DELETE FROM loan_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Delete
-    fun deleteLoan(loan: Loan)
+    suspend fun deleteLoan(loan: Loan)
 
     @Update
-    fun updateLoan(loan: Loan)
+    suspend fun updateLoan(loan: Loan)
 
     @Query("SELECT COUNT(*) FROM loan_table")
-    fun totalLoanCount(): Int
+    fun totalLoanCount(): LiveData<Int>
 
     @Query("SELECT SUM(loan_amount) FROM loan_table")
-    fun totalLoanAmount(): Double
+    fun grandLoanAmount(): LiveData<Double>
 
 }
