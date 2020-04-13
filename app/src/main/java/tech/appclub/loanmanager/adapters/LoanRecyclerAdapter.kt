@@ -2,12 +2,19 @@ package tech.appclub.loanmanager.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.LoanItemViewBinding
+import tech.appclub.loanmanager.utils.DateTimeUtils
+import tech.appclub.loanmanager.viewmodel.LoanViewModel
+import java.util.*
 
 class LoanRecyclerAdapter internal constructor(
-    private var loans: List<Loan> = emptyList()
+    private val loans: List<Loan> = emptyList(),
+    private val loanViewModel: LoanViewModel,
+    private val loanClickListener: LoanClickListener
 ) : RecyclerView.Adapter<LoanRecyclerAdapter.LoanViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolder {
@@ -20,15 +27,40 @@ class LoanRecyclerAdapter internal constructor(
 
     override fun onBindViewHolder(holder: LoanViewHolder, position: Int) {
         holder.bind(loans[position])
+
+        holder.todayDate.text = String.format("Today is %s", DateTimeUtils.formatDate(Date()))
+        holder.delAction.setOnClickListener {
+            loanViewModel.deleteLoan(loans[position])
+            notifyItemRemoved(position)
+        }
+
+        holder.editAction.setOnClickListener {
+            loanClickListener.editClickListener(loans[position])
+        }
+
+        holder.updateAction.setOnClickListener {
+            loans[position].status = 1
+            loanViewModel.updateLoan(loans[position])
+        }
+
     }
 
     inner class LoanViewHolder(private val binding: LoanItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        val delAction = binding.removeLoanAction
+        val editAction = binding.editLoanAction
+        val updateAction = binding.paidLoanAction
+        val todayDate = binding.todayDate
+
         fun bind(loan: Loan) {
             binding.loan = loan
             binding.executePendingBindings()
         }
+    }
+
+    interface LoanClickListener {
+        fun editClickListener(loan: Loan)
     }
 
 }

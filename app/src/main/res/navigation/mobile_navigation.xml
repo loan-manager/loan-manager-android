@@ -35,4 +35,9 @@
         android:name="tech.appclub.loanmanager.ui.AddLoanFragment"
         android:label="@string/add_loan_fragment_title"
         tools:layout="@layout/fragment_add_loan" />
+    <fragment
+        android:id="@+id/paid_loan_destination"
+        android:name="tech.appclub.loanmanager.PaidLoansFragment"
+        android:label="fragment_paid_loans"
+        tools:layout="@layout/fragment_paid_loans" />
 </navigation>
