@@ -38,6 +38,11 @@
     <fragment
         android:id="@+id/paid_loan_destination"
         android:name="tech.appclub.loanmanager.PaidLoansFragment"
-        android:label="fragment_paid_loans"
+        android:label="@string/loan_menu_paid"
         tools:layout="@layout/fragment_paid_loans" />
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="tech.appclub.loanmanager.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" />
 </navigation>
