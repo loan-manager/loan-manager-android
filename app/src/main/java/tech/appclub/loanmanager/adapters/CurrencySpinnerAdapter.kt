@@ -9,7 +9,7 @@ import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.CurrencySpinnerItemViewBinding
 
 class CurrencySpinnerAdapter(
-    private val context: Context,
+    context: Context,
     private val data: List<Country>
 ) : BaseAdapter() {
 
@@ -22,7 +22,6 @@ class CurrencySpinnerAdapter(
         return view.root
     }
 
-
     override fun getItem(position: Int): Country {
         return data[position]
     }
@@ -31,9 +30,12 @@ class CurrencySpinnerAdapter(
         return position.toLong()
     }
 
-    override fun getCount(): Int {
-        return data.size
+    override fun getCount() = data.size
+
+    fun getPosition(country: Country): Int {
+        return data.indexOf(country)
     }
+
 
     inner class CurrencySpinnerViewHolder(private val binding: CurrencySpinnerItemViewBinding) {
 

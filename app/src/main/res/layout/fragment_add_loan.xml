@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:dropDownWidth="wrap_content"
-                android:spinnerMode="dropdown"
+                android:spinnerMode="dialog"
                 tools:listitem="@layout/currency_spinner_item_view" />
 
             <TextView

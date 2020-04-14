@@ -1,7 +1,9 @@
 package tech.appclub.loanmanager.ui
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,27 +13,23 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputLayout
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.android.synthetic.main.loan_item_view.view.*
+import tech.appclub.loanmanager.MainActivity
+import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentAddLoanBinding
-import tech.appclub.loanmanager.utils.FileHelper
+import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand
+import tech.appclub.loanmanager.utils.ValidationUtils.Companion.isEmpty
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddLoanFragment : Fragment() {
 
-    companion object {
-        const val COUNTRIES_FILE = "countries.json"
-    }
 
     private lateinit var binding: FragmentAddLoanBinding
     private lateinit var calendar: Calendar
@@ -50,14 +48,30 @@ class AddLoanFragment : Fragment() {
         return binding.root
     }
 
+    // TODO: SET SPINNER VALUE FROM PREFERENCES
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         calendar = Calendar.getInstance()
 
-        this.binding.countries.adapter =
-            CurrencySpinnerAdapter(requireContext(), readCountriesData())
+        val preferences =
+            requireActivity().getSharedPreferences(Constants.USER_DATA_FILE, Context.MODE_PRIVATE)
 
+        val country: Country? = Country()
+        country?.code = preferences.getString(Constants.CURRENCY_CODE, "")
+        country?.country = preferences.getString(Constants.CURRENCY_COUNTRY, "")
+        country?.currency = preferences.getString(Constants.CURRENCY_LABEL, "")
+        Log.d(LOG_TAG, country.toString())
+
+        val adapter = CurrencySpinnerAdapter(
+            requireContext(),
+            (requireActivity() as MainActivity).readCountriesData()
+        )
+
+        this.binding.countries.adapter = adapter
+        if (country != null) {
+            this.binding.countries.setSelection(preferences.getInt(Constants.COUNTRY_POSITION, 0))
+        }
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
         )
@@ -112,10 +126,10 @@ class AddLoanFragment : Fragment() {
     fun addLoanAction() {
 
         val name = this.binding.holderNameValue.text.toString()
-        if (isEmpty(name, this.binding.holderNameField)) return
+        if (isEmpty(name, this.binding.holderNameField, requireContext())) return
 
         val amount = trimCommaOfString(this.binding.holderAmountValue.text.toString())
-        if (isEmpty(amount, this.binding.holderAmountField)) return
+        if (isEmpty(amount, this.binding.holderAmountField, requireContext())) return
 
         val countryModel = this.binding.countries.selectedItem as Country
         val code = countryModel.code
@@ -146,27 +160,6 @@ class AddLoanFragment : Fragment() {
         } else {
             string
         }
-    }
-
-    private fun readCountriesData(): List<Country> {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        val type = Types.newParameterizedType(List::class.java, Country::class.java)
-        val jsonAdapter: JsonAdapter<List<Country>> = moshi.adapter(type)
-        val jsonFile =
-            FileHelper.getDataFromAssets(requireActivity().applicationContext, COUNTRIES_FILE)
-        return jsonAdapter.fromJson(jsonFile) ?: return emptyList()
-    }
-
-    private fun isEmpty(input: String, inputLayout: TextInputLayout): Boolean {
-        if (input.isBlank() || input.isEmpty()) {
-            inputLayout.error = getString(R.string.empty_error)
-            return true
-        } else {
-            inputLayout.error = null
-        }
-        return false
     }
 
     private fun showDateError(date: Date?, error: TextView): Boolean {
