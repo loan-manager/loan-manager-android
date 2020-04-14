@@ -7,7 +7,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
+import tech.appclub.loanmanager.ui.AddLoanFragment
+import tech.appclub.loanmanager.utils.Constants
+import tech.appclub.loanmanager.utils.FileHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +66,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp(appBarConfiguration)
+    }
+
+    fun readCountriesData(): List<Country> {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        val type = Types.newParameterizedType(List::class.java, Country::class.java)
+        val jsonAdapter: JsonAdapter<List<Country>> = moshi.adapter(type)
+        val jsonFile =
+            FileHelper.getDataFromAssets(applicationContext,
+                Constants.COUNTRIES_FILE
+            )
+        return jsonAdapter.fromJson(jsonFile) ?: return emptyList()
     }
 
 
