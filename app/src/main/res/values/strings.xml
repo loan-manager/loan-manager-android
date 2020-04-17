@@ -29,4 +29,5 @@
     <string name="start_using_loan_manager">Start using Loan Manager</string>
     <string name="select_main_currency">Select Home Currency</string>
     <string name="copyright">Copyright © App Club 2020</string>
+    <string name="today">Today</string>
 </resources>

@@ -38,8 +38,9 @@ class LoanRecyclerAdapter internal constructor(
             loanClickListener.editClickListener(loans[position])
         }
 
-        holder.updateAction.setOnClickListener {
+        holder.paidAction.setOnClickListener {
             loans[position].status = 1
+            loans[position].paymentOn = Date()
             loanViewModel.updateLoan(loans[position])
         }
 
@@ -50,7 +51,7 @@ class LoanRecyclerAdapter internal constructor(
 
         val delAction = binding.removeLoanAction
         val editAction = binding.editLoanAction
-        val updateAction = binding.paidLoanAction
+        val paidAction = binding.paidLoanAction
         val todayDate = binding.todayDate
 
         fun bind(loan: Loan) {
