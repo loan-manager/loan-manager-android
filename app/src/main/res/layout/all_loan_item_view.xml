@@ -10,11 +10,14 @@
             type="tech.appclub.loanmanager.data.Loan" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
-        >
+        app:strokeWidth="2dp"
+        app:contentPadding="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:setBackground="@{loan}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -87,5 +90,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
