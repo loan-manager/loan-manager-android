@@ -32,6 +32,7 @@ class LoanRecyclerAdapter internal constructor(
         holder.cancelAction.setOnClickListener {
             loans[position].status = 2
             loans[position].paymentOn = Date()
+            loanViewModel.updateLoan(loans[position])
         }
 
         holder.editAction.setOnClickListener {

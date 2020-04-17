@@ -10,17 +10,19 @@
             type="tech.appclub.loanmanager.data.Loan" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:strokeWidth="2dp"
+        app:contentPadding="4dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:setBackground="@{loan}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00BFA5"
+            android:background="@android:color/white"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -29,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +46,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanAmount"
                 tools:text="Arslan Mushtaq" />
@@ -55,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanHolder"
@@ -68,13 +71,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/receivedDate"
                 app:setPaymentDate="@{loan}"
                 tools:text="Return on 20 December, Thursday, 2020" />
 
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/remove_loan_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/remove"
+                app:backgroundTint="@android:color/holo_red_dark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/paymentDate" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

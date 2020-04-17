@@ -1,8 +1,10 @@
 package tech.appclub.loanmanager.adapters
 
+import android.content.Context
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import com.google.android.material.card.MaterialCardView
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
 import java.text.DecimalFormat
@@ -48,6 +50,20 @@ fun setDaysLeft(view: TextView, loan: Loan) {
         view.text =
             String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!).toString())
     }
+}
+
+@BindingAdapter("app:setBackground")
+fun setBackground(view: MaterialCardView, loan: Loan) {
+    when (loan.status) {
+        0 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
+        1 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_green_dark)
+        2 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
+        else -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
+    }
+}
+
+private fun updateStrokeColor(context: Context, color: Int): Int {
+    return ContextCompat.getColor(context, color)
 }
 
 private fun daysLeft(startDate: Date, finishDate: Date): Long {
