@@ -43,7 +43,7 @@
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
-                app:layout_constraintEnd_toStartOf="@+id/daysLeft"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanAmount"
                 tools:text="Arslan Mushtaq" />
@@ -84,80 +84,15 @@
                 tools:layout_editor_absoluteX="12dp"
                 tools:text="Return on 20 December, Thursday, 2020" />
 
-            <TextView
-                android:id="@+id/daysLeft"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_loan_action"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:gravity="center|end"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/loanHolder"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loanHolder"
-                app:setDaysLeft="@{loan}"
-                tools:text="100 Days Left" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
+                android:text="@string/remove"
+                app:backgroundTint="@android:color/holo_red_dark"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/todayDate">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/cancel_loan_action"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@android:string/cancel"
-                    android:textColor="@android:color/holo_red_dark" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:alpha="0.2"
-                    android:background="@android:color/black" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/edit_loan_action"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/edit"
-                    android:textColor="@android:color/holo_blue_dark" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:alpha="0.2"
-                    android:background="@android:color/black" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/paid_loan_action"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:paddingTop="6dp"
-                    android:paddingBottom="6dp"
-                    android:text="@string/paid"
-                    android:textColor="@android:color/holo_green_dark" />
-
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/todayDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
