@@ -1,13 +1,16 @@
 package tech.appclub.loanmanager.adapters
 
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import org.w3c.dom.Text
+import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.abs
 
 @BindingAdapter("app:setAmount")
 fun setAmount(view: TextView, data: Loan) {
@@ -28,10 +31,19 @@ fun setPaymentDate(view: TextView, date: Date) {
 
 @BindingAdapter("app:setDaysLeft")
 fun setDaysLeft(view: TextView, loan: Loan) {
-    view.text = String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!))
+    if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 0) {
+        view.text = String.format("%s days up", abs(daysLeft(loan.receivedOn!!, loan.paymentOn!!)).toString())
+        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
+    } else if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) > -1 && daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 1) {
+        view.text = String.format("Today")
+        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
+    } else {
+        view.text =
+            String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!).toString())
+    }
 }
 
-private fun daysLeft(startDate: Date, finishDate: Date): String {
+private fun daysLeft(startDate: Date, finishDate: Date): Long {
     val difference: Long
     if (startDate.time > Date().time) {
         difference = finishDate.time - startDate.time
@@ -42,5 +54,5 @@ private fun daysLeft(startDate: Date, finishDate: Date): String {
     val minutes = seconds / 60
     val hours = minutes / 60
     val days = hours / 24
-    return days.toString()
+    return days
 }
