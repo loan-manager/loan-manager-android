@@ -3,12 +3,9 @@ package tech.appclub.loanmanager.adapters
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import org.w3c.dom.Text
-import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
 import java.text.DecimalFormat
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.abs
 
@@ -25,16 +22,26 @@ fun setReceiveDate(view: TextView, date: Date) {
 }
 
 @BindingAdapter("app:setPaymentDate")
-fun setPaymentDate(view: TextView, date: Date) {
-    view.text = String.format("Return on %s", formatDate(date))
+fun setPaymentDate(view: TextView, loan: Loan) {
+    if (loan.status == 2) {
+        view.text = String.format("Cancelled on %s", formatDate(loan.paymentOn!!))
+        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
+    } else {
+        view.text = String.format("Return on %s", formatDate(loan.paymentOn!!))
+    }
 }
 
 @BindingAdapter("app:setDaysLeft")
 fun setDaysLeft(view: TextView, loan: Loan) {
     if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 0) {
-        view.text = String.format("%s days up", abs(daysLeft(loan.receivedOn!!, loan.paymentOn!!)).toString())
+        view.text = String.format(
+            "%s days up",
+            abs(daysLeft(loan.receivedOn!!, loan.paymentOn!!)).toString()
+        )
         view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
-    } else if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) > -1 && daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 1) {
+    } else if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) > -1
+        && daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 1
+    ) {
         view.text = String.format("Today")
         view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
     } else {

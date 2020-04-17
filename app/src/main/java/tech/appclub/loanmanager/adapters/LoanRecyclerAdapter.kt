@@ -29,9 +29,9 @@ class LoanRecyclerAdapter internal constructor(
         holder.bind(loans[position])
 
         holder.todayDate.text = String.format("Today is %s", DateTimeUtils.formatDate(Date()))
-        holder.delAction.setOnClickListener {
-            loanViewModel.deleteLoan(loans[position])
-            notifyItemRemoved(position)
+        holder.cancelAction.setOnClickListener {
+            loans[position].status = 2
+            loans[position].paymentOn = Date()
         }
 
         holder.editAction.setOnClickListener {
@@ -49,7 +49,7 @@ class LoanRecyclerAdapter internal constructor(
     inner class LoanViewHolder(private val binding: LoanItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val delAction = binding.removeLoanAction
+        val cancelAction = binding.cancelLoanAction
         val editAction = binding.editLoanAction
         val paidAction = binding.paidLoanAction
         val todayDate = binding.todayDate
