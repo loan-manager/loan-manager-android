@@ -85,7 +85,7 @@
                 tools:text="Return on 20 December, Thursday, 2020" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/cancel_loan_action"
+                android:id="@+id/remove_loan_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
