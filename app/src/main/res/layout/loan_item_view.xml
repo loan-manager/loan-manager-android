@@ -107,7 +107,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/todayDate">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/remove_loan_action"
+                    android:id="@+id/cancel_loan_action"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -116,7 +116,7 @@
                     android:gravity="center"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
-                    android:text="@string/remove"
+                    android:text="@android:string/cancel"
                     android:textColor="@android:color/holo_red_dark" />
 
                 <View
