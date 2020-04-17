@@ -13,7 +13,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -73,16 +74,6 @@
                 app:setPaymentDate="@{loan}"
                 tools:text="Return on 20 December, Thursday, 2020" />
 
-            <TextView
-                android:id="@+id/todayDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@+id/paymentDate"
-                tools:layout_editor_absoluteX="12dp"
-                tools:text="Return on 20 December, Thursday, 2020" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/remove_loan_action"
@@ -92,7 +83,7 @@
                 android:text="@string/remove"
                 app:backgroundTint="@android:color/holo_red_dark"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/todayDate" />
+                app:layout_constraintTop_toBottomOf="@+id/paymentDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

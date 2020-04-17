@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:context=".ui.PaidLoansFragment" />
+        tools:context=".ui.PaidLoansFragment"
+        tools:listitem="@layout/paid_loan_item_view"/>
 
 </layout>
