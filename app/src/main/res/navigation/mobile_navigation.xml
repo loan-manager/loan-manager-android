@@ -56,6 +56,6 @@
     <fragment
         android:id="@+id/user_destination"
         android:name="tech.appclub.loanmanager.ui.UserFragment"
-        android:label="fragment_user"
+        android:label="@string/user_menu_title"
         tools:layout="@layout/fragment_user" />
 </navigation>
