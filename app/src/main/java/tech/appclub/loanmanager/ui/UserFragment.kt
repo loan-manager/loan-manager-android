@@ -30,6 +30,7 @@ class UserFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
         this.binding.user = this
         return this.binding.root

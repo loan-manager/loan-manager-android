@@ -47,8 +47,7 @@ class MainActivity : AppCompatActivity() {
                 setOf(
                     R.id.home_destination,
                     R.id.history_destination,
-                    R.id.paid_loan_destination,
-                    R.id.user_destination
+                    R.id.paid_loan_destination
                 )
             )
 
