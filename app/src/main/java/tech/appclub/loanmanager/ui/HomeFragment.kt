@@ -3,9 +3,7 @@ package tech.appclub.loanmanager.ui
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -31,6 +29,7 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         return binding.root
@@ -85,6 +84,10 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
 
     override fun editClickListener(loan: Loan) {
         Log.d(LOG_TAG, loan.holder!!)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.toolbar_menu, menu)
     }
 
 }
