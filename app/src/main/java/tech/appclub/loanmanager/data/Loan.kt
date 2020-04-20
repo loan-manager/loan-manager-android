@@ -2,6 +2,7 @@ package tech.appclub.loanmanager.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import java.math.BigDecimal
 import java.util.*
@@ -10,7 +11,7 @@ import java.util.*
 data class Loan(
 
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    var id: Int? = null,
 
     @ColumnInfo(name = "loan_holder_name")
     var holder: String? = null,
@@ -34,6 +35,8 @@ data class Loan(
     var country: String? = null,
 
     @ColumnInfo(name = "loan_status")
-    var status: Int? = 0
+    var status: Int? = 0,
+
+    @Ignore var expanded: Boolean = false
 
 )

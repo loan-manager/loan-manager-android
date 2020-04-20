@@ -36,4 +36,6 @@
     <string name="edit_name">Edit Name</string>
     <string name="update_name">Update Name</string>
     <string name="stats_menu_title">Statistics</string>
+    <string name="received_on">Received on</string>
+    <string name="payment_on">Payment on</string>
 </resources>

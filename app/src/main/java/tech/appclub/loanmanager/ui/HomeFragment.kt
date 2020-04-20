@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.SimpleItemAnimator
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
@@ -52,6 +53,7 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
 
         (requireActivity() as MainActivity).binding.bottomNavigationView.visibility = View.VISIBLE
 
+        (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         this.loanViewModel.unpaidLoans.observe(viewLifecycleOwner, Observer { loans ->
             loans?.let {
                 this.binding.loanRecyclerView.adapter = LoanRecyclerAdapter(it, loanViewModel, this)
