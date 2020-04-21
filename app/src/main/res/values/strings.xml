@@ -26,7 +26,7 @@
     <string name="name">Name</string>
     <string name="start_using_loan_manager">Start using Loan Manager</string>
     <string name="select_main_currency">Select Home Currency</string>
-    <string name="main_currency">Home Currency</string>
+    <string name="default_currency">Default Currency</string>
     <string name="copyright">Copyright © App Club 2020</string>
     <string name="today">Today</string>
     <string name="user_menu_title">You</string>
@@ -39,4 +39,10 @@
     <string name="received_on">Received on</string>
     <string name="payment_on">Payment on</string>
     <string name="date_placeholder">----------------</string>
+    <string name="total_unpaid_loans">Total Unpaid Loans</string>
+    <string name="number_of_unpaid_loans">Number of Unpaid loans</string>
+    <string name="total_paid_loans">total paid loans</string>
+    <string name="profile_information">Profile Information</string>
+    <string name="number_of_paid_loans">number of paid loans</string>
+    <string name="number_of_total_loans">Number of total loans</string>
 </resources>

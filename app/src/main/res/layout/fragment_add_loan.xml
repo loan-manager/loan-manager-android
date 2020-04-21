@@ -66,6 +66,7 @@
                 app:boxBackgroundColor="@android:color/white"
                 app:boxBackgroundMode="filled"
                 app:boxCollapsedPaddingTop="6dp"
+                app:boxStrokeWidth="0.2dp"
                 app:boxStrokeColor="@color/colorPrimaryDark"
                 app:boxStrokeErrorColor="@android:color/holo_red_dark"
                 app:errorEnabled="true"
