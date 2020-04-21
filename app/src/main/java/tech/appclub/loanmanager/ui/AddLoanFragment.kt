@@ -48,7 +48,6 @@ class AddLoanFragment : Fragment() {
         return binding.root
     }
 
-    // TODO: SET SPINNER VALUE FROM PREFERENCES
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
