@@ -38,4 +38,5 @@
     <string name="stats_menu_title">Statistics</string>
     <string name="received_on">Received on</string>
     <string name="payment_on">Payment on</string>
+    <string name="date_placeholder">----------------</string>
 </resources>
