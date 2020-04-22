@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/home_destination">
+    app:startDestination="@id/home_destination"
+    tools:ignore="UnusedNavigation">
 
     <activity
         android:id="@+id/mainActivity"
@@ -36,16 +37,19 @@
         android:name="tech.appclub.loanmanager.ui.HistoryFragment"
         android:label="@string/history_fragment_title"
         tools:layout="@layout/fragment_history" />
+
     <fragment
         android:id="@+id/addLoanFragment"
         android:name="tech.appclub.loanmanager.ui.AddLoanFragment"
         android:label="@string/add_loan_fragment_title"
         tools:layout="@layout/fragment_add_loan" />
+
     <fragment
         android:id="@+id/paid_loan_destination"
         android:name="tech.appclub.loanmanager.ui.PaidLoansFragment"
         android:label="@string/loan_menu_paid"
         tools:layout="@layout/fragment_paid_loans" />
+
     <fragment
         android:id="@+id/introFragment"
         android:name="tech.appclub.loanmanager.ui.IntroFragment"
@@ -56,14 +60,16 @@
             app:destination="@id/home_destination"
             app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/settings_destination"
         android:name="tech.appclub.loanmanager.ui.SettingsFragment"
         android:label="@string/settings_fragment_title"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/editFragment"
-        android:name="tech.appclub.loanmanager.EditFragment"
+        android:name="tech.appclub.loanmanager.ui.EditFragment"
         android:label="@string/edit_fragment_title"
         tools:layout="@layout/fragment_edit" />
 </navigation>

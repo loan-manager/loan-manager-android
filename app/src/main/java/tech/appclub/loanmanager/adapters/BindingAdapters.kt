@@ -3,6 +3,7 @@ package tech.appclub.loanmanager.adapters
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -21,6 +22,11 @@ fun setAmount(view: TextView, data: Loan) {
     val decimalFormat = DecimalFormat()
     view.text =
         String.format(Locale.getDefault(), "%s %s", data.code, decimalFormat.format(data.amount))
+}
+
+@BindingAdapter("app:setCountry")
+fun setCountry(view: Spinner, data: Loan) {
+    view.setSelection(data.position!!)
 }
 
 @BindingAdapter("app:setReceiveDate")
