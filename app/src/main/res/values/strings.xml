@@ -29,7 +29,7 @@
     <string name="default_currency">Default Currency</string>
     <string name="copyright">Copyright © App Club 2020</string>
     <string name="today">Today</string>
-    <string name="user_menu_title">You</string>
+    <string name="settings_fragment_title">Settings</string>
     <string name="update">Update</string>
     <string name="update_all_currencies">Update all Currencies</string>
     <string name="update_all_currencies_desc">Updates all currencies with the selected currency</string>
