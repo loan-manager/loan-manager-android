@@ -46,11 +46,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{data.currency}"
-            tools:text="Pakistani Rupees"
             android:textSize="12sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/country" />
+            app:layout_constraintTop_toBottomOf="@+id/country"
+            tools:text="Pakistani Rupees" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
