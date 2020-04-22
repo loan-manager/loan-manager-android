@@ -56,4 +56,8 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateCurrency(code, currency, country)
         }
 
+    fun currentLoan(loanId: Int) = viewModelScope.launch(Dispatchers.IO) {
+        repository.currentLoan(loanId)
+    }
+
 }

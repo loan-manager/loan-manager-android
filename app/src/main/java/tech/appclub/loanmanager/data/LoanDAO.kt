@@ -12,7 +12,7 @@ interface LoanDAO {
 
     // Get unpaid loan
     @Query("SELECT * FROM loan_table WHERE id = :loanId LIMIT 1")
-    fun getLoan(loanId: Int): Loan
+    suspend fun getLoan(loanId: Int): Loan
 
     // Get all paid loans
     @Query("SELECT * FROM loan_table WHERE loan_status = 1 ORDER BY loan_payment_date ASC")
