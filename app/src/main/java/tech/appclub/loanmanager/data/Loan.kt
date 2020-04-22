@@ -25,17 +25,20 @@ data class Loan(
     @ColumnInfo(name = "loan_payment_date")
     var paymentOn: Date? = null,
 
-    @ColumnInfo(name = "loan_curreny_label")
+    @ColumnInfo(name = "loan_currency_label")
     var currency: String? = null,
 
-    @ColumnInfo(name = "loan_curreny_code")
+    @ColumnInfo(name = "loan_currency_code")
     var code: String? = null,
 
-    @ColumnInfo(name = "loan_curreny_country")
+    @ColumnInfo(name = "loan_currency_country")
     var country: String? = null,
 
     @ColumnInfo(name = "loan_status")
     var status: Int? = 0,
+
+    @ColumnInfo(name = "country_position")
+    var position: Int? = 0,
 
     @Ignore var expanded: Boolean = false
 

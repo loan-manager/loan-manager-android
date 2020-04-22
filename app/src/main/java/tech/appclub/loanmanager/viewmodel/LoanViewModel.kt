@@ -16,8 +16,11 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
     val unpaidLoans: LiveData<List<Loan>>
     val paidLoans: LiveData<List<Loan>>
     val totalLoans: LiveData<List<Loan>>
-    val totalLoanCount: LiveData<Int>
-    val grandLoanAmount: LiveData<Double>
+    val unpaidLoanCount: LiveData<Int>
+    val unpaidLoanGrandTotal: LiveData<Double>
+    val paidLoanCount: LiveData<Int>
+    val paidLoanGrandTotal: LiveData<Double>
+    val allLoanCount: LiveData<Int>
 
     init {
         val loanDao = LoanRoomDatabase.getDatabase(application).loanDao()
@@ -25,8 +28,11 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         unpaidLoans = repository.unpaidLoans
         paidLoans = repository.paidLoans
         totalLoans = repository.totalLoans
-        totalLoanCount = repository.totalLoanCount
-        grandLoanAmount = repository.grandLoanAmount
+        unpaidLoanCount = repository.unpaidLoanCount
+        unpaidLoanGrandTotal = repository.unpaidLoanGrandTotal
+        paidLoanCount = repository.paidLoanCount
+        paidLoanGrandTotal = repository.paidLoanGrandTotal
+        allLoanCount = repository.allLoanCount
     }
 
     fun insert(loan: Loan) = viewModelScope.launch(Dispatchers.IO) {
@@ -44,5 +50,10 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
     fun updateLoan(loan: Loan) = viewModelScope.launch(Dispatchers.IO) {
         repository.updateLoan(loan)
     }
+
+    fun updateCurrency(code: String, currency: String, country: String) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCurrency(code, currency, country)
+        }
 
 }

@@ -138,6 +138,7 @@ class AddLoanFragment : Fragment() {
         loan.receivedOn = receiveDate
         loan.paymentOn = paymentDate
         loan.status = 0
+        loan.position = this.binding.countries.selectedItemPosition
 
         loanViewModel.insert(loan)
         findNavController().navigateUp()

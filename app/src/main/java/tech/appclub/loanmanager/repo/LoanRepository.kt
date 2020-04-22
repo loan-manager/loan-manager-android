@@ -10,8 +10,11 @@ class LoanRepository(private val loanDAO: LoanDAO) {
     val unpaidLoans: LiveData<List<Loan>> = loanDAO.getUnpaidLoans()
     val paidLoans: LiveData<List<Loan>> = loanDAO.getPaidLoans()
     val totalLoans: LiveData<List<Loan>> = loanDAO.getAllLoans()
-    val totalLoanCount: LiveData<Int> = loanDAO.totalLoanCount()
-    val grandLoanAmount: LiveData<Double> = loanDAO.grandLoanAmount()
+    val unpaidLoanCount: LiveData<Int> = loanDAO.getUnpaidLoanCount()
+    val unpaidLoanGrandTotal: LiveData<Double> = loanDAO.getUnpaidLoanGrandTotal()
+    val paidLoanCount: LiveData<Int> = loanDAO.getPaidLoanCount()
+    val paidLoanGrandTotal: LiveData<Double> = loanDAO.getPaidLoanGrandTotal()
+    val allLoanCount: LiveData<Int> = loanDAO.getAllLoanCount()
 
     suspend fun insert(loan: Loan) {
         loanDAO.insert(loan)
@@ -27,6 +30,10 @@ class LoanRepository(private val loanDAO: LoanDAO) {
 
     suspend fun updateLoan(loan: Loan) {
         loanDAO.updateLoan(loan)
+    }
+
+    suspend fun updateCurrency(code: String, currency: String, country: String) {
+        loanDAO.updateCurrency(code, currency, country)
     }
 
 }
