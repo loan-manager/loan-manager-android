@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import tech.appclub.loanmanager.data.Loan
-import tech.appclub.loanmanager.databinding.LoanItemViewBinding
 import tech.appclub.loanmanager.databinding.PaidLoanItemViewBinding
 
 class PaidLoanRecyclerAdapter internal constructor(

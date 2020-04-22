@@ -49,22 +49,14 @@ class IntroFragment : Fragment() {
 
     fun moveToHome() {
 
-        val name = this.binding.userNameValue.text.toString()
-        if (isEmpty(name, this.binding.userNameField, requireContext())) return
-
         val countryModel = this.binding.countries.selectedItem as Country
         val code = countryModel.code
-        val currency = countryModel.currency
-        val country = countryModel.country
 
         val editor =
-            requireActivity().getSharedPreferences(Constants.USER_DATA_FILE, MODE_PRIVATE).edit()
+            requireActivity().getSharedPreferences(Constants.COUNTRY_DATA, MODE_PRIVATE).edit()
         editor.clear()
-        editor.putString(Constants.USER_NAME, name)
-        editor.putString(Constants.CURRENCY_CODE, code)
-        editor.putString(Constants.CURRENCY_LABEL, currency)
-        editor.putString(Constants.CURRENCY_COUNTRY, country)
         editor.putInt(Constants.COUNTRY_POSITION, this.binding.countries.selectedItemPosition)
+        editor.putString(Constants.COUNTRY_CODE, code)
         editor.apply()
 
         findNavController().navigate(R.id.intro_to_home)

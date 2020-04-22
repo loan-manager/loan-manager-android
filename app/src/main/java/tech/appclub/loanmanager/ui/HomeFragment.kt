@@ -31,9 +31,9 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
     ): View? {
 
         val preferences =
-            requireActivity().getSharedPreferences(Constants.USER_DATA_FILE, MODE_PRIVATE)
-        val name = preferences.getString(Constants.USER_NAME, null)
-        if (name == null) {
+            requireActivity().getSharedPreferences(Constants.COUNTRY_DATA, MODE_PRIVATE)
+        val name = preferences.getInt(Constants.COUNTRY_POSITION, -1)
+        if (name == -1) {
             findNavController().navigate(R.id.home_to_intro)
         }
 

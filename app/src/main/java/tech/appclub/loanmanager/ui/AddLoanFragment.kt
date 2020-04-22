@@ -3,7 +3,6 @@ package tech.appclub.loanmanager.ui
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tech.appclub.loanmanager.MainActivity
-import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
 import tech.appclub.loanmanager.data.Country
@@ -59,13 +57,7 @@ class AddLoanFragment : Fragment() {
         calendar = Calendar.getInstance()
 
         val preferences =
-            requireActivity().getSharedPreferences(Constants.USER_DATA_FILE, Context.MODE_PRIVATE)
-
-        val country: Country? = Country()
-        country?.code = preferences.getString(Constants.CURRENCY_CODE, "")
-        country?.country = preferences.getString(Constants.CURRENCY_COUNTRY, "")
-        country?.currency = preferences.getString(Constants.CURRENCY_LABEL, "")
-        Log.d(LOG_TAG, country.toString())
+            requireActivity().getSharedPreferences(Constants.COUNTRY_DATA, Context.MODE_PRIVATE)
 
         val adapter = CurrencySpinnerAdapter(
             requireContext(),
@@ -73,9 +65,7 @@ class AddLoanFragment : Fragment() {
         )
 
         this.binding.countries.adapter = adapter
-        if (country != null) {
-            this.binding.countries.setSelection(preferences.getInt(Constants.COUNTRY_POSITION, 0))
-        }
+        this.binding.countries.setSelection(preferences.getInt(Constants.COUNTRY_POSITION, 0))
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
         )
