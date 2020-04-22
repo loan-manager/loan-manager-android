@@ -1,10 +1,15 @@
 package tech.appclub.loanmanager.adapters
 
 import android.content.Context
+import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.card.MaterialCardView
+import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
 import java.text.DecimalFormat
@@ -20,7 +25,7 @@ fun setAmount(view: TextView, data: Loan) {
 
 @BindingAdapter("app:setReceiveDate")
 fun setReceiveDate(view: TextView, date: Date) {
-    view.text = String.format("Received on %s", formatDate(date))
+    view.text = formatDate(date)
 }
 
 @BindingAdapter("app:setPaymentDate")
@@ -29,7 +34,7 @@ fun setPaymentDate(view: TextView, loan: Loan) {
         view.text = String.format("Cancelled on %s", formatDate(loan.paymentOn!!))
         view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
     } else {
-        view.text = String.format("Return on %s", formatDate(loan.paymentOn!!))
+        view.text = formatDate(loan.paymentOn!!)
     }
 }
 
@@ -40,12 +45,11 @@ fun setDaysLeft(view: TextView, loan: Loan) {
             "%s days up",
             abs(daysLeft(loan.receivedOn!!, loan.paymentOn!!)).toString()
         )
-        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
+        view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
     } else if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) > -1
         && daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 1
     ) {
         view.text = String.format("Today")
-        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
     } else {
         view.text =
             String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!).toString())
@@ -76,6 +80,5 @@ private fun daysLeft(startDate: Date, finishDate: Date): Long {
     val seconds = difference / 1000
     val minutes = seconds / 60
     val hours = minutes / 60
-    val days = hours / 24
-    return days
+    return hours / 24
 }

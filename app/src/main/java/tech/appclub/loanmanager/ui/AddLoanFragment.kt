@@ -8,12 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.loan_item_view.view.*
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
@@ -22,10 +22,10 @@ import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentAddLoanBinding
 import tech.appclub.loanmanager.utils.Constants
+import tech.appclub.loanmanager.utils.DateTimeUtils
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand
 import tech.appclub.loanmanager.utils.ValidationUtils.Companion.isEmpty
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class AddLoanFragment : Fragment() {
@@ -44,13 +44,17 @@ class AddLoanFragment : Fragment() {
     ): View? {
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_loan, container, false)
-        this.binding.addLoanFragment = this
+        this.binding.addLoan = this
         return binding.root
     }
 
-    // TODO: SET SPINNER VALUE FROM PREFERENCES
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as AppCompatActivity).run {
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_nav_back)
+        }
+        (requireActivity() as MainActivity).binding.bottomNavigationView.visibility = View.GONE
 
         calendar = Calendar.getInstance()
 
@@ -83,9 +87,7 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val dateFormat = "EEEE, dd MMMM, yyyy"
-                val simpleDateFormat = SimpleDateFormat(dateFormat, Locale.getDefault())
-                binding.receivedDate.text = simpleDateFormat.format(calendar.time)
+                binding.receivedDate.text = DateTimeUtils.formatDate(calendar.time)
                 receiveDate = calendar.time
                 binding.paymentDateAction.visibility = View.VISIBLE
             }
@@ -107,9 +109,7 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val dateFormat = "EEEE, dd MMMM, yyyy"
-                val simpleDateFormat = SimpleDateFormat(dateFormat, Locale.getDefault())
-                binding.paymentDate.text = simpleDateFormat.format(calendar.time)
+                binding.paymentDate.text = DateTimeUtils.formatDate(calendar.time)
                 paymentDate = calendar.time
             }
         val datePickerDialog = DatePickerDialog(
@@ -152,6 +152,10 @@ class AddLoanFragment : Fragment() {
         loanViewModel.insert(loan)
         findNavController().navigateUp()
 
+    }
+
+    fun cancel() {
+        findNavController().navigateUp()
     }
 
     private fun trimCommaOfString(string: String): String {
