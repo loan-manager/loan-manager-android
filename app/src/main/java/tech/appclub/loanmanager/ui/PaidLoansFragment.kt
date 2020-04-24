@@ -30,6 +30,11 @@ class PaidLoansFragment : Fragment() {
 
         val loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         loanViewModel.paidLoans.observe(requireActivity(), Observer { list ->
+            if (list.isEmpty()) {
+                this.binding.emptyMsg.visibility = View.VISIBLE
+            } else {
+                this.binding.emptyMsg.visibility = View.GONE
+            }
             this.binding.paidLoanRecyclerView.adapter = PaidLoanRecyclerAdapter(list)
         })
     }

@@ -77,8 +77,8 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:paddingBottom="16dp"
                 android:layout_marginEnd="16dp"
+                android:paddingBottom="16dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -87,15 +87,11 @@
                 <LinearLayout
                     android:id="@+id/linearLayout3"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -146,21 +142,19 @@
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/view"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setLayoutBackground="@{loan}">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/payment_on"
                         android:textColor="#80FFFFFF"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:setPaymentLabel="@{loan}" />
 
                     <View
                         android:layout_width="match_parent"
@@ -174,7 +168,6 @@
                         android:id="@+id/paymentDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"

@@ -38,6 +38,9 @@
     <string name="stats_menu_title">Statistics</string>
     <string name="received_on">Received on</string>
     <string name="payment_on">Payment on</string>
+    <string name="paid_on">Paid on</string>
+    <string name="cancelled_on">Cancelled on</string>
+    <string name="unknown_status">Unknown Status</string>
     <string name="date_placeholder">----------------</string>
     <string name="total_unpaid_loans">Total Unpaid Loans</string>
     <string name="number_of_unpaid_loans">Number of Unpaid loans</string>
@@ -51,4 +54,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_fragment_title">Edit Loan</string>
+    <string name="empty_home_list_msg">Yohooo!\nNo loans to pay!</string>
+    <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
+    <string name="empty_history_list_msg">No Loan Activity Yet</string>
 </resources>
