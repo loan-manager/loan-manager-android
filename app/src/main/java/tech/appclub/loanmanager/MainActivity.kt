@@ -21,7 +21,7 @@ import tech.appclub.loanmanager.utils.FileHelper
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val LOG_TAG = "LM"
+        const val LOG_TAG = "LM_LOG"
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration

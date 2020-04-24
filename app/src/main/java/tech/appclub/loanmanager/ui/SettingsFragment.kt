@@ -144,7 +144,7 @@ class SettingsFragment : Fragment() {
             .setTitle("Updating all currencies")
             .setMessage("This action will update all currencies. Do you want to proceed?")
             .setIcon(R.drawable.ic_warning)
-            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+            .setPositiveButton(android.R.string.ok) { _, _ ->
                 updateInfo()
             }
             .setNegativeButton(android.R.string.cancel) { dialog, _ ->

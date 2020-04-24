@@ -8,38 +8,38 @@ import java.math.BigDecimal
 import java.util.*
 
 @Entity(tableName = "loan_table")
-data class Loan(
+class Loan() {
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
+    var id: Int? = null
 
     @ColumnInfo(name = "loan_holder_name")
-    var holder: String? = null,
+    var holder: String? = null
 
     @ColumnInfo(name = "loan_amount")
-    var amount: Double? = null,
+    var amount: Double? = null
 
     @ColumnInfo(name = "loan_received_date")
-    var receivedOn: Date? = null,
+    var receivedOn: Date? = null
 
     @ColumnInfo(name = "loan_payment_date")
-    var paymentOn: Date? = null,
+    var paymentOn: Date? = null
 
     @ColumnInfo(name = "loan_currency_label")
-    var currency: String? = null,
+    var currency: String? = null
 
     @ColumnInfo(name = "loan_currency_code")
-    var code: String? = null,
+    var code: String? = null
 
     @ColumnInfo(name = "loan_currency_country")
-    var country: String? = null,
+    var country: String? = null
 
     @ColumnInfo(name = "loan_status")
-    var status: Int? = 0,
+    var status: Int? = 0
 
     @ColumnInfo(name = "country_position")
-    var position: Int? = 0,
+    var position: Int? = 0
 
     @Ignore var expanded: Boolean = false
 
-)
+}

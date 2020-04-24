@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.data.LoanDAO
 
-
 class LoanRepository(private val loanDAO: LoanDAO) {
 
     val unpaidLoans: LiveData<List<Loan>> = loanDAO.getUnpaidLoans()
@@ -35,5 +34,10 @@ class LoanRepository(private val loanDAO: LoanDAO) {
     suspend fun updateCurrency(code: String, currency: String, country: String) {
         loanDAO.updateCurrency(code, currency, country)
     }
+
+    suspend fun currentLoan(loanId: Int): Loan {
+        return loanDAO.getLoan(loanId)
+    }
+
 
 }
