@@ -1,10 +1,13 @@
 package tech.appclub.loanmanager.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.AllLoanItemViewBinding
 import tech.appclub.loanmanager.databinding.LoanItemViewBinding
@@ -29,8 +32,7 @@ class AllLoanRecyclerAdapter internal constructor(
         holder.bind(loans[position])
 
         holder.removeAction.setOnClickListener {
-            loanViewModel.deleteLoan(loans[position])
-            notifyItemRemoved(position)
+            showDeleteDialog(it, position)
         }
     }
 
@@ -43,5 +45,20 @@ class AllLoanRecyclerAdapter internal constructor(
             binding.loan = loan
             binding.executePendingBindings()
         }
+    }
+
+    private fun showDeleteDialog(view: View, position: Int) {
+        MaterialAlertDialogBuilder(view.context)
+            .setTitle("Delete the Loan")
+            .setIcon(R.drawable.ic_delete)
+            .setMessage("Are you sure, you want to delete the loan?")
+            .setPositiveButton("Cancel") { _, _ ->
+                loanViewModel.deleteLoan(loans[position])
+                notifyItemRemoved(position)
+            }
+            .setNegativeButton("Don't Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 }

@@ -1,5 +1,6 @@
 package tech.appclub.loanmanager.adapters
 
+import android.app.AlertDialog
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.LoanItemViewBinding
@@ -52,9 +54,7 @@ class LoanRecyclerAdapter internal constructor(
 
         holder.bind(loans[position])
         holder.cancelAction.setOnClickListener {
-            loans[position].status = 2
-            loans[position].paymentOn = Date()
-            loanViewModel.updateLoan(loans[position])
+            showWarningDialog(it, position)
         }
 
         holder.editAction.setOnClickListener {
@@ -87,6 +87,22 @@ class LoanRecyclerAdapter internal constructor(
 
     interface LoanClickListener {
         fun editClickListener(loanId: Int)
+    }
+
+    private fun showWarningDialog(view: View, position: Int) {
+        MaterialAlertDialogBuilder(view.context)
+            .setTitle("Cancel the Loan")
+            .setIcon(R.drawable.ic_warning)
+            .setMessage("Are you sure, you want to cancel the loan? Cancelling a loan means the loan is unpaid.")
+            .setPositiveButton("Cancel") { _, _ ->
+                loans[position].status = 2
+                loans[position].paymentOn = Date()
+                loanViewModel.updateLoan(loans[position])
+            }
+            .setNegativeButton("Don't Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
 }

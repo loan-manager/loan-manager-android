@@ -1,11 +1,10 @@
 package tech.appclub.loanmanager.adapters
 
-import android.content.Context
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputEditText
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
@@ -39,11 +38,26 @@ fun setReceiveDate(view: TextView, date: Date) {
 
 @BindingAdapter("app:setPaymentDate")
 fun setPaymentDate(view: TextView, loan: Loan) {
-    if (loan.status == 2) {
-        view.text = String.format("Cancelled on %s", formatDate(loan.paymentOn!!))
-        view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
-    } else {
-        view.text = formatDate(loan.paymentOn!!)
+    view.text = formatDate(loan.paymentOn!!)
+}
+
+@BindingAdapter("app:setPaymentLabel")
+fun setPaymentLabel(view: TextView, loan: Loan) {
+    view.setTextColor(ContextCompat.getColor(view.context, android.R.color.white))
+    when (loan.status) {
+        0 -> view.text = view.context.resources.getString(R.string.payment_on)
+        1 -> view.text = view.context.resources.getString(R.string.paid_on)
+        2 -> view.text = view.context.resources.getString(R.string.cancelled_on)
+        else -> view.text = view.context.resources.getString(R.string.unknown_status)
+    }
+}
+
+@BindingAdapter("app:setLayoutBackground")
+fun setLayoutBackground(view: LinearLayout, loan: Loan) {
+    when (loan.status) {
+        1 -> view.setBackgroundResource(R.drawable.green_textview_bg)
+        2 -> view.setBackgroundResource(R.drawable.error_textview_bg)
+        else -> view.setBackgroundResource(R.drawable.textview_bg)
     }
 }
 
@@ -63,20 +77,6 @@ fun setDaysLeft(view: TextView, loan: Loan) {
         view.text =
             String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!).toString())
     }
-}
-
-@BindingAdapter("app:setBackground")
-fun setBackground(view: MaterialCardView, loan: Loan) {
-    when (loan.status) {
-        0 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
-        1 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_green_dark)
-        2 -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
-        else -> view.strokeColor = updateStrokeColor(view.context, android.R.color.holo_purple)
-    }
-}
-
-private fun updateStrokeColor(context: Context, color: Int): Int {
-    return ContextCompat.getColor(context, color)
 }
 
 private fun daysLeft(startDate: Date, finishDate: Date): Long {

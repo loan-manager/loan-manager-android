@@ -9,13 +9,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
@@ -61,36 +61,37 @@ class SettingsFragment : Fragment() {
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
 
         loanViewModel.unpaidLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountUnpaidLoans.text = String.format("%d unpaid loans", it)
+            this.binding.totalCountUnpaidLoans.text = String.format("%d unpaid loan(s)", it)
         })
 
         loanViewModel.unpaidLoanGrandTotal.observe(requireActivity(), Observer {
             if (it == null) {
-                this.binding.grandTotalUnpaidLoans.text = "N/A"
+                this.binding.grandTotalUnpaidLoans.text = String.format("%s 0 TO PAY", countryCode)
                 return@Observer
             }
             this.binding.grandTotalUnpaidLoans.text = String.format("%s %.2f", countryCode, it)
         })
 
         loanViewModel.paidLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountPaidLoans.text = String.format("%d paid loans", it)
+            this.binding.totalCountPaidLoans.text = String.format("%d paid loan(s)", it)
         })
 
         loanViewModel.paidLoanGrandTotal.observe(requireActivity(), Observer {
             if (it == null) {
-                this.binding.grandTotalPaidLoans.text = "N/A"
+                this.binding.grandTotalPaidLoans.text =
+                    String.format("%s 0 LOANS PAID", countryCode)
                 return@Observer
             }
             this.binding.grandTotalPaidLoans.text = String.format("%s %.2f", countryCode, it)
         })
 
         loanViewModel.allLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountLoans.text = String.format("%d total loans", it)
+            this.binding.totalCountLoans.text = String.format("%d total loan(s)", it)
         })
 
         this.binding.countries.onItemSelectedListener = object : OnItemSelectedListener {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -124,7 +125,7 @@ class SettingsFragment : Fragment() {
     }
 
     private fun showDeleteDialog() {
-        AlertDialog.Builder(requireContext())
+        MaterialAlertDialogBuilder(requireContext())
             .setTitle("Deleting all loans")
             .setMessage("This action will delete all loans. Do you want to proceed?")
             .setIcon(R.drawable.ic_warning)
@@ -140,8 +141,8 @@ class SettingsFragment : Fragment() {
     }
 
     private fun showUpdateDialog() {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Updating all currencies")
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Update all currencies")
             .setMessage("This action will update all currencies. Do you want to proceed?")
             .setIcon(R.drawable.ic_warning)
             .setPositiveButton(android.R.string.ok) { _, _ ->

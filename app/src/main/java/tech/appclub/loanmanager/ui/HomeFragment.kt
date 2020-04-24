@@ -55,6 +55,12 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
 
         (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         this.loanViewModel.unpaidLoans.observe(viewLifecycleOwner, Observer { loans ->
+            if (loans.isEmpty()) {
+                this.binding.emptyMsg.visibility = View.VISIBLE
+            } else {
+                this.binding.emptyMsg.visibility = View.GONE
+            }
+
             loans?.let {
                 this.binding.loanRecyclerView.adapter = LoanRecyclerAdapter(it, loanViewModel, this)
             }

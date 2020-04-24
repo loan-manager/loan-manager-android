@@ -7,6 +7,29 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="fontFamily">@font/open_sans</item>
+        <item name="materialAlertDialogTheme">@style/AlertDialogMaterialTheme</item>
     </style>
+
+    <style name="AlertDialogMaterialTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">0dp</item>
+        <item name="strokeColor">@android:color/holo_red_dark</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Alert.Button.Negative" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">0dp</item>
+        <item name="strokeColor">@android:color/holo_green_dark</item>
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 
 </resources>
