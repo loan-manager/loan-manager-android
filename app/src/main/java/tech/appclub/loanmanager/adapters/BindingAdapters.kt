@@ -1,15 +1,12 @@
 package tech.appclub.loanmanager.adapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.textfield.TextInputEditText
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
@@ -22,6 +19,12 @@ fun setAmount(view: TextView, data: Loan) {
     val decimalFormat = DecimalFormat()
     view.text =
         String.format(Locale.getDefault(), "%s %s", data.code, decimalFormat.format(data.amount))
+}
+
+@BindingAdapter("app:setEditAmount")
+fun setEditAmount(view: TextInputEditText, data: Loan) {
+    val decimalFormat = DecimalFormat()
+    view.setText(decimalFormat.format(data.amount), TextView.BufferType.EDITABLE)
 }
 
 @BindingAdapter("app:setCountry")

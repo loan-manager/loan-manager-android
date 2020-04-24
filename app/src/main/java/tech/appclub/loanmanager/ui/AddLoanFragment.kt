@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -21,8 +19,10 @@ import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentAddLoanBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.DateTimeUtils
+import tech.appclub.loanmanager.utils.NumUtils.Companion.trimCommaOfString
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand
 import tech.appclub.loanmanager.utils.ValidationUtils.Companion.isEmpty
+import tech.appclub.loanmanager.utils.ValidationUtils.Companion.showDateError
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
 import java.util.*
 
@@ -30,8 +30,8 @@ class AddLoanFragment : Fragment() {
 
 
     private lateinit var binding: FragmentAddLoanBinding
-    private lateinit var calendar: Calendar
     private lateinit var loanViewModel: LoanViewModel
+    private lateinit var calendar: Calendar
 
     private var receiveDate: Date? = null
     private var paymentDate: Date? = null
@@ -126,8 +126,8 @@ class AddLoanFragment : Fragment() {
         val country = countryModel.country
         val currency = countryModel.currency
 
-        if (showDateError(receiveDate, this.binding.receivedDateTitle)) return
-        if (showDateError(paymentDate, this.binding.paymentDateTitle)) return
+        if (showDateError(requireContext(), receiveDate, this.binding.receivedDateTitle)) return
+        if (showDateError(requireContext(), paymentDate, this.binding.paymentDateTitle)) return
 
         val loan = Loan()
         loan.holder = name
@@ -149,21 +149,5 @@ class AddLoanFragment : Fragment() {
         findNavController().navigateUp()
     }
 
-    private fun trimCommaOfString(string: String): String {
-        return if (string.contains(",")) {
-            string.replace(",", "")
-        } else {
-            string
-        }
-    }
 
-    private fun showDateError(date: Date?, error: TextView): Boolean {
-        if (date == null) {
-            error.setTextColor(getColor(requireContext(), android.R.color.holo_red_dark))
-            return true
-        } else {
-            error.setTextColor(getColor(requireContext(), android.R.color.darker_gray))
-        }
-        return false
-    }
 }

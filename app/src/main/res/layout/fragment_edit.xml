@@ -91,7 +91,7 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Small"
                     android:textColor="@android:color/black"
                     android:typeface="normal"
-                    app:setAmount="@{loan}" />
+                    app:setEditAmount="@{loan}" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,6 +141,7 @@
                         android:layout_gravity="center"
                         android:backgroundTint="@android:color/transparent"
                         android:contentDescription="@string/select_received_date"
+                        android:onClick="@{() -> editLoan.selectReceivedDate()}"
                         android:src="@drawable/ic_calendar" />
 
                     <TextView
@@ -208,6 +209,7 @@
                         android:layout_gravity="center"
                         android:backgroundTint="@android:color/transparent"
                         android:contentDescription="@string/select_payment_date"
+                        android:onClick="@{() -> editLoan.selectPaymentDate()}"
                         android:src="@drawable/ic_calendar" />
 
                     <TextView
@@ -235,10 +237,10 @@
                         android:backgroundTint="@android:color/white"
                         android:gravity="center"
                         android:singleLine="true"
-                        app:setPaymentDate="@{loan}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
                         android:textColor="@android:color/black"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:setPaymentDate="@{loan}" />
 
                 </LinearLayout>
 
@@ -264,6 +266,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.6"
+                    android:onClick="@{() -> editLoan.cancel()}"
                     android:text="@android:string/cancel"
                     app:backgroundTint="@android:color/holo_red_dark" />
 
@@ -278,6 +281,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.6"
+                    android:onClick="@{() -> editLoan.editLoanAction()}"
                     android:text="@string/edit_fragment_title"
                     app:backgroundTint="@android:color/holo_green_dark" />
 

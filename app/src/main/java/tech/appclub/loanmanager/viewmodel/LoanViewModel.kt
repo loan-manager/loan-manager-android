@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.db.LoanRoomDatabase
 import tech.appclub.loanmanager.repo.LoanRepository
@@ -56,8 +57,10 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateCurrency(code, currency, country)
         }
 
-    fun currentLoan(loanId: Int) = viewModelScope.launch(Dispatchers.IO) {
-        repository.currentLoan(loanId)
+    fun currentLoan(loanId: Int): Loan {
+        return runBlocking {
+            repository.currentLoan(loanId)
+        }
     }
 
 }

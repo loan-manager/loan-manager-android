@@ -35,7 +35,7 @@ interface LoanDAO {
     suspend fun deleteLoan(loan: Loan)
 
     // Update a loan
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateLoan(loan: Loan)
 
     // Update loan currency code

@@ -28,8 +28,13 @@
             android:id="@+id/home_to_intro"
             app:destination="@id/introFragment" />
         <action
-            android:id="@+id/action_home_destination_to_editFragment"
-            app:destination="@id/editFragment" />
+            android:id="@+id/home_to_editFragment"
+            app:destination="@id/editFragment">
+            <argument
+                android:name="loanId"
+                app:argType="integer"
+                android:defaultValue="-1" />
+        </action>
     </fragment>
 
     <fragment
@@ -71,5 +76,10 @@
         android:id="@+id/editFragment"
         android:name="tech.appclub.loanmanager.ui.EditFragment"
         android:label="@string/edit_fragment_title"
-        tools:layout="@layout/fragment_edit" />
+        tools:layout="@layout/fragment_edit" >
+        <argument
+            android:name="loanId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>

@@ -65,8 +65,9 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
         findNavController().navigate(R.id.home_to_add_loan)
     }
 
-    override fun editClickListener(loan: Loan) {
-        Log.d(LOG_TAG, loan.holder!!)
+    override fun editClickListener(loanId: Int) {
+        val action = HomeFragmentDirections.homeToEditFragment(loanId)
+        findNavController().navigate(action)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
