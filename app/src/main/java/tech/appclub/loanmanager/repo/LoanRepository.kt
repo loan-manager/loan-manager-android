@@ -31,8 +31,8 @@ class LoanRepository(private val loanDAO: LoanDAO) {
         loanDAO.updateLoan(loan)
     }
 
-    suspend fun updateCurrency(code: String, currency: String, country: String) {
-        loanDAO.updateCurrency(code, currency, country)
+    suspend fun updateCurrency(code: String, currency: String, country: String, position: Int) {
+        loanDAO.updateCurrency(code, currency, country, position)
     }
 
     suspend fun currentLoan(loanId: Int): Loan {

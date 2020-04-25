@@ -43,8 +43,9 @@ interface LoanDAO {
     suspend fun updateLoan(loan: Loan)
 
     // Update loan currency code
-    @Query("UPDATE loan_table SET loan_currency_code = :code, loan_currency_label = :currency, loan_currency_country = :country")
-    suspend fun updateCurrency(code: String, currency: String, country: String)
+    @Query("UPDATE loan_table SET loan_currency_code = :code, loan_currency_label = :currency, " +
+            "loan_currency_country = :country, country_position = :position")
+    suspend fun updateCurrency(code: String, currency: String, country: String, position: Int)
 
     // Get count of all unpaid loans
     @Query("SELECT COUNT(*) FROM loan_table WHERE loan_status = 0")

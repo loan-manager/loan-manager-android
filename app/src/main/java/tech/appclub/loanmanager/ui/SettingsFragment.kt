@@ -167,7 +167,7 @@ class SettingsFragment : Fragment() {
         editor.putInt(Constants.COUNTRY_POSITION, selectedPosition)
 
         editor.apply()
-        loanViewModel.updateCurrency(country.code!!, country.currency!!, country.country!!)
+        loanViewModel.updateCurrency(country.code!!, country.currency!!, country.country!!, selectedPosition)
 
         findNavController().navigateUp()
     }

@@ -1,8 +1,8 @@
 package tech.appclub.loanmanager.ui
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,12 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import tech.appclub.loanmanager.MainActivity
-import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentEditBinding
+import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.DateTimeUtils
 import tech.appclub.loanmanager.utils.NumUtils.Companion.trimCommaOfString
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand
@@ -42,14 +42,11 @@ class EditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
+        (requireActivity() as AppCompatActivity).run {
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_nav_back)
+        }
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit, container, false)
         this.binding.editLoan = this
-        val adapter = CurrencySpinnerAdapter(
-            requireContext(),
-            (requireActivity() as MainActivity).readCountriesData()
-        )
-        this.binding.countries.adapter = adapter
-
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         loanData = loanViewModel.currentLoan(args.loanId)
         this.binding.loan = loanData
@@ -59,9 +56,12 @@ class EditFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (requireActivity() as AppCompatActivity).run {
-            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_nav_back)
-        }
+        val adapter = CurrencySpinnerAdapter(
+            requireContext(),
+            (requireActivity() as MainActivity).readCountriesData()
+        )
+        this.binding.countries.adapter = adapter
+        this.binding.countries.setSelection(loanData.position!!)
 
         receiveDate = loanData.receivedOn
         paymentDate = loanData.paymentOn
