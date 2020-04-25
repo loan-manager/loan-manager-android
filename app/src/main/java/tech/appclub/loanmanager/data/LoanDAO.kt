@@ -30,6 +30,10 @@ interface LoanDAO {
     @Query("DELETE FROM loan_table")
     suspend fun deleteAll()
 
+    // Delete all paid loans
+    @Query("DELETE FROM loan_table WHERE loan_status = 1")
+    suspend fun deleteAllPaidLoans()
+
     // Delete a loan
     @Delete
     suspend fun deleteLoan(loan: Loan)

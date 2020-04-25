@@ -124,6 +124,7 @@
                     android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
+                    android:onClick="@{() -> editLoan.selectReceivedDate()}"
                     android:orientation="vertical"
                     android:paddingStart="16dp"
                     android:paddingTop="8dp"
@@ -134,20 +135,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/received_date_action"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:backgroundTint="@android:color/transparent"
-                        android:contentDescription="@string/select_received_date"
-                        android:onClick="@{() -> editLoan.selectReceivedDate()}"
-                        android:src="@drawable/ic_calendar" />
-
                     <TextView
                         android:id="@+id/received_date_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_calendar"
+                        android:drawablePadding="6dp"
                         android:gravity="center"
                         android:text="@string/select_received_date"
                         android:textColor="#80FFFFFF"
@@ -192,6 +185,7 @@
                     android:layout_marginStart="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
+                    android:onClick="@{() -> editLoan.selectPaymentDate()}"
                     android:orientation="vertical"
                     android:paddingStart="16dp"
                     android:paddingTop="8dp"
@@ -202,20 +196,13 @@
                     app:layout_constraintStart_toEndOf="@+id/view"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageButton
-                        android:id="@+id/payment_date_action"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:backgroundTint="@android:color/transparent"
-                        android:contentDescription="@string/select_payment_date"
-                        android:onClick="@{() -> editLoan.selectPaymentDate()}"
-                        android:src="@drawable/ic_calendar" />
 
                     <TextView
                         android:id="@+id/payment_date_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_calendar"
+                        android:drawablePadding="6dp"
                         android:gravity="center"
                         android:text="@string/select_payment_date"
                         android:textColor="#80FFFFFF"
