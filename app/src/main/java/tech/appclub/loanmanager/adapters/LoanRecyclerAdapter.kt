@@ -1,6 +1,5 @@
 package tech.appclub.loanmanager.adapters
 
-import android.app.AlertDialog
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
@@ -21,6 +20,8 @@ class LoanRecyclerAdapter internal constructor(
     private val loanClickListener: LoanClickListener
 ) : RecyclerView.Adapter<LoanRecyclerAdapter.LoanViewHolder>() {
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemBinding = LoanItemViewBinding.inflate(layoutInflater, parent, false)
@@ -30,27 +31,6 @@ class LoanRecyclerAdapter internal constructor(
     override fun getItemCount() = loans.size
 
     override fun onBindViewHolder(holder: LoanViewHolder, position: Int) {
-        val isExpanded = loans[position].expanded
-        if (isExpanded) {
-            TransitionManager.beginDelayedTransition(holder.expandableLayout, AutoTransition())
-            holder.expandableLayout.visibility = View.VISIBLE
-            holder.expandAction.setImageDrawable(
-                ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_expand_less)
-            )
-        } else {
-            TransitionManager.beginDelayedTransition(holder.expandableLayout, AutoTransition())
-            holder.expandableLayout.visibility = View.GONE
-            holder.expandAction.setImageDrawable(
-                ContextCompat.getDrawable(holder.itemView.context, R.drawable.ic_expand)
-            )
-        }
-
-        holder.expandAction.setOnClickListener {
-            val loan = loans[position]
-            loan.expanded = !loan.expanded
-            TransitionManager.beginDelayedTransition(holder.bottomActions, AutoTransition())
-            notifyItemChanged(position)
-        }
 
         holder.bind(loans[position])
         holder.cancelAction.setOnClickListener {
@@ -75,9 +55,6 @@ class LoanRecyclerAdapter internal constructor(
         val cancelAction = binding.cancelLoanAction
         val editAction = binding.editLoanAction
         val paidAction = binding.paidLoanAction
-        val expandableLayout = binding.expandableLayout
-        val expandAction = binding.expandAction
-        val bottomActions = binding.bottomActions
 
         fun bind(loan: Loan) {
             binding.loan = loan

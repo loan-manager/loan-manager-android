@@ -8,17 +8,18 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/paid_loan_recycler_view"
+            android:id="@+id/all_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".ui.PaidLoansFragment"
-            tools:itemCount="0"
-            tools:listitem="@layout/paid_loan_item_view" />
+            tools:context=".ui.HistoryFragment"
+            tools:listitem="@layout/all_loan_item_view"
+            tools:itemCount="5"/>
 
         <TextView
             android:id="@+id/empty_msg"
@@ -28,7 +29,7 @@
             android:drawablePadding="12dp"
             android:ems="7"
             android:gravity="center"
-            android:text="@string/empty_paid_loan_list_msg"
+            android:text="@string/empty_history_list_msg"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/black"
             android:textStyle="italic"
