@@ -15,6 +15,10 @@
         android:layout_height="wrap_content"
         app:cardElevation="2dp"
         app:cardUseCompatPadding="true"
+        app:contentPaddingBottom="8dp"
+        app:contentPaddingLeft="16dp"
+        app:contentPaddingRight="16dp"
+        app:contentPaddingTop="16dp"
         app:strokeColor="@android:color/darker_gray"
         app:strokeWidth="0.1dp">
 
@@ -28,8 +32,6 @@
                 android:id="@+id/loanAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/black"
@@ -43,7 +45,6 @@
                 android:id="@+id/loanHolder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/textview_bg"
                 android:text="@{loan.holder}"
@@ -59,9 +60,7 @@
                 android:id="@+id/expandableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +107,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
                         app:setReceiveDate="@{loan.receivedOn}"
-                        tools:text="Wednesday, 19 Dec, 2020" />
+                        tools:text="Wed, 19 Dec, 2020" />
 
                 </LinearLayout>
 
@@ -162,7 +161,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
                         app:setPaymentDate="@{loan}"
-                        tools:text="Wednesday, 19 Dec, 2020" />
+                        tools:text="Wed, 19 Dec, 2020" />
 
 
                 </LinearLayout>
@@ -186,70 +185,45 @@
                 tools:text="100 Days Left" />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/bottom_actions"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/edit_loan_action"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="#ECECEC"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@android:color/white"
+                android:elevation="0dp"
+                android:text="@string/edit"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                app:backgroundTint="@android:color/white"
+                app:elevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expandableLayout">
+                app:layout_constraintTop_toBottomOf="@+id/expandableLayout" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/edit_loan_action"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@android:color/white"
-                    android:elevation="0dp"
-                    android:text="@string/edit"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="12sp"
-                    app:backgroundTint="@android:color/white"
-                    app:elevation="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/cancel_loan_action"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@android:color/white"
-                    android:text="@android:string/cancel"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/edit_loan_action"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <ImageButton
-                    android:id="@+id/expand_action"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="@android:color/transparent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_expand" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_loan_action"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/white"
+                android:text="@android:string/cancel"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/expandableLayout" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/paid_loan_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:elevation="1dp"
                 android:focusable="true"
@@ -261,6 +235,13 @@
                 app:maxImageSize="18dp"
                 app:srcCompat="@drawable/ic_done"
                 app:tint="@android:color/white" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
