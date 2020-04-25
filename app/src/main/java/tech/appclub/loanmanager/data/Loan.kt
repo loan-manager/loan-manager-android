@@ -2,13 +2,11 @@ package tech.appclub.loanmanager.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import java.math.BigDecimal
 import java.util.*
 
 @Entity(tableName = "loan_table")
-class Loan() {
+class Loan {
 
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
@@ -39,7 +37,5 @@ class Loan() {
 
     @ColumnInfo(name = "country_position")
     var position: Int? = 0
-
-    @Ignore var expanded: Boolean = false
 
 }

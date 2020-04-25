@@ -3,6 +3,8 @@ package tech.appclub.loanmanager;
 import android.content.Context;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Room;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -104,7 +106,8 @@ public class LoanDatabaseTest {
     @Test
     public void testTotalCount() throws Exception {
         List<Loan> allLoans = LiveDataTestUtil.getValue(mLoanDAO.getUnpaidLoans());
-        assertEquals(mLoanDAO.totalLoanCount(), allLoans.size());
+        LiveData<Integer> size = new MutableLiveData<>(allLoans.size());
+        assertEquals(mLoanDAO.getUnpaidLoanCount(), size);
     }
 
     @SuppressWarnings("ConstantConditions")

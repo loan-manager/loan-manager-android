@@ -1,11 +1,8 @@
 package tech.appclub.loanmanager.adapters
 
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.R
@@ -19,7 +16,6 @@ class LoanRecyclerAdapter internal constructor(
     private val loanViewModel: LoanViewModel,
     private val loanClickListener: LoanClickListener
 ) : RecyclerView.Adapter<LoanRecyclerAdapter.LoanViewHolder>() {
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolder {

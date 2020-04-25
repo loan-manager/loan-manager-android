@@ -1,7 +1,6 @@
 package tech.appclub.loanmanager.ui
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,6 @@ import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentEditBinding
-import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.DateTimeUtils
 import tech.appclub.loanmanager.utils.NumUtils.Companion.trimCommaOfString
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand

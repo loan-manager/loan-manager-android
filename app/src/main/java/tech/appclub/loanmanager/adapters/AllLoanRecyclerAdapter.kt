@@ -3,17 +3,12 @@ package tech.appclub.loanmanager.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.AllLoanItemViewBinding
-import tech.appclub.loanmanager.databinding.LoanItemViewBinding
-import tech.appclub.loanmanager.utils.DateTimeUtils
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
-import java.util.*
 
 class AllLoanRecyclerAdapter internal constructor(
     private val loans: List<Loan> = emptyList(),

@@ -15,7 +15,6 @@ import tech.appclub.loanmanager.adapters.CurrencySpinnerAdapter
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.FragmentIntroBinding
 import tech.appclub.loanmanager.utils.Constants
-import tech.appclub.loanmanager.utils.ValidationUtils.Companion.isEmpty
 
 class IntroFragment : Fragment() {
 

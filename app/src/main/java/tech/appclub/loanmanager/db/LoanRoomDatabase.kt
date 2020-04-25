@@ -11,7 +11,7 @@ import tech.appclub.loanmanager.utils.Converters
 
 @Database(entities = [Loan::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
-public abstract class LoanRoomDatabase : RoomDatabase() {
+abstract class LoanRoomDatabase : RoomDatabase() {
 
     abstract fun loanDao(): LoanDAO
 

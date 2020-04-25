@@ -14,26 +14,15 @@
 
     <!-- Validation Errors -->
     <string name="empty_error">Field cannot be empty</string>
-    <string name="start_date_hint">Wednesday, 1 January, 2020</string>
-    <string name="end_date_hint">Friday, 1 January, 2021</string>
     <string name="edit">Edit</string>
-    <string name="paid">Paid</string>
-    <string name="remove">Remove</string>
     <string name="loan_menu_paid">Paid Loans</string>
-    <string name="grand_amount">Grand Amount</string>
-    <string name="total_loans">Total Loans</string>
     <string name="slogan">Keep track of your loans at a single place</string>
-    <string name="name">Name</string>
     <string name="start_using_loan_manager">Start using Loan Manager</string>
     <string name="select_default_currency">Select Default Currency</string>
     <string name="default_currency">Default Currency</string>
     <string name="copyright">Copyright © App Club 2020</string>
     <string name="settings_fragment_title">Settings</string>
     <string name="update">Update</string>
-    <string name="update_all_currencies">Update all Currencies</string>
-    <string name="update_all_currencies_desc">Updates all currencies with the selected currency</string>
-    <string name="edit_name">Edit Name</string>
-    <string name="update_name">Update Name</string>
     <string name="stats_menu_title">Statistics</string>
     <string name="received_on">Received on</string>
     <string name="payment_on">Payment on</string>
@@ -41,22 +30,16 @@
     <string name="cancelled_on">Cancelled on</string>
     <string name="unknown_status">Unknown Status</string>
     <string name="date_placeholder">----------------</string>
-    <string name="total_unpaid_loans">Total Unpaid Loans</string>
-    <string name="number_of_unpaid_loans">Number of Unpaid loans</string>
-    <string name="total_paid_loans">total paid loans</string>
-    <string name="profile_information">Profile Information</string>
-    <string name="number_of_paid_loans">number of paid loans</string>
-    <string name="number_of_total_loans">Number of total loans</string>
-    <string name="background">background</string>
+    <string name="total_unpaid_loans">Unpaid Loan amount</string>
+    <string name="number_of_unpaid_loans">Unpaid loans</string>
+    <string name="total_paid_loans">paid loan amount</string>
+    <string name="number_of_paid_loans">paid loans</string>
+    <string name="number_of_total_loans">total loans</string>
     <string name="delete_all_loans">Delete all Loans</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_fragment_title">Edit Loan</string>
     <string name="empty_home_list_msg">Yohooo!\nNo loans to pay!</string>
     <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
     <string name="delete_all">Delete all</string>
-    <string name="days_up">%s days up</string>
-    <string name="days_left">%s days left</string>
-    <string name="today">Today</string>
 
 </resources>
