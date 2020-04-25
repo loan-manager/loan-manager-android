@@ -6,6 +6,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
+import org.joda.time.Days
+import org.joda.time.LocalDate
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
@@ -63,31 +65,43 @@ fun setLayoutBackground(view: LinearLayout, loan: Loan) {
 
 @BindingAdapter("app:setDaysLeft")
 fun setDaysLeft(view: TextView, loan: Loan) {
-    if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 0) {
-        view.text = String.format(
-            "%s days up",
-            abs(daysLeft(loan.receivedOn!!, loan.paymentOn!!)).toString()
-        )
-        view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
-    } else if (daysLeft(loan.receivedOn!!, loan.paymentOn!!) > -1
-        && daysLeft(loan.receivedOn!!, loan.paymentOn!!) < 1
-    ) {
-        view.text = String.format("Today")
-    } else {
-        view.text =
-            String.format("%s days left", daysLeft(loan.receivedOn!!, loan.paymentOn!!).toString())
+    val daysCount = daysCheck(loan.receivedOn!!, loan.paymentOn!!)
+    when {
+        daysCount == -1 -> {
+            view.text = String.format("Yesterday")
+            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+        }
+        daysCount < -1 -> {
+            view.text = String.format("%d days up", abs(daysCount))
+            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+        }
+        daysCount == 0 -> {
+            view.text = String.format("Today")
+        }
+        daysCount == 1 -> {
+            view.text = String.format("Tomorrow")
+        }
+        daysCount > 1 -> {
+            view.text = String.format("%d days left", daysCount)
+        }
     }
 }
 
-private fun daysLeft(startDate: Date, finishDate: Date): Long {
-    val difference: Long
+//private fun daysCount(startDate: Date, finishDate: Date): Long {
+//    val difference: Long = if (startDate.time > Date().time) {
+//        finishDate.time - startDate.time
+//    } else {
+//        finishDate.time - Date().time
+//    }
+//    val seconds = difference / 1000
+//    val minutes = seconds / 60
+//    val hours = minutes / 60
+//    return hours / 24
+//}
+
+private fun daysCheck(startDate: Date, finishDate: Date): Int {
     if (startDate.time > Date().time) {
-        difference = finishDate.time - startDate.time
-    } else {
-        difference = finishDate.time - Date().time
+        return Days.daysBetween(LocalDate(finishDate.time), LocalDate(startDate.time)).negated().days
     }
-    val seconds = difference / 1000
-    val minutes = seconds / 60
-    val hours = minutes / 60
-    return hours / 24
+    return Days.daysBetween(LocalDate(finishDate.time), LocalDate()).negated().days
 }

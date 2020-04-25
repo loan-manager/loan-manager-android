@@ -107,6 +107,11 @@ dependencies {
 
     // endregion
 
+    // region Joda Time
+    implementation 'joda-time:joda-time:2.10.6'
+
+    // endregion
+
     // endregion
 
     // region Test Dependencies

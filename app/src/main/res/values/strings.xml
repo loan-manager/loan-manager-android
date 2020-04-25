@@ -28,7 +28,6 @@
     <string name="select_default_currency">Select Default Currency</string>
     <string name="default_currency">Default Currency</string>
     <string name="copyright">Copyright © App Club 2020</string>
-    <string name="today">Today</string>
     <string name="settings_fragment_title">Settings</string>
     <string name="update">Update</string>
     <string name="update_all_currencies">Update all Currencies</string>
@@ -50,12 +49,14 @@
     <string name="number_of_total_loans">Number of total loans</string>
     <string name="background">background</string>
     <string name="delete_all_loans">Delete all Loans</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_fragment_title">Edit Loan</string>
     <string name="empty_home_list_msg">Yohooo!\nNo loans to pay!</string>
     <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
     <string name="delete_all">Delete all</string>
+    <string name="days_up">%s days up</string>
+    <string name="days_left">%s days left</string>
+    <string name="today">Today</string>
+
 </resources>
