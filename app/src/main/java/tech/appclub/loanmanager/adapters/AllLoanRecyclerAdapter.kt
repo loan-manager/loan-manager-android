@@ -52,11 +52,11 @@ class AllLoanRecyclerAdapter internal constructor(
             .setTitle("Delete the Loan")
             .setIcon(R.drawable.ic_delete)
             .setMessage("Are you sure, you want to delete the loan?")
-            .setPositiveButton("Cancel") { _, _ ->
+            .setPositiveButton("Yes") { _, _ ->
                 loanViewModel.deleteLoan(loans[position])
                 notifyItemRemoved(position)
             }
-            .setNegativeButton("Don't Cancel") { dialog, _ ->
+            .setNegativeButton(android.R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

@@ -57,4 +57,5 @@
     <string name="empty_home_list_msg">Yohooo!\nNo loans to pay!</string>
     <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
+    <string name="delete_all">Delete all</string>
 </resources>

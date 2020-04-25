@@ -39,5 +39,9 @@ class LoanRepository(private val loanDAO: LoanDAO) {
         return loanDAO.getLoan(loanId)
     }
 
+    suspend fun deleteAllPaidLoans() {
+        return loanDAO.deleteAllPaidLoans()
+    }
+
 
 }

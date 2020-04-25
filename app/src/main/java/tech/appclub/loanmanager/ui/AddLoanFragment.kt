@@ -79,7 +79,7 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 binding.receivedDate.text = DateTimeUtils.formatDate(calendar.time)
                 receiveDate = calendar.time
-                binding.paymentDateAction.visibility = View.VISIBLE
+                binding.linearLayout2.visibility = View.VISIBLE
             }
         val datePickerDialog = DatePickerDialog(
             requireContext(),
