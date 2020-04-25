@@ -61,7 +61,11 @@ class SettingsFragment : Fragment() {
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
 
         loanViewModel.unpaidLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountUnpaidLoans.text = String.format("%d unpaid loan(s)", it)
+            if (it == null) {
+                this.binding.totalCountUnpaidLoans.text = "0"
+                return@Observer
+            }
+            this.binding.totalCountUnpaidLoans.text = it.toString()
         })
 
         loanViewModel.unpaidLoanGrandTotal.observe(requireActivity(), Observer {
@@ -73,7 +77,11 @@ class SettingsFragment : Fragment() {
         })
 
         loanViewModel.paidLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountPaidLoans.text = String.format("%d paid loan(s)", it)
+            if (it == 0) {
+                this.binding.totalCountPaidLoans.text = "0"
+                return@Observer
+            }
+            this.binding.totalCountPaidLoans.text = it.toString()
         })
 
         loanViewModel.paidLoanGrandTotal.observe(requireActivity(), Observer {
@@ -86,7 +94,11 @@ class SettingsFragment : Fragment() {
         })
 
         loanViewModel.allLoanCount.observe(requireActivity(), Observer {
-            this.binding.totalCountLoans.text = String.format("%d total loan(s)", it)
+            if (it == 0) {
+                this.binding.totalCountLoans.text = "0"
+                return@Observer
+            }
+            this.binding.totalCountLoans.text = it.toString()
         })
 
         this.binding.countries.onItemSelectedListener = object : OnItemSelectedListener {
@@ -167,7 +179,12 @@ class SettingsFragment : Fragment() {
         editor.putInt(Constants.COUNTRY_POSITION, selectedPosition)
 
         editor.apply()
-        loanViewModel.updateCurrency(country.code!!, country.currency!!, country.country!!, selectedPosition)
+        loanViewModel.updateCurrency(
+            country.code!!,
+            country.currency!!,
+            country.country!!,
+            selectedPosition
+        )
 
         findNavController().navigateUp()
     }

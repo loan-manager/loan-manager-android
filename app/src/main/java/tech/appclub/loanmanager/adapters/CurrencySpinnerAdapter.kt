@@ -1,5 +1,6 @@
 package tech.appclub.loanmanager.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ class CurrencySpinnerAdapter(
 
     private val inflater = LayoutInflater.from(context)
 
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = CurrencySpinnerItemViewBinding.inflate(inflater, parent, false)
         val viewHolder = CurrencySpinnerViewHolder(view)
@@ -31,11 +33,6 @@ class CurrencySpinnerAdapter(
     }
 
     override fun getCount() = data.size
-
-    fun getPosition(country: Country): Int {
-        return data.indexOf(country)
-    }
-
 
     inner class CurrencySpinnerViewHolder(private val binding: CurrencySpinnerItemViewBinding) {
 

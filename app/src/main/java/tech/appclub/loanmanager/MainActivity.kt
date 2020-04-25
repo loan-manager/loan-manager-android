@@ -13,7 +13,6 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
-import tech.appclub.loanmanager.ui.AddLoanFragment
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.FileHelper
 
@@ -21,7 +20,7 @@ import tech.appclub.loanmanager.utils.FileHelper
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val LOG_TAG = "LM_LOG"
+        // const val LOG_TAG = "LM_LOG"
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -75,7 +74,8 @@ class MainActivity : AppCompatActivity() {
         val type = Types.newParameterizedType(List::class.java, Country::class.java)
         val jsonAdapter: JsonAdapter<List<Country>> = moshi.adapter(type)
         val jsonFile =
-            FileHelper.getDataFromAssets(applicationContext,
+            FileHelper.getDataFromAssets(
+                applicationContext,
                 Constants.COUNTRIES_FILE
             )
         return jsonAdapter.fromJson(jsonFile) ?: return emptyList()

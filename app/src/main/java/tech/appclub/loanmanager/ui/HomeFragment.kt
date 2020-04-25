@@ -2,7 +2,6 @@ package tech.appclub.loanmanager.ui
 
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,10 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.SimpleItemAnimator
 import tech.appclub.loanmanager.MainActivity
-import tech.appclub.loanmanager.MainActivity.Companion.LOG_TAG
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.LoanRecyclerAdapter
-import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentHomeBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
@@ -53,7 +50,8 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
 
         (requireActivity() as MainActivity).binding.bottomNavigationView.visibility = View.VISIBLE
 
-        (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
+        (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
+            false
         this.loanViewModel.unpaidLoans.observe(viewLifecycleOwner, Observer { loans ->
             if (loans.isEmpty()) {
                 this.binding.emptyMsg.visibility = View.VISIBLE
