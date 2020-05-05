@@ -10,6 +10,14 @@ interface LoanDAO {
     @Query("SELECT * FROM loan_table WHERE loan_status = 0 ORDER BY loan_payment_date ASC")
     fun getUnpaidLoans(): LiveData<List<Loan>>
 
+    // Get all unpaid given loans
+    @Query("SELECT * FROM loan_table WHERE loan_status = 0 AND loan_situation = 0 ORDER BY loan_payment_date ASC")
+    fun getUnpaidGivenLoans(): LiveData<List<Loan>>
+
+    // Get all unpaid taken loans
+    @Query("SELECT * FROM loan_table WHERE loan_status = 0 AND loan_situation = 1 ORDER BY loan_payment_date ASC")
+    fun getUnpaidTakenLoans(): LiveData<List<Loan>>
+
     // Get unpaid loan
     @Query("SELECT * FROM loan_table WHERE id = :loanId LIMIT 1")
     suspend fun getLoan(loanId: Int): Loan
