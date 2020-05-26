@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SimpleItemAnimator
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
@@ -49,6 +50,18 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
         }
 
         (requireActivity() as MainActivity).binding.bottomNavigationView.visibility = View.VISIBLE
+
+        this.binding.loanRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) {
+                    binding.floatingActionButton.hide()
+                } else {
+                    binding.floatingActionButton.show()
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
 
         (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
             false

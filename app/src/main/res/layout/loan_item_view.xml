@@ -45,7 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{loan.holder}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toStartOf="@+id/daysLeft"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
                 android:id="@+id/expandableLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:setReceivingTitle="@{loan.situation}" />
 
                     <TextView
                         android:id="@+id/receivedDate"
@@ -130,7 +131,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/payment_on"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        app:setPaymentTitle="@{loan.situation}" />
 
                     <TextView
                         android:id="@+id/paymentDate"
@@ -152,11 +154,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:gravity="center|end"
-                android:paddingHorizontal="4dp"
+                android:paddingHorizontal="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="12sp"
-                android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:setDaysLeft="@{loan}"
@@ -170,6 +171,7 @@
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="4dp"
                 android:text="@string/situation"
+                android:textSize="12sp"
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"

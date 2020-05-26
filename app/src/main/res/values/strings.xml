@@ -46,5 +46,10 @@
     <string name="situation">Situation</string>
     <string name="background">Background</string>
     <string name="close">Close</string>
+    <string name="lent_on">Lent on</string>
+    <string name="borrowed_on">Borrowed on</string>
+    <string name="unknown">Unknown</string>
+    <string name="receiving_on">Receiving on</string>
+    <string name="payment_due_till">Payment due till</string>
 
 </resources>

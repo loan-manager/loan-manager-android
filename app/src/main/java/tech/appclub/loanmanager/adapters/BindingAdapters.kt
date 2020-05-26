@@ -89,6 +89,24 @@ fun setDaysLeft(view: TextView, loan: Loan) {
     }
 }
 
+@BindingAdapter("app:setReceivingTitle")
+fun setReceivingTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text = view.context.getString(R.string.lent_on)
+        1 -> view.text = view.context.getString(R.string.borrowed_on)
+        else -> view.text = view.context.getString(R.string.unknown)
+    }
+}
+
+@BindingAdapter("app:setPaymentTitle")
+fun setPaymentTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text =  view.context.getString(R.string.receiving_on)
+        1 -> view.text =  view.context.getString(R.string.payment_due_till)
+        else -> view.text = view.context.getString(R.string.unknown)
+    }
+}
+
 @BindingAdapter("app:setSituation")
 fun setSituation(view: TextView, situation: Int) {
     view.text = getSituation(situation)
