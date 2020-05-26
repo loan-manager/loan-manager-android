@@ -40,12 +40,18 @@ fun setReceiveDate(view: TextView, date: Date) {
 
 @BindingAdapter("app:setPaymentDate")
 fun setPaymentDate(view: TextView, loan: Loan) {
-    view.text = formatDate(loan.paymentOn!!)
+    when {
+        LocalDate(loan.paymentOn!!) == LocalDate.now() -> {
+            view.text = view.context.getString(R.string.today)
+        }
+        else -> {
+            view.text = formatDate(loan.paymentOn!!)
+        }
+    }
 }
 
 @BindingAdapter("app:setPaymentLabel")
 fun setPaymentLabel(view: TextView, loan: Loan) {
-    view.setTextColor(ContextCompat.getColor(view.context, android.R.color.white))
     when (loan.status) {
         0 -> view.text = view.context.resources.getString(R.string.payment_on)
         1 -> view.text = view.context.resources.getString(R.string.paid_on)
@@ -101,9 +107,17 @@ fun setReceivingTitle(view: TextView, situation: Int) {
 @BindingAdapter("app:setPaymentTitle")
 fun setPaymentTitle(view: TextView, situation: Int) {
     when (situation) {
-        0 -> view.text =  view.context.getString(R.string.receiving_on)
-        1 -> view.text =  view.context.getString(R.string.payment_due_till)
+        0 -> view.text = view.context.getString(R.string.receiving_on)
+        1 -> view.text = view.context.getString(R.string.payment_due_till)
         else -> view.text = view.context.getString(R.string.unknown)
+    }
+}
+
+@BindingAdapter("app:setPaidTitle")
+fun setPaidTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text = view.context.getString(R.string.received_on)
+        1 -> view.text = view.context.getString(R.string.paid_on)
     }
 }
 
@@ -134,7 +148,8 @@ private fun getSituation(situation: Int): String {
 
 private fun daysCheck(startDate: Date, finishDate: Date): Int {
     if (startDate.time > Date().time) {
-        return Days.daysBetween(LocalDate(finishDate.time), LocalDate(startDate.time)).negated().days
+        return Days.daysBetween(LocalDate(finishDate.time), LocalDate(startDate.time))
+            .negated().days
     }
     return Days.daysBetween(LocalDate(finishDate.time), LocalDate()).negated().days
 }

@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/paid_loan_destination"
         android:name="tech.appclub.loanmanager.ui.PaidLoansFragment"
-        android:label="@string/loan_menu_paid"
+        android:label="Received/Paid Loans"
         tools:layout="@layout/fragment_paid_loans" />
 
     <fragment

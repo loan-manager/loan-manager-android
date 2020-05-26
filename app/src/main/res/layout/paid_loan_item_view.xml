@@ -13,10 +13,12 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="2dp"
+        app:cardElevation="1dp"
         app:cardUseCompatPadding="true"
-        app:strokeColor="@android:color/darker_gray"
-        app:strokeWidth="0.2dp">
+        app:contentPaddingBottom="16dp"
+        app:contentPaddingLeft="16dp"
+        app:contentPaddingRight="16dp"
+        app:contentPaddingTop="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -28,8 +30,6 @@
                 android:id="@+id/loanAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans_semibold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/black"
@@ -41,26 +41,35 @@
 
             <TextView
                 android:id="@+id/loanHolder"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/textview_bg"
                 android:text="@{loan.holder}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanAmount"
                 tools:text="Arslan Mushtaq" />
 
+            <TextView
+                android:id="@+id/situation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/textview_bg"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:text="@string/situation"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:setSituation="@{loan.situation}" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +80,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="2dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -84,16 +94,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:alpha="0.2"
-                        android:background="@android:color/white" />
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="12sp"
+                        app:setReceivingTitle="@{loan.situation}"/>
 
                     <TextView
                         android:id="@+id/receivedDate"
@@ -101,10 +104,9 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
                         app:setReceiveDate="@{loan.receivedOn}"
-                        tools:text="Wednesday, 19 Dec, 2020" />
+                        tools:text="Wed, 19 Dec, 2020" />
 
                 </LinearLayout>
 
@@ -122,10 +124,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_weight="1"
                     android:background="@drawable/green_textview_bg"
                     android:orientation="vertical"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/view"
@@ -135,17 +138,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/payment_on"
-                        android:textColor="#80FFFFFF"
+                        android:textColor="@android:color/holo_green_dark"
                         android:textSize="12sp"
-                        app:setPaymentLabel="@{loan}" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:alpha="0.5"
-                        android:background="@android:color/white" />
+                        app:setPaidTitle="@{loan.situation}" />
 
                     <TextView
                         android:id="@+id/paymentDate"
@@ -153,11 +148,10 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
+                        android:textColor="@android:color/black"
                         android:textSize="12sp"
                         app:setPaymentDate="@{loan}"
                         tools:text="Wednesday, 19 Dec, 2020" />
-
 
                 </LinearLayout>
 
