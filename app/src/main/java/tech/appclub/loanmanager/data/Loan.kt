@@ -19,7 +19,7 @@ import java.util.*
 *
 * LOAN SITUATION INTEGERS:
 * 0 - Given
-* 1 - Taken
+* 1 - Borrowed
 *
 * */
 

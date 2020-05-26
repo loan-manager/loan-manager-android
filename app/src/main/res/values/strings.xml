@@ -6,9 +6,9 @@
     <string name="history_menu_title">History</string>
     <string name="history_fragment_title">Loan History</string>
     <string name="add_loan_fragment_title">Add New Loan</string>
-    <string name="loan_holder_name">Loan Holder Name</string>
-    <string name="loan_amount">Loan Amount</string>
-    <string name="select_currency">Select Currency</string>
+    <string name="loan_holder_name">Name</string>
+    <string name="loan_amount">Amount</string>
+    <string name="select_currency">Currency</string>
     <string name="select_received_date">Select Received Date</string>
     <string name="select_payment_date">Select Payment Date</string>
 
@@ -41,5 +41,10 @@
     <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
     <string name="delete_all">Delete all</string>
+    <string name="given">Given</string>
+    <string name="borrowed">Borrowed</string>
+    <string name="situation">Situation</string>
+    <string name="background">Background</string>
+    <string name="close">Close</string>
 
 </resources>

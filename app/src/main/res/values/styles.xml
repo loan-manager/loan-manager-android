@@ -31,5 +31,18 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!-- Custom Text Input Layout Style -->
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">@android:color/secondary_text_light</item>
+        <item name="boxBackgroundColor">@android:color/white</item>
+        <item name="boxStrokeColor">@android:color/darker_gray</item>
+        <item name="boxStrokeErrorColor">@color/neutral_dangerous</item>
+        <item name="boxStrokeWidth">@dimen/box_stroke_width</item>
+        <item name="errorEnabled">true</item>
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintEnabled">true</item>
+        <item name="startIconTint">@color/neutral_accent</item>
+    </style>
+
 
 </resources>

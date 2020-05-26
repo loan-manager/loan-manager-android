@@ -3,4 +3,27 @@
     <color name="colorPrimary">#01579B</color>
     <color name="colorPrimaryDark">#226B98</color>
     <color name="colorAccent">#5D1049</color>
+
+
+    <!-- Primary Colors -->
+    <color name="dark_primary">#FF9800</color>
+    <color name="neutral_primary">#FF9800</color>
+    <color name="light_primary">#FFE0B2</color>
+
+    <!-- Accent Colors -->
+    <color name="dark_accent">#0C5C8C</color>
+    <color name="dark_transparent_accent">#0D0D5B8C</color>
+    <color name="neutral_accent">#0E70BD</color>
+    <color name="light_accent">#1393D3</color>
+
+    <!-- Warning Colors -->
+    <color name="dark_warning">#FFBD962F</color>
+    <color name="neutral_warning">#FFF0C052</color>
+    <color name="light_warning">#FFF8DC8E</color>
+
+    <!-- Dangerous Colors -->
+    <color name="dark_dangerous">#FFA70D19</color>
+    <color name="neutral_dangerous">#FFD11925</color>
+    <color name="light_dangerous">#FFDB4D52</color>
+
 </resources>

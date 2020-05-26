@@ -69,22 +69,29 @@ fun setDaysLeft(view: TextView, loan: Loan) {
     when {
         daysCount == -1 -> {
             view.text = String.format("Yesterday")
-            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
         }
         daysCount < -1 -> {
             view.text = String.format("%d days up", abs(daysCount))
-            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
         }
         daysCount == 0 -> {
             view.text = String.format("Today")
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
         }
         daysCount == 1 -> {
             view.text = String.format("Tomorrow")
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
         }
         daysCount > 1 -> {
             view.text = String.format("%d days left", daysCount)
         }
     }
+}
+
+@BindingAdapter("app:setSituation")
+fun setSituation(view: TextView, situation: Int) {
+    view.text = getSituation(situation)
 }
 
 //private fun daysCount(startDate: Date, finishDate: Date): Long {
@@ -98,6 +105,14 @@ fun setDaysLeft(view: TextView, loan: Loan) {
 //    val hours = minutes / 60
 //    return hours / 24
 //}
+
+private fun getSituation(situation: Int): String {
+    return when (situation) {
+        0 -> "Given"
+        1 -> "Borrowed"
+        else -> "Unknown"
+    }
+}
 
 private fun daysCheck(startDate: Date, finishDate: Date): Int {
     if (startDate.time > Date().time) {

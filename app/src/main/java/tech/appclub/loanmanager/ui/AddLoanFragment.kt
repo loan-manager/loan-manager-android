@@ -1,15 +1,14 @@
 package tech.appclub.loanmanager.ui
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
@@ -23,14 +22,12 @@ import tech.appclub.loanmanager.utils.NumUtils.Companion.trimCommaOfString
 import tech.appclub.loanmanager.utils.NumberTextWatcherForThousand
 import tech.appclub.loanmanager.utils.ValidationUtils.Companion.isEmpty
 import tech.appclub.loanmanager.utils.ValidationUtils.Companion.showDateError
-import tech.appclub.loanmanager.viewmodel.LoanViewModel
 import java.util.*
 
 class AddLoanFragment : Fragment() {
 
 
     private lateinit var binding: FragmentAddLoanBinding
-    private lateinit var loanViewModel: LoanViewModel
     private lateinit var calendar: Calendar
 
     private var receiveDate: Date? = null
@@ -40,7 +37,6 @@ class AddLoanFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_loan, container, false)
         this.binding.addLoan = this
         return binding.root
@@ -56,16 +52,18 @@ class AddLoanFragment : Fragment() {
 
         calendar = Calendar.getInstance()
 
-        val preferences =
-            requireActivity().getSharedPreferences(Constants.COUNTRY_DATA, Context.MODE_PRIVATE)
-
         val adapter = CurrencySpinnerAdapter(
             requireContext(),
             (requireActivity() as MainActivity).readCountriesData()
         )
 
         this.binding.countries.adapter = adapter
-        this.binding.countries.setSelection(preferences.getInt(Constants.COUNTRY_POSITION, 0))
+        this.binding.countries.setSelection(
+            (requireActivity() as MainActivity).preferences.getInt(
+                Constants.COUNTRY_POSITION,
+                0
+            )
+        )
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
         )
@@ -79,7 +77,20 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 binding.receivedDate.text = DateTimeUtils.formatDate(calendar.time)
                 receiveDate = calendar.time
-                binding.linearLayout2.visibility = View.VISIBLE
+                this.binding.paymentDate.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        requireContext(),
+                        android.R.anim.fade_in
+                    )
+                )
+                this.binding.paymentDateSelection.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        requireContext(),
+                        android.R.anim.fade_in
+                    )
+                )
+                this.binding.paymentDate.visibility = View.VISIBLE
+                this.binding.paymentDateSelection.visibility = View.VISIBLE
             }
         val datePickerDialog = DatePickerDialog(
             requireContext(),
@@ -126,8 +137,10 @@ class AddLoanFragment : Fragment() {
         val country = countryModel.country
         val currency = countryModel.currency
 
-        if (showDateError(requireContext(), receiveDate, this.binding.receivedDateTitle)) return
-        if (showDateError(requireContext(), paymentDate, this.binding.paymentDateTitle)) return
+        if (showDateError(requireContext(), receiveDate, this.binding.receivedDate)) return
+        if (showDateError(requireContext(), paymentDate, this.binding.paymentDate)) return
+
+        val situation: Int = if (this.binding.givenRadioButton.isChecked) 0 else 1
 
         val loan = Loan()
         loan.holder = name
@@ -138,11 +151,11 @@ class AddLoanFragment : Fragment() {
         loan.receivedOn = receiveDate
         loan.paymentOn = paymentDate
         loan.status = 0
+        loan.situation = situation
         loan.position = this.binding.countries.selectedItemPosition
 
-        loanViewModel.insert(loan)
+        (requireActivity() as MainActivity).loanViewModel.insert(loan)
         findNavController().navigateUp()
-
     }
 
     fun cancel() {
