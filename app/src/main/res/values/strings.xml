@@ -51,5 +51,6 @@
     <string name="unknown">Unknown</string>
     <string name="receiving_on">Receiving on</string>
     <string name="payment_due_till">Payment due till</string>
+    <string name="lent">Lent</string>
 
 </resources>

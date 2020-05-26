@@ -81,26 +81,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/holder_amount_field" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+            <Spinner
+                android:id="@+id/countries"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/label_and_component_spacing"
-                app:cardMaxElevation="@dimen/border_radius"
-                app:cardUseCompatPadding="true"
+                android:layout_height="match_parent"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6">
-
-                <Spinner
-                    android:id="@+id/countries"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:dropDownWidth="wrap_content"
-                    android:spinnerMode="dialog"
-                    tools:listitem="@layout/currency_spinner_item_view" />
-
-            </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                tools:listitem="@layout/currency_spinner_item_view" />
 
             <TextView
                 android:id="@+id/situation_label"
@@ -110,7 +100,7 @@
                 android:text="@string/situation"
                 android:textColor="@android:color/primary_text_light"
                 android:textSize="@dimen/text_smaller"
-                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/countries"
                 tools:layout_editor_absoluteX="16dp" />
 
             <RadioGroup
@@ -129,7 +119,7 @@
                     android:layout_weight="1"
                     android:buttonTint="@color/dark_accent"
                     android:checked="true"
-                    android:text="@string/given" />
+                    android:text="@string/lent" />
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/borrowed_radio_button"
@@ -163,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/component_spacing"
-                android:background="@drawable/textview_bg"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:contentDescription="@string/select_received_date"
                 android:onClick="@{() -> addLoan.selectReceivedDate()}"
                 android:paddingStart="@dimen/initial_padding"
@@ -195,7 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="@dimen/component_spacing"
-                android:background="@drawable/textview_bg"
+                android:backgroundTint="@color/colorPrimaryDark"
                 android:contentDescription="@string/select_received_date"
                 android:onClick="@{() -> addLoan.selectPaymentDate()}"
                 android:paddingStart="@dimen/initial_padding"
