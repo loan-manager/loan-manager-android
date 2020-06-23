@@ -1,9 +1,15 @@
 package tech.appclub.loanmanager.adapters
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import org.joda.time.Days
@@ -123,20 +129,13 @@ fun setPaidTitle(view: TextView, situation: Int) {
 
 @BindingAdapter("app:setSituation")
 fun setSituation(view: TextView, situation: Int) {
+    if (situation == 0)  {
+        view.background = view.context.getDrawable(R.drawable.given_bg)
+    } else {
+        view.background = view.context.getDrawable(R.drawable.borrowed_bg)
+    }
     view.text = getSituation(situation)
 }
-
-//private fun daysCount(startDate: Date, finishDate: Date): Long {
-//    val difference: Long = if (startDate.time > Date().time) {
-//        finishDate.time - startDate.time
-//    } else {
-//        finishDate.time - Date().time
-//    }
-//    val seconds = difference / 1000
-//    val minutes = seconds / 60
-//    val hours = minutes / 60
-//    return hours / 24
-//}
 
 private fun getSituation(situation: Int): String {
     return when (situation) {
