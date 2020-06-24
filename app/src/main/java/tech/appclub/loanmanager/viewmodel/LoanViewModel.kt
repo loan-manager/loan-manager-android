@@ -36,28 +36,28 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         allLoanCount = repository.allLoanCount
     }
 
-    fun insert(loan: Loan) = viewModelScope.launch(Dispatchers.IO) {
+    fun insert(loan: Loan) = viewModelScope.launch {
         repository.insert(loan)
     }
 
-    fun deleteAll() = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
 
-    fun deleteAllPaidLoans() = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteAllPaidLoans() = viewModelScope.launch {
         repository.deleteAllPaidLoans()
     }
 
-    fun deleteLoan(loan: Loan) = viewModelScope.launch(Dispatchers.IO) {
+    fun deleteLoan(loan: Loan) = viewModelScope.launch {
         repository.deleteLoan(loan)
     }
 
-    fun updateLoan(loan: Loan) = viewModelScope.launch(Dispatchers.IO) {
+    fun updateLoan(loan: Loan) = viewModelScope.launch {
         repository.updateLoan(loan)
     }
 
     fun updateCurrency(code: String, currency: String, country: String, position: Int) =
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.updateCurrency(code, currency, country, position)
         }
 

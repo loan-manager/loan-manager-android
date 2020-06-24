@@ -37,12 +37,6 @@ class LoanRecyclerAdapter internal constructor(
             loanClickListener.editClickListener(loans[position].id!!)
         }
 
-        holder.paidAction.setOnClickListener {
-            loans[position].status = 1
-            loans[position].paymentOn = Date()
-            loanViewModel.updateLoan(loans[position])
-        }
-
     }
 
     inner class LoanViewHolder(private val binding: LoanItemViewBinding) :
@@ -50,7 +44,6 @@ class LoanRecyclerAdapter internal constructor(
 
         val cancelAction = binding.cancelLoanAction
         val editAction = binding.editLoanAction
-        val paidAction = binding.paidLoanAction
 
         fun bind(loan: Loan) {
             binding.loan = loan
@@ -63,16 +56,25 @@ class LoanRecyclerAdapter internal constructor(
     }
 
     private fun showWarningDialog(view: View, position: Int) {
+        val message =
+            "Choose an action to perform. Select Unpaid if you're willing to cancel the loan."
+
+
         MaterialAlertDialogBuilder(view.context)
-            .setTitle("Cancel the Loan")
-            .setIcon(R.drawable.ic_warning)
-            .setMessage("Are you sure, you want to cancel the loan? Cancelling a loan means the loan is unpaid.")
-            .setPositiveButton("Cancel") { _, _ ->
-                loans[position].status = 2
+            .setTitle("Closing the Loan")
+            .setIcon(R.drawable.ic_close_dialog_icon)
+            .setMessage(message)
+            .setPositiveButton("PAID") { _, _ ->
+                loans[position].status = 1
                 loans[position].paymentOn = Date()
                 loanViewModel.updateLoan(loans[position])
             }
-            .setNegativeButton("Don't Cancel") { dialog, _ ->
+            .setNegativeButton("UNPAID") { _, _ ->
+                loans[position].status = 0
+                loans[position].paymentOn = Date()
+                loanViewModel.updateLoan(loans[position])
+            }
+            .setNeutralButton("CANCEL") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

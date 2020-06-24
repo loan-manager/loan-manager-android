@@ -5,21 +5,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_bg">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/paid_loan_recycler_view"
+            android:id="@+id/all_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="3"
-            tools:context=".ui.PaidLoansFragment"
-            tools:itemCount="5"
-            tools:listitem="@layout/paid_loan_item_view" />
+            tools:context=".ui.UnpaidLoanFragment"
+            tools:itemCount="0"
+            tools:listitem="@layout/unpaid_loan_item_view" />
 
         <TextView
             android:id="@+id/empty_msg"
@@ -27,17 +28,16 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/ic_rocket"
             android:drawablePadding="12dp"
-            android:ems="7"
             android:gravity="center"
-            android:text="@string/empty_paid_loan_list_msg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/empty_unpaid_list_msg"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black"
             android:textStyle="italic"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

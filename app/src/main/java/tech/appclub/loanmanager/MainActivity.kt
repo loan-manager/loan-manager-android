@@ -1,9 +1,12 @@
 package tech.appclub.loanmanager
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
@@ -15,6 +18,7 @@ import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.FileHelper
+import tech.appclub.loanmanager.viewmodel.LoanViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +28,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var loanViewModel: LoanViewModel
     lateinit var binding: ActivityMainBinding
+    lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
         // Setting toolbar
         setSupportActionBar(this.binding.toolbar)
+
+        // View Model
+        loanViewModel = ViewModelProvider(this).get(LoanViewModel::class.java)
+
+        preferences = getSharedPreferences(Constants.COUNTRY_DATA, Context.MODE_PRIVATE)
 
         // Getting Navigation Host & Controller
         val host: NavHostFragment = supportFragmentManager
@@ -45,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             AppBarConfiguration(
                 setOf(
                     R.id.home_destination,
-                    R.id.history_destination,
+                    R.id.unpaid_destination,
                     R.id.paid_loan_destination
                 )
             )

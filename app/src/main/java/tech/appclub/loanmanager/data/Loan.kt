@@ -5,6 +5,24 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
+
+/*
+*
+* LOAN STATUS INTEGERS:
+* 0 - Unpaid loans
+* 1 - paid loans
+* 2 - Cancelled loans
+*
+* */
+
+/*
+*
+* LOAN SITUATION INTEGERS:
+* 0 - Given
+* 1 - Borrowed
+*
+* */
+
 @Entity(tableName = "loan_table")
 class Loan {
 
@@ -34,6 +52,9 @@ class Loan {
 
     @ColumnInfo(name = "loan_status")
     var status: Int? = 0
+
+    @ColumnInfo(name = "loan_situation")
+    var situation: Int? = 0
 
     @ColumnInfo(name = "country_position")
     var position: Int? = 0

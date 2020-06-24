@@ -1,9 +1,15 @@
 package tech.appclub.loanmanager.adapters
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import org.joda.time.Days
@@ -40,12 +46,18 @@ fun setReceiveDate(view: TextView, date: Date) {
 
 @BindingAdapter("app:setPaymentDate")
 fun setPaymentDate(view: TextView, loan: Loan) {
-    view.text = formatDate(loan.paymentOn!!)
+    when {
+        LocalDate(loan.paymentOn!!) == LocalDate.now() -> {
+            view.text = view.context.getString(R.string.today)
+        }
+        else -> {
+            view.text = formatDate(loan.paymentOn!!)
+        }
+    }
 }
 
 @BindingAdapter("app:setPaymentLabel")
 fun setPaymentLabel(view: TextView, loan: Loan) {
-    view.setTextColor(ContextCompat.getColor(view.context, android.R.color.white))
     when (loan.status) {
         0 -> view.text = view.context.resources.getString(R.string.payment_on)
         1 -> view.text = view.context.resources.getString(R.string.paid_on)
@@ -69,17 +81,19 @@ fun setDaysLeft(view: TextView, loan: Loan) {
     when {
         daysCount == -1 -> {
             view.text = String.format("Yesterday")
-            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
         }
         daysCount < -1 -> {
             view.text = String.format("%d days up", abs(daysCount))
-            view.background = ContextCompat.getDrawable(view.context, R.drawable.error_textview_bg)
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
         }
         daysCount == 0 -> {
             view.text = String.format("Today")
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
         }
         daysCount == 1 -> {
             view.text = String.format("Tomorrow")
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
         }
         daysCount > 1 -> {
             view.text = String.format("%d days left", daysCount)
@@ -87,21 +101,54 @@ fun setDaysLeft(view: TextView, loan: Loan) {
     }
 }
 
-//private fun daysCount(startDate: Date, finishDate: Date): Long {
-//    val difference: Long = if (startDate.time > Date().time) {
-//        finishDate.time - startDate.time
-//    } else {
-//        finishDate.time - Date().time
-//    }
-//    val seconds = difference / 1000
-//    val minutes = seconds / 60
-//    val hours = minutes / 60
-//    return hours / 24
-//}
+@BindingAdapter("app:setReceivingTitle")
+fun setReceivingTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text = view.context.getString(R.string.lent_on)
+        1 -> view.text = view.context.getString(R.string.borrowed_on)
+        else -> view.text = view.context.getString(R.string.unknown)
+    }
+}
+
+@BindingAdapter("app:setPaymentTitle")
+fun setPaymentTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text = view.context.getString(R.string.receiving_on)
+        1 -> view.text = view.context.getString(R.string.payment_due_till)
+        else -> view.text = view.context.getString(R.string.unknown)
+    }
+}
+
+@BindingAdapter("app:setPaidTitle")
+fun setPaidTitle(view: TextView, situation: Int) {
+    when (situation) {
+        0 -> view.text = view.context.getString(R.string.received_on)
+        1 -> view.text = view.context.getString(R.string.paid_on)
+    }
+}
+
+@BindingAdapter("app:setSituation")
+fun setSituation(view: TextView, situation: Int) {
+    if (situation == 0)  {
+        view.background = view.context.getDrawable(R.drawable.given_bg)
+    } else {
+        view.background = view.context.getDrawable(R.drawable.borrowed_bg)
+    }
+    view.text = getSituation(situation)
+}
+
+private fun getSituation(situation: Int): String {
+    return when (situation) {
+        0 -> "Given"
+        1 -> "Borrowed"
+        else -> "Unknown"
+    }
+}
 
 private fun daysCheck(startDate: Date, finishDate: Date): Int {
     if (startDate.time > Date().time) {
-        return Days.daysBetween(LocalDate(finishDate.time), LocalDate(startDate.time)).negated().days
+        return Days.daysBetween(LocalDate(finishDate.time), LocalDate(startDate.time))
+            .negated().days
     }
     return Days.daysBetween(LocalDate(finishDate.time), LocalDate()).negated().days
 }
