@@ -3,6 +3,8 @@
 
     <!-- Fragment Titles   -->
     <string name="loan_menu_title">Active Loans</string>
+    <string name="loan_menu_paid">Paid Loans</string>
+    <string name="unpaid_menu_title">Unpaid Loans</string>
     <string name="history_menu_title">History</string>
     <string name="history_fragment_title">Loan History</string>
     <string name="add_loan_fragment_title">Add New Loan</string>
@@ -15,7 +17,6 @@
     <!-- Validation Errors -->
     <string name="empty_error">Field cannot be empty</string>
     <string name="edit">Edit</string>
-    <string name="loan_menu_paid">Loans</string>
     <string name="slogan">Keep track of your loans at a single place</string>
     <string name="start_using_loan_manager">Start using Loan Manager</string>
     <string name="select_default_currency">Select Default Currency</string>

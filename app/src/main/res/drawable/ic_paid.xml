@@ -4,5 +4,5 @@
     <path android:fillColor="#FF000000" android:pathData="M256,143.994c-53.019,0 -96,42.981 -96,96s42.981,96 96,96s96,-42.981 96,-96S309.019,143.994 256,143.994zM256,303.994c-35.346,0 -64,-28.654 -64,-64c0,-35.346 28.654,-64 64,-64c35.346,0 64,28.654 64,64C320,275.34 291.346,303.994 256,303.994z"/>
     <path android:fillColor="#FF000000" android:pathData="M80,223.994h32v32h-32z"/>
     <path android:fillColor="#FF000000" android:pathData="M400,223.994h32v32h-32z"/>
-    <path android:fillColor="#FF000000" android:pathData="M384,409.434l-36.64,-36.64l-22.56,22.56l48,48c6.241,6.204 16.319,6.204 22.56,0l112,-112l-22.56,-22.56L384,409.434z"/>
+    <path android:fillColor="@android:color/holo_green_dark" android:pathData="M384,409.434l-36.64,-36.64l-22.56,22.56l48,48c6.241,6.204 16.319,6.204 22.56,0l112,-112l-22.56,-22.56L384,409.434z"/>
 </vector>

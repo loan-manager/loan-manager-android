@@ -19,7 +19,6 @@ import tech.appclub.loanmanager.databinding.ActivityMainBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.FileHelper
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
-import java.util.prefs.Preferences
 
 
 class MainActivity : AppCompatActivity() {
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             AppBarConfiguration(
                 setOf(
                     R.id.home_destination,
-                    R.id.history_destination,
+                    R.id.unpaid_destination,
                     R.id.paid_loan_destination
                 )
             )
