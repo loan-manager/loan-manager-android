@@ -7,8 +7,8 @@ import tech.appclub.loanmanager.data.LoanDAO
 class LoanRepository(private val loanDAO: LoanDAO) {
 
     val unpaidLoans: LiveData<List<Loan>> = loanDAO.getUnpaidLoans()
+    val activeLoans: LiveData<List<Loan>> = loanDAO.getActiveLoans()
     val paidLoans: LiveData<List<Loan>> = loanDAO.getPaidLoans()
-    val totalLoans: LiveData<List<Loan>> = loanDAO.getAllLoans()
     val unpaidLoanCount: LiveData<Int> = loanDAO.getUnpaidLoanCount()
     val unpaidLoanGrandTotal: LiveData<Double> = loanDAO.getUnpaidLoanGrandTotal()
     val paidLoanCount: LiveData<Int> = loanDAO.getPaidLoanCount()
