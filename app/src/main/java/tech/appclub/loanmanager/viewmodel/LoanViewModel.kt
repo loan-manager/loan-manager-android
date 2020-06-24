@@ -16,6 +16,7 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: LoanRepository
     val unpaidLoans: LiveData<List<Loan>>
     val activeLoans: LiveData<List<Loan>>
+    val historyLoans: LiveData<List<Loan>>
     val paidLoans: LiveData<List<Loan>>
     val unpaidLoanCount: LiveData<Int>
     val unpaidLoanGrandTotal: LiveData<Double>
@@ -28,6 +29,7 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         repository = LoanRepository(loanDao)
         unpaidLoans = repository.unpaidLoans
         activeLoans = repository.activeLoans
+        historyLoans = repository.historyLoans
         paidLoans = repository.paidLoans
         unpaidLoanCount = repository.unpaidLoanCount
         unpaidLoanGrandTotal = repository.unpaidLoanGrandTotal

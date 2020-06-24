@@ -8,6 +8,7 @@ class LoanRepository(private val loanDAO: LoanDAO) {
 
     val unpaidLoans: LiveData<List<Loan>> = loanDAO.getUnpaidLoans()
     val activeLoans: LiveData<List<Loan>> = loanDAO.getActiveLoans()
+    val historyLoans: LiveData<List<Loan>> = loanDAO.getHistoryLoans()
     val paidLoans: LiveData<List<Loan>> = loanDAO.getPaidLoans()
     val unpaidLoanCount: LiveData<Int> = loanDAO.getUnpaidLoanCount()
     val unpaidLoanGrandTotal: LiveData<Double> = loanDAO.getUnpaidLoanGrandTotal()
