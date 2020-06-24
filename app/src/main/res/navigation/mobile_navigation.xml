@@ -92,7 +92,7 @@
     </fragment>
     <fragment
         android:id="@+id/history_destination"
-        android:name="tech.appclub.loanmanager.HistoryFragment"
+        android:name="tech.appclub.loanmanager.ui.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
 </navigation>
