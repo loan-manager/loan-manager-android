@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
-import tech.appclub.loanmanager.databinding.AllLoanItemViewBinding
+import tech.appclub.loanmanager.databinding.UnpaidLoanItemViewBinding
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
 
-class AllLoanRecyclerAdapter internal constructor(
+class UnpaidLoanRecyclerAdapter internal constructor(
     private val loans: List<Loan> = emptyList(),
     private val loanViewModel: LoanViewModel
-) : RecyclerView.Adapter<AllLoanRecyclerAdapter.AllLoanViewHolder>() {
+) : RecyclerView.Adapter<UnpaidLoanRecyclerAdapter.AllLoanViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AllLoanViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val itemBinding = AllLoanItemViewBinding.inflate(layoutInflater, parent, false)
+        val itemBinding = UnpaidLoanItemViewBinding.inflate(layoutInflater, parent, false)
         return AllLoanViewHolder(itemBinding)
     }
 
@@ -31,7 +31,7 @@ class AllLoanRecyclerAdapter internal constructor(
         }
     }
 
-    inner class AllLoanViewHolder(private val binding: AllLoanItemViewBinding) :
+    inner class AllLoanViewHolder(private val binding: UnpaidLoanItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         val removeAction = binding.removeLoanAction

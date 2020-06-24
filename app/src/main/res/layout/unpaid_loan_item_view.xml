@@ -44,32 +44,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/textview_bg"
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@android:color/white"
-                android:textSize="12sp"
+                android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanAmount"
                 tools:text="Arslan Mushtaq" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageButton
                 android:id="@+id/remove_loan_action"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:contentDescription="@string/delete_loan"
                 android:layout_marginEnd="16dp"
-                android:clickable="true"
-                android:elevation="1dp"
-                android:focusable="true"
-                app:backgroundTint="#D50000"
-                app:fabSize="mini"
+                android:src="@drawable/ic_delete"
+                android:background="@android:color/transparent"
+                android:paddingHorizontal="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/loanHolder"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loanAmount"
-                app:maxImageSize="18dp"
-                app:srcCompat="@drawable/ic_delete"
-                app:tint="@android:color/white" />
+                app:layout_constraintTop_toTopOf="@+id/loanAmount"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -90,6 +83,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
                     android:layout_weight="1"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -101,16 +96,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
-                        android:textColor="#80FFFFFF"
+                        android:textColor="@android:color/darker_gray"
+                        android:textStyle="bold"
                         android:textSize="12sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:alpha="0.2"
-                        android:background="@android:color/white" />
 
                     <TextView
                         android:id="@+id/receivedDate"
@@ -118,10 +106,9 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
                         app:setReceiveDate="@{loan.receivedOn}"
-                        tools:text="Wednesday, 19 Dec, 2020" />
+                        tools:text="Wed, 19 Dec, 2020" />
 
                 </LinearLayout>
 
@@ -142,6 +129,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/view"
@@ -151,28 +140,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/payment_on"
-                        android:textColor="#80FFFFFF"
-                        android:textSize="12sp"
-                        app:setPaymentLabel="@{loan}" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:alpha="0.5"
-                        android:background="@android:color/white" />
+                        android:text="@string/cancelled_on"
+                        android:textColor="@android:color/darker_gray"
+                        android:textStyle="bold"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/paymentDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                        android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
                         app:setPaymentDate="@{loan}"
-                        tools:text="Wednesday, 19 Dec, 2020" />
+                        tools:text="Wed, 19 Dec, 2020" />
 
 
                 </LinearLayout>

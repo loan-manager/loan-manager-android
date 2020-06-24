@@ -70,7 +70,7 @@ class LoanRecyclerAdapter internal constructor(
                 loanViewModel.updateLoan(loans[position])
             }
             .setNegativeButton("UNPAID") { _, _ ->
-                loans[position].status = 2
+                loans[position].status = 0
                 loans[position].paymentOn = Date()
                 loanViewModel.updateLoan(loans[position])
             }

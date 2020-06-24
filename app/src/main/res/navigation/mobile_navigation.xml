@@ -43,9 +43,9 @@
 
     <fragment
         android:id="@+id/history_destination"
-        android:name="tech.appclub.loanmanager.ui.HistoryFragment"
+        android:name="tech.appclub.loanmanager.ui.UnpaidLoanFragment"
         android:label="@string/history_fragment_title"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_unpaid_loans" />
 
     <fragment
         android:id="@+id/addLoanFragment"

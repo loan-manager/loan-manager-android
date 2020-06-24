@@ -40,6 +40,7 @@
     <string name="empty_home_list_msg">Yohooo!\nNo loans to pay!</string>
     <string name="empty_paid_loan_list_msg">No Loans Paid Yet</string>
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
+    <string name="empty_unpaid_list_msg">Yoho! No Unpaid Loans</string>
     <string name="delete_all">Delete all</string>
     <string name="given">Given</string>
     <string name="borrowed">Borrowed</string>
@@ -54,5 +55,6 @@
     <string name="lent">Lent</string>
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
+    <string name="delete_loan">Delete Current Loan</string>
 
 </resources>
