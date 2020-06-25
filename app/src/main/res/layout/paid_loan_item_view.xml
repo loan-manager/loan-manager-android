@@ -43,11 +43,12 @@
                 android:id="@+id/loanHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
                 tools:text="Arslan Mushtaq" />
 
             <TextView
@@ -97,7 +98,7 @@
                         android:textColor="@android:color/darker_gray"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        app:setReceivingTitle="@{loan.situation}"/>
+                        app:setReceivingTitle="@{loan.situation}" />
 
                     <TextView
                         android:id="@+id/receivedDate"
@@ -141,8 +142,8 @@
                         android:text="@string/payment_on"
                         android:textColor="@android:color/holo_green_dark"
                         android:textSize="12sp"
-                        app:setPaidTitle="@{loan.situation}"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        app:setPaidTitle="@{loan.situation}" />
 
                     <TextView
                         android:id="@+id/paymentDate"
@@ -157,6 +158,20 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                app:setAmountInWords="@{loan.amount}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
+                tools:text="Amount in Words" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

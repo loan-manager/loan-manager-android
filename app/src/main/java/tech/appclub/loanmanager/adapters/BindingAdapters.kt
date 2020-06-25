@@ -133,7 +133,7 @@ fun setStatusTitle(view: TextView, status: Int) {
 
 @BindingAdapter("app:setAmountInWords")
 fun setAmountInWords(view: TextView, amount: Double) {
-    view.text = NumbersToWords.convert(amount.toLong()).toUpperCase(Locale.getDefault())
+    view.text = NumbersToWords.convert(amount.toLong())
 }
 
 @BindingAdapter("app:setSituation")
