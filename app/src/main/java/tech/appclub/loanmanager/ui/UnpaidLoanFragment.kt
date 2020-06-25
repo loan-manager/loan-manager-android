@@ -60,7 +60,7 @@ class UnpaidLoanFragment : Fragment() {
             .setIcon(R.drawable.ic_warning)
             .setMessage("Are you sure, you want to delete all the paid loans?")
             .setPositiveButton("Yes") { dialog , _ ->
-                loanViewModel.deleteAllPaidLoans()
+                loanViewModel.deleteAllUnPaidLoans()
                 dialog.dismiss()
             }
             .setNegativeButton(android.R.string.cancel) { dialog, _ ->
