@@ -165,6 +165,7 @@
                 android:id="@+id/situation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/textview_bg"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="4dp"
@@ -173,7 +174,6 @@
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/daysLeft"
                 app:setSituation="@{loan.situation}" />
 
             <com.google.android.material.button.MaterialButton
@@ -218,9 +218,12 @@
                 app:layout_constraintEnd_toEndOf="@+id/loanAmount"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loanAmount"
-                android:textSize="12sp"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:setAmountInWords="@{loan.amount}"
                 android:textColor="@android:color/darker_gray"
-                tools:text="Amount in Words" />
+                tools:text="Amount in Words"
+                tools:ignore="SmallSp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
