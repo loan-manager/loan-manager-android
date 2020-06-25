@@ -45,6 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
@@ -152,12 +153,14 @@
                 android:id="@+id/daysLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center|end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/loanHolder"
                 app:setDaysLeft="@{loan}"
                 tools:text="100 Days Left" />
 
@@ -165,15 +168,14 @@
                 android:id="@+id/situation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:background="@drawable/textview_bg"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="4dp"
                 android:text="@string/situation"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:setSituation="@{loan.situation}" />
 
             <com.google.android.material.button.MaterialButton
