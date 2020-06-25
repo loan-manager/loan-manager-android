@@ -71,12 +71,9 @@ class PaidLoansFragment : Fragment() {
             .setTitle("Delete Paid Loans")
             .setIcon(R.drawable.ic_warning)
             .setMessage("Are you sure, you want to delete all the paid loans?")
-            .setPositiveButton("Yes") { _, _ ->
-                if (size == 0) {
-                    Toast.makeText(requireContext(), "Nothing to delete", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
+            .setPositiveButton("Yes") { dialog , _ ->
                 loanViewModel.deleteAllPaidLoans()
+                dialog.dismiss()
             }
             .setNegativeButton(android.R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
