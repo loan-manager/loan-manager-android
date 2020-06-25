@@ -3,12 +3,11 @@ package tech.appclub.loanmanager.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import tech.appclub.loanmanager.MainActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.HistoryRecyclerAdapter
 import tech.appclub.loanmanager.databinding.FragmentHistoryBinding
@@ -23,6 +22,7 @@ class HistoryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false)
         return binding.root
     }
@@ -54,12 +54,27 @@ class HistoryFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             R.id.action_delete_all -> {
-                loanViewModel.deleteAll()
+                showAlertDialog()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun showAlertDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.history_del_title))
+            .setMessage(getString(R.string.history_del_msg))
+            .setPositiveButton("Yes") { dialog, _ ->
+                loanViewModel.deleteHistory()
+                dialog.dismiss()
+            }
+            .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+
     }
 }
