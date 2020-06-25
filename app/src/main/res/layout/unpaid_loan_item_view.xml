@@ -53,17 +53,23 @@
                 app:layout_constraintTop_toTopOf="@+id/loanHolder"
                 app:setSituation="@{loan.situation}" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/loanHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="4dp"
+                android:gravity="center|start"
                 android:text="@{loan.holder}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
+                app:drawableTint="@android:color/darker_gray"
                 app:layout_constraintEnd_toStartOf="@+id/situation"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
                 tools:text="Name" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -126,15 +132,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2dp"
                     android:layout_weight="1"
-                    android:background="@drawable/textview_bg"
+                    android:background="@drawable/red_textview_bg"
                     android:orientation="vertical"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/view"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:setLayoutBackground="@{loan}">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -162,13 +167,15 @@
                 android:id="@+id/textView7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/textview_bg"
+                android:padding="8dp"
                 android:textAllCaps="true"
+                android:textColor="@android:color/black"
                 android:textSize="12sp"
-                android:textColor="@android:color/darker_gray"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
                 app:setAmountInWords="@{loan.amount}"
                 tools:text="Amount in Words" />
 
