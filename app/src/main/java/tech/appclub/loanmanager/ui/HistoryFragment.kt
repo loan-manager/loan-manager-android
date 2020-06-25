@@ -1,10 +1,8 @@
 package tech.appclub.loanmanager.ui
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -18,6 +16,7 @@ import tech.appclub.loanmanager.viewmodel.LoanViewModel
 
 class HistoryFragment : Fragment() {
 
+    private lateinit var loanViewModel: LoanViewModel
     private lateinit var binding: FragmentHistoryBinding
 
     override fun onCreateView(
@@ -35,7 +34,7 @@ class HistoryFragment : Fragment() {
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_nav_back)
         }
 
-        val loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
+        loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         loanViewModel.historyLoans.observe(viewLifecycleOwner, Observer {
             updateUI(it.isEmpty())
             binding.historyRecyclerView.adapter = HistoryRecyclerAdapter(it)
@@ -47,6 +46,20 @@ class HistoryFragment : Fragment() {
             binding.emptyMsg.visibility = View.VISIBLE
         } else {
             binding.emptyMsg.visibility = View.GONE
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.general_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.action_delete_all -> {
+                loanViewModel.deleteAll()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
