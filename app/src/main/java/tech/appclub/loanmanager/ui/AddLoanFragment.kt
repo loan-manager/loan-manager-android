@@ -150,7 +150,7 @@ class AddLoanFragment : Fragment() {
         loan.currency = currency
         loan.receivedOn = receiveDate
         loan.paymentOn = paymentDate
-        loan.status = 0
+        loan.status = 2
         loan.situation = situation
         loan.position = this.binding.countries.selectedItemPosition
 

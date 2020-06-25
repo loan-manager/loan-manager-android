@@ -10,6 +10,14 @@ interface LoanDAO {
     @Query("SELECT * FROM loan_table WHERE loan_status = 0 ORDER BY loan_payment_date ASC")
     fun getUnpaidLoans(): LiveData<List<Loan>>
 
+    // Get all active loans
+    @Query("SELECT * FROM loan_table WHERE loan_status = 2 ORDER BY loan_payment_date ASC")
+    fun getActiveLoans(): LiveData<List<Loan>>
+
+    // Get all paid and unpaid loans
+    @Query("SELECT * FROM loan_table WHERE loan_status <= 1  ORDER BY loan_payment_date ASC")
+    fun getHistoryLoans(): LiveData<List<Loan>>
+
     // Get all unpaid given loans
     @Query("SELECT * FROM loan_table WHERE loan_status = 0 AND loan_situation = 0 ORDER BY loan_payment_date ASC")
     fun getUnpaidGivenLoans(): LiveData<List<Loan>>
@@ -26,10 +34,6 @@ interface LoanDAO {
     @Query("SELECT * FROM loan_table WHERE loan_status = 1 ORDER BY loan_payment_date ASC")
     fun getPaidLoans(): LiveData<List<Loan>>
 
-    // Get all loans which include unpaid and paid loans
-    @Query("SELECT * FROM loan_table ORDER BY loan_payment_date ASC")
-    fun getAllLoans(): LiveData<List<Loan>>
-
     // Insert a loan
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(loan: Loan)
@@ -41,6 +45,10 @@ interface LoanDAO {
     // Delete all paid loans
     @Query("DELETE FROM loan_table WHERE loan_status = 1")
     suspend fun deleteAllPaidLoans()
+
+    // Delete all paid and unpaid loans
+    @Query("DELETE FROM loan_table WHERE loan_status <= 1")
+    suspend fun deleteHistory()
 
     // Delete a loan
     @Delete

@@ -58,14 +58,13 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
                 } else {
                     binding.floatingActionButton.show()
                 }
-
                 super.onScrolled(recyclerView, dx, dy)
             }
         })
 
 //        (this.binding.loanRecyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations =
 //            false
-        this.loanViewModel.unpaidLoans.observe(viewLifecycleOwner, Observer { loans ->
+        this.loanViewModel.activeLoans.observe(viewLifecycleOwner, Observer { loans ->
             if (loans.isEmpty()) {
                 this.binding.emptyMsg.visibility = View.VISIBLE
             } else {

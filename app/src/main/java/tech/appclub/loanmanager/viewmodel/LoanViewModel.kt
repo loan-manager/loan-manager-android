@@ -15,8 +15,9 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: LoanRepository
     val unpaidLoans: LiveData<List<Loan>>
+    val activeLoans: LiveData<List<Loan>>
+    val historyLoans: LiveData<List<Loan>>
     val paidLoans: LiveData<List<Loan>>
-    val totalLoans: LiveData<List<Loan>>
     val unpaidLoanCount: LiveData<Int>
     val unpaidLoanGrandTotal: LiveData<Double>
     val paidLoanCount: LiveData<Int>
@@ -27,8 +28,9 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         val loanDao = LoanRoomDatabase.getDatabase(application).loanDao()
         repository = LoanRepository(loanDao)
         unpaidLoans = repository.unpaidLoans
+        activeLoans = repository.activeLoans
+        historyLoans = repository.historyLoans
         paidLoans = repository.paidLoans
-        totalLoans = repository.totalLoans
         unpaidLoanCount = repository.unpaidLoanCount
         unpaidLoanGrandTotal = repository.unpaidLoanGrandTotal
         paidLoanCount = repository.paidLoanCount
@@ -48,9 +50,14 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteAllPaidLoans()
     }
 
+    fun deleteHistory() = viewModelScope.launch {
+        repository.deleteHistory()
+    }
+
     fun deleteLoan(loan: Loan) = viewModelScope.launch {
         repository.deleteLoan(loan)
     }
+
 
     fun updateLoan(loan: Loan) = viewModelScope.launch {
         repository.updateLoan(loan)

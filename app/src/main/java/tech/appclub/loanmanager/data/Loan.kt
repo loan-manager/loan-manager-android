@@ -11,7 +11,7 @@ import java.util.*
 * LOAN STATUS INTEGERS:
 * 0 - Unpaid loans
 * 1 - paid loans
-* 2 - Cancelled loans
+* 2 - Active loans
 *
 * */
 
