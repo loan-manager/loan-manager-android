@@ -50,6 +50,10 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteAllPaidLoans()
     }
 
+    fun deleteAllUnPaidLoans() = viewModelScope.launch {
+        repository.deleteUnPaidLoans()
+    }
+
     fun deleteHistory() = viewModelScope.launch {
         repository.deleteHistory()
     }
