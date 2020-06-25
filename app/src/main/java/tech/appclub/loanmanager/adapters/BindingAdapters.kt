@@ -54,8 +54,14 @@ fun setPaymentDate(view: TextView, loan: Loan) {
 @BindingAdapter("app:setPaymentLabel")
 fun setPaymentLabel(view: TextView, status: Int) {
     when (status) {
-        0 -> view.text = view.context.resources.getString(R.string.cancelled_on)
-        1 -> view.text = view.context.resources.getString(R.string.paid_on)
+        0 -> {
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_red_dark))
+            view.text = view.context.resources.getString(R.string.cancelled_on)
+        }
+        1 -> {
+            view.setTextColor(ContextCompat.getColor(view.context, android.R.color.holo_green_dark))
+            view.text = view.context.resources.getString(R.string.paid_on)
+        }
         else -> view.text = view.context.resources.getString(R.string.unknown_status)
     }
 }
@@ -63,8 +69,8 @@ fun setPaymentLabel(view: TextView, status: Int) {
 @BindingAdapter("app:setLayoutBackground")
 fun setLayoutBackground(view: LinearLayout, loan: Loan) {
     when (loan.status) {
+        0 -> view.setBackgroundResource(R.drawable.red_textview_bg)
         1 -> view.setBackgroundResource(R.drawable.green_textview_bg)
-        2 -> view.setBackgroundResource(R.drawable.error_textview_bg)
         else -> view.setBackgroundResource(R.drawable.textview_bg)
     }
 }
