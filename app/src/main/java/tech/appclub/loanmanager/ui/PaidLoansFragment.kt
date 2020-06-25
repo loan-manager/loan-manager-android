@@ -18,6 +18,7 @@ class PaidLoansFragment : Fragment() {
     private lateinit var loanViewModel: LoanViewModel
     private lateinit var binding: FragmentPaidLoansBinding
     private var size: Int? = null
+    private var listSize: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,11 +42,18 @@ class PaidLoansFragment : Fragment() {
                 this.binding.emptyMsg.visibility = View.GONE
             }
             this.binding.paidLoanRecyclerView.adapter = PaidLoanRecyclerAdapter(list)
+            listSize = list.size
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.general_menu, menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        requireActivity().invalidateOptionsMenu()
+        menu.findItem(R.id.action_delete_all).isVisible = listSize != 0
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
