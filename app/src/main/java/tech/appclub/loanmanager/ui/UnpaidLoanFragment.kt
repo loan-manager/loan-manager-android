@@ -17,12 +17,15 @@ class UnpaidLoanFragment : Fragment() {
 
     private lateinit var loanViewModel: LoanViewModel
     private lateinit var binding: FragmentUnpaidLoansBinding
+    private var listSize: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_unpaid_loans, container, false)
+        setHasOptionsMenu(true)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_unpaid_loans, container, false)
         return binding.root
     }
 
@@ -37,11 +40,18 @@ class UnpaidLoanFragment : Fragment() {
                 this.binding.emptyMsg.visibility = View.GONE
             }
             this.binding.allRecyclerView.adapter = UnpaidLoanRecyclerAdapter(list, loanViewModel)
+            listSize = list.size
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.general_menu, menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        requireActivity().invalidateOptionsMenu()
+        menu.findItem(R.id.action_delete_all).isVisible = listSize != 0
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -56,10 +66,10 @@ class UnpaidLoanFragment : Fragment() {
 
     private fun showDeleteDialog() {
         MaterialAlertDialogBuilder(requireContext())
-            .setTitle("Delete Paid Loans")
+            .setTitle("Delete Unpaid Loans")
             .setIcon(R.drawable.ic_warning)
-            .setMessage("Are you sure, you want to delete all the paid loans?")
-            .setPositiveButton("Yes") { dialog , _ ->
+            .setMessage("Are you sure, you want to delete all the unpaid loans?")
+            .setPositiveButton("Yes") { dialog, _ ->
                 loanViewModel.deleteAllUnPaidLoans()
                 dialog.dismiss()
             }
