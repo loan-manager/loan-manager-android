@@ -40,6 +40,24 @@
                 tools:text="Rs. 10,000" />
 
             <TextView
+                android:id="@+id/situation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/textview_bg"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:text="@string/situation"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loanHolder"
+                app:setSituation="@{loan.situation}" />
+
+            <TextView
                 android:id="@+id/loanHolder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -55,21 +73,21 @@
                 android:id="@+id/remove_loan_action"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:contentDescription="@string/delete_loan"
                 android:layout_marginEnd="16dp"
-                android:src="@drawable/ic_delete"
                 android:background="@android:color/transparent"
+                android:contentDescription="@string/delete_loan"
                 android:paddingHorizontal="16dp"
+                android:src="@drawable/ic_delete"
                 app:layout_constraintBottom_toBottomOf="@+id/loanHolder"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/loanAmount"/>
+                app:layout_constraintTop_toTopOf="@+id/loanAmount" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="16dp"
                 android:paddingBottom="16dp"
                 android:visibility="visible"
@@ -83,10 +101,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="2dp"
                     android:layout_weight="1"
-                    android:paddingHorizontal="12dp"
-                    android:paddingVertical="8dp"
                     android:background="@drawable/textview_bg"
                     android:orientation="vertical"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -97,8 +115,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
                         android:textColor="@android:color/darker_gray"
-                        android:textStyle="bold"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/receivedDate"
@@ -141,9 +159,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancelled_on"
-                        android:textColor="@android:color/darker_gray"
-                        android:textStyle="bold"
-                        android:textSize="12sp" />
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/paymentDate"
