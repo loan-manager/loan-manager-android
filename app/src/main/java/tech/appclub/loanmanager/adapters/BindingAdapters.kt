@@ -11,6 +11,7 @@ import org.joda.time.LocalDate
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.utils.DateTimeUtils.Companion.formatDate
+import tech.appclub.loanmanager.utils.NumbersToWords
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.math.abs
@@ -128,6 +129,11 @@ fun setStatusTitle(view: TextView, status: Int) {
         view.background = view.context.getDrawable(R.drawable.paid_bg)
     }
     view.text = getPaymentStatus(status)
+}
+
+@BindingAdapter("app:setAmountInWords")
+fun setAmountInWords(view: TextView, amount: Double) {
+    view.text = NumbersToWords.convert(amount.toLong()).toUpperCase(Locale.getDefault())
 }
 
 @BindingAdapter("app:setSituation")

@@ -44,12 +44,14 @@
                 android:id="@+id/loanHolder"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:text="@{loan.holder}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
                 app:layout_constraintEnd_toStartOf="@+id/daysLeft"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
+                app:layout_constraintTop_toBottomOf="@+id/amountInWords"
                 tools:text="Arslan Mushtaq" />
 
 
@@ -151,12 +153,14 @@
                 android:id="@+id/daysLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center|end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/loanHolder"
                 app:setDaysLeft="@{loan}"
                 tools:text="100 Days Left" />
 
@@ -170,9 +174,8 @@
                 android:text="@string/situation"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@+id/expandableLayout"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/daysLeft"
+                app:layout_constraintTop_toTopOf="parent"
                 app:setSituation="@{loan.situation}" />
 
             <com.google.android.material.button.MaterialButton
@@ -209,6 +212,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/amountInWords"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/loanAmount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loanAmount"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:setAmountInWords="@{loan.amount}"
+                android:textColor="@android:color/darker_gray"
+                tools:text="Amount in Words"
+                tools:ignore="SmallSp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
