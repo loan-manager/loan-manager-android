@@ -2,7 +2,6 @@ package tech.appclub.loanmanager.ui
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -39,7 +38,7 @@ class UnpaidLoanFragment : Fragment() {
             } else {
                 this.binding.emptyMsg.visibility = View.GONE
             }
-            this.binding.allRecyclerView.adapter = UnpaidLoanRecyclerAdapter(list, loanViewModel)
+            this.binding.allRecyclerView.adapter = UnpaidLoanRecyclerAdapter(list)
             listSize = list.size
         })
     }
