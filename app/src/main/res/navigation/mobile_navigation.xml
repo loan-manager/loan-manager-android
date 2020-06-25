@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/unpaid_destination"
         android:name="tech.appclub.loanmanager.ui.UnpaidLoanFragment"
-        android:label="@string/history_fragment_title"
+        android:label="@string/unpaid_menu_title"
         tools:layout="@layout/fragment_unpaid_loans" />
 
     <fragment
