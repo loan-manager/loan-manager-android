@@ -15,7 +15,7 @@ interface LoanDAO {
     fun getActiveLoans(): LiveData<List<Loan>>
 
     // Get all paid and unpaid loans
-    @Query("SELECT * FROM loan_table WHERE loan_status < 2 ORDER BY loan_payment_date ASC")
+    @Query("SELECT * FROM loan_table WHERE loan_status <= 1  ORDER BY loan_payment_date ASC")
     fun getHistoryLoans(): LiveData<List<Loan>>
 
     // Get all unpaid given loans

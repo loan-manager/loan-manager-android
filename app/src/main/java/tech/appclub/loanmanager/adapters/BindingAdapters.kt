@@ -1,15 +1,9 @@
 package tech.appclub.loanmanager.adapters
 
-import android.content.Context
-import android.graphics.drawable.Drawable
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import org.joda.time.Days
@@ -57,11 +51,10 @@ fun setPaymentDate(view: TextView, loan: Loan) {
 }
 
 @BindingAdapter("app:setPaymentLabel")
-fun setPaymentLabel(view: TextView, loan: Loan) {
-    when (loan.status) {
-        0 -> view.text = view.context.resources.getString(R.string.payment_on)
+fun setPaymentLabel(view: TextView, status: Int) {
+    when (status) {
+        0 -> view.text = view.context.resources.getString(R.string.cancelled_on)
         1 -> view.text = view.context.resources.getString(R.string.paid_on)
-        2 -> view.text = view.context.resources.getString(R.string.cancelled_on)
         else -> view.text = view.context.resources.getString(R.string.unknown_status)
     }
 }
@@ -127,9 +120,19 @@ fun setPaidTitle(view: TextView, situation: Int) {
     }
 }
 
+@BindingAdapter("app:setStatusTitle")
+fun setStatusTitle(view: TextView, status: Int) {
+    if (status == 0) {
+        view.background = view.context.getDrawable(R.drawable.unpaid_bg)
+    } else {
+        view.background = view.context.getDrawable(R.drawable.paid_bg)
+    }
+    view.text = getPaymentStatus(status)
+}
+
 @BindingAdapter("app:setSituation")
 fun setSituation(view: TextView, situation: Int) {
-    if (situation == 0)  {
+    if (situation == 0) {
         view.background = view.context.getDrawable(R.drawable.given_bg)
     } else {
         view.background = view.context.getDrawable(R.drawable.borrowed_bg)
@@ -141,6 +144,14 @@ private fun getSituation(situation: Int): String {
     return when (situation) {
         0 -> "Given"
         1 -> "Borrowed"
+        else -> "Unknown"
+    }
+}
+
+private fun getPaymentStatus(status: Int): String {
+    return when (status) {
+        0 -> "Unpaid"
+        1 -> "Paid"
         else -> "Unknown"
     }
 }
