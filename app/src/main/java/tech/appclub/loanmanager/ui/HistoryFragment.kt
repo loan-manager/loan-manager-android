@@ -37,8 +37,16 @@ class HistoryFragment : Fragment() {
 
         val loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         loanViewModel.historyLoans.observe(viewLifecycleOwner, Observer {
+            updateUI(it.isEmpty())
             binding.historyRecyclerView.adapter = HistoryRecyclerAdapter(it)
-            Toast.makeText(requireContext(), it.size.toString(), Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun updateUI(isEmpty: Boolean) {
+        if (isEmpty) {
+            binding.emptyMsg.visibility = View.VISIBLE
+        } else {
+            binding.emptyMsg.visibility = View.GONE
+        }
     }
 }
