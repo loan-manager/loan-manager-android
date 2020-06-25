@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.HistoryRecyclerAdapter
 import tech.appclub.loanmanager.databinding.FragmentHistoryBinding
@@ -28,6 +30,10 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (requireActivity() as AppCompatActivity).run {
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_nav_back)
+        }
 
         val loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
         loanViewModel.historyLoans.observe(viewLifecycleOwner, Observer {
