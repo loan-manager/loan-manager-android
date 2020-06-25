@@ -17,6 +17,7 @@ class HistoryFragment : Fragment() {
 
     private lateinit var loanViewModel: LoanViewModel
     private lateinit var binding: FragmentHistoryBinding
+    private var listSize: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +39,7 @@ class HistoryFragment : Fragment() {
         loanViewModel.historyLoans.observe(viewLifecycleOwner, Observer {
             updateUI(it.isEmpty())
             binding.historyRecyclerView.adapter = HistoryRecyclerAdapter(it)
+            listSize = it.size
         })
     }
 
@@ -47,6 +49,12 @@ class HistoryFragment : Fragment() {
         } else {
             binding.emptyMsg.visibility = View.GONE
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        requireActivity().invalidateOptionsMenu()
+        menu.findItem(R.id.action_delete_all).isVisible = listSize != 0
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
