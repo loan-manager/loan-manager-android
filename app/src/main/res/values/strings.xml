@@ -11,7 +11,8 @@
     <string name="loan_holder_name">Name</string>
     <string name="loan_amount">Amount</string>
     <string name="select_currency">Currency</string>
-    <string name="select_received_date">Select Received Date</string>
+    <string name="select_lent_date">Select Lent Date</string>
+    <string name="select_receiving_date">Select Receiving Date</string>
     <string name="select_payment_date">Select Payment Date</string>
 
     <!-- Validation Errors -->

@@ -142,7 +142,7 @@
                         android:drawableTop="@drawable/ic_calendar"
                         android:drawablePadding="6dp"
                         android:gravity="center"
-                        android:text="@string/select_received_date"
+                        android:text="@string/select_lent_date"
                         android:textColor="#80FFFFFF"
                         android:textSize="12sp" />
 

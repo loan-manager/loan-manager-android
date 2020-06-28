@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -32,6 +33,9 @@ class AddLoanFragment : Fragment() {
 
     private var receiveDate: Date? = null
     private var paymentDate: Date? = null
+
+    private var receiveDateError: Boolean = false
+    private var paymentDateError: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +71,24 @@ class AddLoanFragment : Fragment() {
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
         )
+
+        binding.borrowedRadioButton.setOnCheckedChangeListener { _, checked ->
+            if (checked) {
+                binding.receivedDate.text = "Select Borrowed Date"
+                binding.paymentDate.text = getString(R.string.select_payment_date)
+                receiveDate = null
+                paymentDate = null
+            }
+        }
+
+        binding.givenRadioButton.setOnCheckedChangeListener { _, checked ->
+            if (checked) {
+                binding.receivedDate.text = getString(R.string.select_lent_date)
+                binding.paymentDate.text = getString(R.string.select_receiving_date)
+                receiveDate = null
+                paymentDate = null
+            }
+        }
     }
 
     fun selectReceivedDate() {
@@ -77,20 +99,16 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 binding.receivedDate.text = DateTimeUtils.formatDate(calendar.time)
                 receiveDate = calendar.time
-                this.binding.paymentDate.startAnimation(
-                    AnimationUtils.loadAnimation(
-                        requireContext(),
-                        android.R.anim.fade_in
+
+                if (receiveDateError) {
+                    binding.receivedDate.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.colorAccent
+                        )
                     )
-                )
-                this.binding.paymentDateSelection.startAnimation(
-                    AnimationUtils.loadAnimation(
-                        requireContext(),
-                        android.R.anim.fade_in
-                    )
-                )
-                this.binding.paymentDate.visibility = View.VISIBLE
-                this.binding.paymentDateSelection.visibility = View.VISIBLE
+                    receiveDateError = false
+                }
+
             }
         val datePickerDialog = DatePickerDialog(
             requireContext(),
@@ -112,6 +130,16 @@ class AddLoanFragment : Fragment() {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 binding.paymentDate.text = DateTimeUtils.formatDate(calendar.time)
                 paymentDate = calendar.time
+
+                if (paymentDateError) {
+                    binding.receivedDate.setTextColor(
+                        ContextCompat.getColor(
+                            requireContext(), R.color.colorAccent
+                        )
+                    ) 
+                    paymentDateError = false
+                }
+
             }
         val datePickerDialog = DatePickerDialog(
             requireContext(),
@@ -137,8 +165,14 @@ class AddLoanFragment : Fragment() {
         val country = countryModel.country
         val currency = countryModel.currency
 
-        if (showDateError(requireContext(), receiveDate, this.binding.receivedDate)) return
-        if (showDateError(requireContext(), paymentDate, this.binding.paymentDate)) return
+        if (showDateError(requireContext(), receiveDate, this.binding.receivedDate)) {
+            receiveDateError = true
+            return
+        }
+        if (showDateError(requireContext(), paymentDate, this.binding.paymentDate)) {
+            paymentDateError = true
+            return
+        }
 
         val situation: Int = if (this.binding.givenRadioButton.isChecked) 0 else 1
 
