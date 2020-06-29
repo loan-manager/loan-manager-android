@@ -27,7 +27,6 @@ import java.util.*
 class EditFragment : Fragment() {
 
     private lateinit var loanViewModel: LoanViewModel
-    private lateinit var loanData: Loan
     private val args: EditFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentEditBinding
@@ -46,8 +45,7 @@ class EditFragment : Fragment() {
         this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_edit, container, false)
         this.binding.editLoan = this
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
-        loanData = loanViewModel.currentLoan(args.loanId)
-        this.binding.loan = loanData
+        this.binding.loan = args.loan
         return this.binding.root
     }
 
@@ -59,10 +57,10 @@ class EditFragment : Fragment() {
             (requireActivity() as MainActivity).readCountriesData()
         )
         this.binding.countries.adapter = adapter
-        this.binding.countries.setSelection(loanData.position!!)
+        this.binding.countries.setSelection(args.loan.position!!)
 
-        receiveDate = loanData.receivedOn
-        paymentDate = loanData.paymentOn
+        receiveDate = args.loan.receivedOn
+        paymentDate = args.loan.paymentOn
 
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
@@ -72,7 +70,7 @@ class EditFragment : Fragment() {
     fun selectReceivedDate() {
 
         val calendar = Calendar.getInstance()
-        calendar.time = loanData.receivedOn!!
+        calendar.time = args.loan.receivedOn!!
 
         DatePickerDialog(
             requireContext(),
@@ -93,7 +91,7 @@ class EditFragment : Fragment() {
     fun selectPaymentDate() {
 
         val calendar = Calendar.getInstance()
-        calendar.time = loanData.paymentOn!!
+        calendar.time = args.loan.paymentOn!!
 
         val datePickerDialog = DatePickerDialog(
             requireContext(),
@@ -119,14 +117,14 @@ class EditFragment : Fragment() {
     fun editLoanAction() {
 
         val loan = Loan()
-        loan.id = loanData.id
+        loan.id = args.loan.id
 
         val name = this.binding.holderNameValue.text.toString()
         if (ValidationUtils.isEmpty(name, this.binding.holderNameField, requireContext())) return
-        if (name != loanData.holder!!) {
+        if (name != args.loan.holder!!) {
             loan.holder = name
         } else {
-            loan.holder = loanData.holder
+            loan.holder = args.loan.holder
         }
 
         val amount = trimCommaOfString(this.binding.holderAmountValue.text.toString())
@@ -134,14 +132,14 @@ class EditFragment : Fragment() {
                 amount, this.binding.holderAmountField, requireContext()
             )
         ) return
-        if (amount.toDouble() != loanData.amount!!) {
+        if (amount.toDouble() != args.loan.amount!!) {
             loan.amount = amount.toDouble()
         } else {
-            loan.amount = loanData.amount
+            loan.amount = args.loan.amount
         }
 
 
-        if (this.binding.countries.selectedItemPosition != loanData.position!!) {
+        if (this.binding.countries.selectedItemPosition != args.loan.position!!) {
             val countryModel = this.binding.countries.selectedItem as Country
             val code = countryModel.code
             val country = countryModel.country
@@ -151,10 +149,10 @@ class EditFragment : Fragment() {
             loan.currency = currency
             loan.position = this.binding.countries.selectedItemPosition
         } else {
-            loan.code = loanData.code
-            loan.country = loanData.country
-            loan.currency = loanData.currency
-            loan.position = loanData.position
+            loan.code = args.loan.code
+            loan.country = args.loan.country
+            loan.currency = args.loan.currency
+            loan.position = args.loan.position
         }
 
         loan.receivedOn = receiveDate

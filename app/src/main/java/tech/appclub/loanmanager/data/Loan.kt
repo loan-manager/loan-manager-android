@@ -1,5 +1,7 @@
 package tech.appclub.loanmanager.data
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -24,7 +26,7 @@ import java.util.*
 * */
 
 @Entity(tableName = "loan_table")
-class Loan {
+class Loan() : Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null
@@ -58,5 +60,43 @@ class Loan {
 
     @ColumnInfo(name = "country_position")
     var position: Int? = 0
+
+    constructor(parcel: Parcel) : this() {
+        id = parcel.readValue(Int::class.java.classLoader) as? Int
+        holder = parcel.readString()
+        amount = parcel.readValue(Double::class.java.classLoader) as? Double
+        currency = parcel.readString()
+        code = parcel.readString()
+        country = parcel.readString()
+        status = parcel.readValue(Int::class.java.classLoader) as? Int
+        situation = parcel.readValue(Int::class.java.classLoader) as? Int
+        position = parcel.readValue(Int::class.java.classLoader) as? Int
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(id)
+        parcel.writeString(holder)
+        parcel.writeValue(amount)
+        parcel.writeString(currency)
+        parcel.writeString(code)
+        parcel.writeString(country)
+        parcel.writeValue(status)
+        parcel.writeValue(situation)
+        parcel.writeValue(position)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Loan> {
+        override fun createFromParcel(parcel: Parcel): Loan {
+            return Loan(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Loan?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 }
