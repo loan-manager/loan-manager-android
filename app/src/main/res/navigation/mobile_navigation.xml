@@ -35,9 +35,8 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim">
             <argument
-                android:name="loanId"
-                android:defaultValue="-1"
-                app:argType="integer" />
+                android:name="loan"
+                app:argType="tech.appclub.loanmanager.data.Loan" />
         </action>
     </fragment>
 
@@ -86,9 +85,8 @@
         android:label="@string/edit_fragment_title"
         tools:layout="@layout/fragment_edit" >
         <argument
-            android:name="loanId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:name="loan"
+            app:argType="tech.appclub.loanmanager.data.Loan" />
     </fragment>
     <fragment
         android:id="@+id/history_destination"

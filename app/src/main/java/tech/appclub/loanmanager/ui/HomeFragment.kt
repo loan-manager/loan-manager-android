@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.LoanRecyclerAdapter
+import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.databinding.FragmentHomeBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
@@ -81,8 +82,8 @@ class HomeFragment : Fragment(), LoanRecyclerAdapter.LoanClickListener {
         findNavController().navigate(R.id.home_to_add_loan)
     }
 
-    override fun editClickListener(loanId: Int) {
-        val action = HomeFragmentDirections.homeToEditFragment(loanId)
+    override fun editClickListener(loan: Loan) {
+        val action = HomeFragmentDirections.homeToEditFragment(loan)
         findNavController().navigate(action)
     }
 

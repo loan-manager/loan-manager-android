@@ -34,7 +34,7 @@ class LoanRecyclerAdapter internal constructor(
         }
 
         holder.editAction.setOnClickListener {
-            loanClickListener.editClickListener(loans[position].id!!)
+            loanClickListener.editClickListener(loans[position])
         }
 
     }
@@ -52,7 +52,7 @@ class LoanRecyclerAdapter internal constructor(
     }
 
     interface LoanClickListener {
-        fun editClickListener(loanId: Int)
+        fun editClickListener(loan: Loan)
     }
 
     private fun showWarningDialog(view: View, position: Int) {
