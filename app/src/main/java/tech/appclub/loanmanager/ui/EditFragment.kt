@@ -2,6 +2,7 @@ package tech.appclub.loanmanager.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,6 +66,16 @@ class EditFragment : Fragment() {
         this.binding.holderAmountValue.addTextChangedListener(
             NumberTextWatcherForThousand(this.binding.holderAmountValue)
         )
+
+        setSituationValue(args.loan.situation)
+
+    }
+
+    private fun setSituationValue(situation: Int?) {
+        when (situation) {
+            0 -> binding.givenRadioButton.isChecked = true
+            1 -> binding.borrowedRadioButton.isChecked = true
+        }
     }
 
     fun selectReceivedDate() {
@@ -86,7 +97,6 @@ class EditFragment : Fragment() {
             calendar.get(Calendar.DAY_OF_MONTH)
         ).show()
     }
-
 
     fun selectPaymentDate() {
 
