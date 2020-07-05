@@ -5,7 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_bg">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/history_recycler_view"
@@ -23,6 +24,7 @@
             android:drawableTop="@drawable/ic_history_big"
             android:drawablePadding="12dp"
             android:gravity="center"
+            android:textStyle="italic"
             android:text="@string/empty_history_list_msg"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black"

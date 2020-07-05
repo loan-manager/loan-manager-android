@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="home"
             type="tech.appclub.loanmanager.ui.HomeFragment" />
@@ -12,8 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.HomeFragment"
-        android:background="@drawable/gradient_bg">
+        android:background="@drawable/gradient_bg"
+        tools:context=".ui.HomeFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/loan_recycler_view"
@@ -24,8 +25,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/loan_item_view"
-            tools:itemCount="0"/>
+            tools:itemCount="0"
+            tools:listitem="@layout/loan_item_view" />
 
         <TextView
             android:id="@+id/empty_msg"
@@ -33,12 +34,13 @@
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/ic_smile"
             android:drawablePadding="12dp"
+            android:ems="6"
             android:gravity="center"
             android:text="@string/empty_home_list_msg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/black"
             android:textStyle="italic"
-            android:ems="6"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,15 +55,15 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:clickable="true"
-            app:elevation="2dp"
             android:focusable="true"
-            app:tint="@null"
-            app:fabSize="auto"
-            app:borderWidth="0dp"
             android:onClick="@{() -> home.addLoan()}"
+            app:borderWidth="0dp"
+            app:elevation="2dp"
+            app:fabSize="auto"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add"
+            app:tint="@null"
             app:useCompatPadding="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
