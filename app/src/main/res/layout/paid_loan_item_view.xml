@@ -28,12 +28,13 @@
 
             <TextView
                 android:id="@+id/loanAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textView8"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:setAmount="@{loan}"
@@ -177,6 +178,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
                 app:setAmountInWords="@{loan.amount}"
                 tools:text="Amount in Words" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{loan.currency}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textSize="12sp"
+                tools:text="Pakistani Rupees" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
