@@ -61,8 +61,8 @@ class SettingsFragment : Fragment() {
         loanViewModel = ViewModelProvider(requireActivity()).get(LoanViewModel::class.java)
 
         loanViewModel.unpaidLoanCount.observe(requireActivity(), Observer {
-            if (it == null) {
-                this.binding.totalCountUnpaidLoans.text = "0"
+            if (it == null || it == 0) {
+                this.binding.totalCountUnpaidLoans.text = "N/A"
                 return@Observer
             }
             this.binding.totalCountUnpaidLoans.text = it.toString()
@@ -70,7 +70,7 @@ class SettingsFragment : Fragment() {
 
         loanViewModel.unpaidLoanGrandTotal.observe(requireActivity(), Observer {
             if (it == null) {
-                this.binding.grandTotalUnpaidLoans.text = String.format("%s 0 TO PAY", countryCode)
+                this.binding.grandTotalUnpaidLoans.text = "N/A"
                 return@Observer
             }
             this.binding.grandTotalUnpaidLoans.text = String.format("%s %.2f", countryCode, it)
@@ -78,7 +78,7 @@ class SettingsFragment : Fragment() {
 
         loanViewModel.paidLoanCount.observe(requireActivity(), Observer {
             if (it == 0) {
-                this.binding.totalCountPaidLoans.text = "0"
+                this.binding.totalCountPaidLoans.text = "N/A"
                 return@Observer
             }
             this.binding.totalCountPaidLoans.text = it.toString()
@@ -86,8 +86,7 @@ class SettingsFragment : Fragment() {
 
         loanViewModel.paidLoanGrandTotal.observe(requireActivity(), Observer {
             if (it == null) {
-                this.binding.grandTotalPaidLoans.text =
-                    String.format("%s 0 LOANS PAID", countryCode)
+                this.binding.grandTotalPaidLoans.text = "N/A"
                 return@Observer
             }
             this.binding.grandTotalPaidLoans.text = String.format("%s %.2f", countryCode, it)
@@ -95,7 +94,7 @@ class SettingsFragment : Fragment() {
 
         loanViewModel.allLoanCount.observe(requireActivity(), Observer {
             if (it == 0) {
-                this.binding.totalCountLoans.text = "0"
+                this.binding.totalCountLoans.text = "N/A"
                 return@Observer
             }
             this.binding.totalCountLoans.text = it.toString()
