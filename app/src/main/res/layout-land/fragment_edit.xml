@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="editLoan"
+            type="tech.appclub.loanmanager.ui.EditFragment" />
+
+        <variable
+            name="loan"
+            type="tech.appclub.loanmanager.data.Loan" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/initial_padding"
+            tools:context=".ui.AddLoanFragment">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/holder_name_field"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/loan_holder_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_person">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/holder_name_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
+                    android:inputType="textPersonName|text"
+                    android:maxLength="255"
+                    android:text="@{loan.holder}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    tools:text="Arslan Mushtaq Ahmed" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/holder_amount_field"
+                style="@style/CustomTextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:hint="@string/loan_amount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/holder_name_field"
+                app:startIconDrawable="@drawable/ic_coins">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/holder_amount_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|start"
+                    android:inputType="number|numberDecimal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/black"
+                    app:setEditAmount="@{loan}"
+                    tools:text="2,000,000" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:text="@string/select_currency"
+                android:textColor="@android:color/primary_text_light"
+                android:textSize="@dimen/text_smaller"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/holder_amount_field" />
+
+            <Spinner
+                android:id="@+id/countries"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dropDownWidth="wrap_content"
+                android:spinnerMode="dialog"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                tools:listitem="@layout/currency_spinner_item_view" />
+
+            <TextView
+                android:id="@+id/situation_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:text="@string/situation"
+                android:textColor="@android:color/primary_text_light"
+                android:textSize="@dimen/text_smaller"
+                app:layout_constraintTop_toBottomOf="@+id/countries"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <RadioGroup
+                android:id="@+id/situation_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/label_and_component_spacing"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/situation_label">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/given_radio_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/dark_accent"
+                    android:checked="true"
+                    android:text="@string/lent" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/borrowed_radio_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/dark_accent"
+                    android:text="@string/borrowed" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/received_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:layout_marginEnd="@dimen/component_spacing"
+                android:background="@drawable/textview_bg"
+                android:backgroundTint="@color/dark_transparent_accent"
+                android:padding="@dimen/initial_padding"
+                android:text="@string/select_lent_date"
+                android:textColor="@color/dark_accent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/situation_radio_group"
+                app:setReceiveDate="@{loan.receivedOn}" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:contentDescription="@string/select_lent_date"
+                android:onClick="@{() -> editLoan.selectReceivedDate()}"
+                android:paddingStart="@dimen/initial_padding"
+                android:paddingEnd="@dimen/initial_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/received_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/situation_radio_group"
+                app:srcCompat="@drawable/ic_calendar" />
+
+            <TextView
+                android:id="@+id/payment_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:layout_marginEnd="@dimen/component_spacing"
+                android:background="@drawable/textview_bg"
+                android:backgroundTint="@color/dark_transparent_accent"
+                android:padding="@dimen/initial_padding"
+                android:text="@string/select_receiving_date"
+                android:textColor="@color/dark_accent"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/payment_date_selection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/received_date"
+                app:setPaymentDate="@{loan}" />
+
+            <ImageButton
+                android:id="@+id/payment_date_selection"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/component_spacing"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:contentDescription="@string/select_lent_date"
+                android:onClick="@{() -> editLoan.selectPaymentDate()}"
+                android:paddingStart="@dimen/initial_padding"
+                android:paddingEnd="@dimen/initial_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/payment_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageButton"
+                app:srcCompat="@drawable/ic_calendar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/initial_padding"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payment_date">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancel_action"
+                    style="@android:style/Widget.Material.Button.Borderless"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:backgroundTint="@android:color/transparent"
+                    android:elevation="0dp"
+                    android:onClick="@{() -> editLoan.cancel()}"
+                    android:text="@android:string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/dark_accent"
+                    android:textStyle="bold"
+                    app:elevation="0dp" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/add_loan_action"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.6"
+                    android:onClick="@{() -> editLoan.editLoanAction()}"
+                    android:text="@string/edit_fragment_title"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/dark_accent" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>
