@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_bg">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/paid_loan_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:itemCount="0"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.PaidLoansFragment"
+            tools:listitem="@layout/paid_loan_item_view" />
+
+        <TextView
+            android:id="@+id/empty_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_rocket"
+            android:drawablePadding="12dp"
+            android:ems="7"
+            android:gravity="center"
+            android:text="@string/empty_paid_loan_list_msg"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
