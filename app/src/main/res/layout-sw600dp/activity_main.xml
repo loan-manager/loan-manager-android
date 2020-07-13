@@ -44,6 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:backgroundTint="#FDFEFF"
+            app:itemTextAppearanceActive="@android:style/TextAppearance.Material.Medium"
+            app:itemTextAppearanceInactive="@android:style/TextAppearance.Material.Small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

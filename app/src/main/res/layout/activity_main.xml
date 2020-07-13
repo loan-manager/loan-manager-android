@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/toolbar_menu"
-            app:titleTextAppearance="@android:style/TextAppearance.Small"
+            app:titleTextAppearance="@android:style/TextAppearance.Medium"
             app:titleTextColor="@android:color/black"
             tools:title="@string/app_name" />
 
@@ -44,13 +44,11 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:backgroundTint="#FDFEFF"
+            app:itemTextAppearanceActive="@android:style/TextAppearance.Material.Small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
+            app:menu="@menu/bottom_nav_menu"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

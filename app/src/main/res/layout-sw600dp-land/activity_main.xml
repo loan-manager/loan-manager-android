@@ -46,6 +46,8 @@
             android:backgroundTint="#FDFEFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:itemTextAppearanceActive="@android:style/TextAppearance.Material.Large"
+            app:itemTextAppearanceInactive="@android:style/TextAppearance.Material.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_menu" />
 
