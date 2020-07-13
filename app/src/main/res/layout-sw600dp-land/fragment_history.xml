@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context=".ui.HistoryFragment"
-            tools:itemCount="6"
+            tools:itemCount="0"
             tools:listitem="@layout/history_loan_item_view" />
 
         <TextView
@@ -26,13 +26,14 @@
             android:gravity="center"
             android:textStyle="italic"
             android:text="@string/empty_history_list_msg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
