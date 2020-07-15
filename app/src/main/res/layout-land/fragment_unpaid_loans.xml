@@ -19,7 +19,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:context=".ui.UnpaidLoanFragment"
-            tools:itemCount="0"
+            tools:itemCount="4"
             tools:listitem="@layout/unpaid_loan_item_view" />
 
         <TextView
@@ -30,14 +30,15 @@
             android:drawablePadding="12dp"
             android:gravity="center"
             android:text="@string/empty_unpaid_list_msg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/black"
             android:textStyle="italic"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
