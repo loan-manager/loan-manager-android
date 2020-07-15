@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/textView9"
@@ -48,10 +48,10 @@
                 android:paddingVertical="4dp"
                 android:text="@string/situation"
                 android:textColor="@android:color/white"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/loanHolder"
-                app:setSituation="@{loan.situation}" />
+                app:setSituation="@{loan.situation}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/loanHolder"
@@ -63,7 +63,7 @@
                 android:drawablePadding="4dp"
                 android:gravity="center|start"
                 android:text="@{loan.holder}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 app:drawableTint="@android:color/darker_gray"
                 app:layout_constraintEnd_toStartOf="@+id/situation"
@@ -99,8 +99,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -108,7 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@android:color/black"
                         app:setReceiveDate="@{loan.receivedOn}"
                         tools:text="Wed, 19 Dec, 2020" />
@@ -141,15 +141,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/cancelled_on"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="@android:color/holo_red_dark"
-                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/paymentDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@android:color/black"
                         app:setPaymentDate="@{loan}"
                         tools:text="Wed, 19 Dec, 2020" />
@@ -168,7 +168,6 @@
                 android:padding="8dp"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
@@ -180,8 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{loan.currency}"
-                android:textAppearance="@android:style/TextAppearance.Small"
-                android:textSize="12sp"
+                android:textAppearance="@android:style/TextAppearance.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Pakistani Rupees" />
