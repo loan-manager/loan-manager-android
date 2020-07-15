@@ -21,11 +21,11 @@
             android:id="@+id/materialTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@string/default_currency"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textAppearance="@android:style/TextAppearance.Small"
-            android:text="@string/default_currency"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Spinner
             android:id="@+id/countries"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="1dp"
-            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:onClick="@{() -> user.deleteAllLoans()}"
             android:text="@string/delete_all_loans"
             android:textColor="@android:color/holo_red_dark"
@@ -63,7 +63,7 @@
             android:layout_marginStart="1dp"
             android:onClick="@{() -> user.update()}"
             android:text="@string/update"
-            android:textAppearance="@android:style/TextAppearance.Small"
+            android:textAppearance="@android:style/TextAppearance.Medium"
             android:textColor="@android:color/black"
             android:visibility="invisible"
             app:elevation="0.5dp"
@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/total_unpaid_loans"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
@@ -105,7 +105,7 @@
                 android:id="@+id/grand_total_unpaid_loans"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 tools:text="PKR 12,000,000" />
 
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/total_paid_loans"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 tools:text="PKR 12,000,000" />
 
@@ -178,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number_of_unpaid_loans"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
@@ -187,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 tools:text="20 unpaid loans" />
 
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/number_of_paid_loans"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
@@ -227,7 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 tools:text="20 Paid Loans" />
 
@@ -260,7 +260,7 @@
                 android:gravity="start"
                 android:text="@string/number_of_total_loans"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/darker_gray" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -269,7 +269,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:gravity="start"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 tools:text="40 total loans" />
 
@@ -277,6 +277,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--    </ScrollView>-->
 </layout>
