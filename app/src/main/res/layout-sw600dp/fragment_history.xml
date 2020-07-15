@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:context=".ui.HistoryFragment"
-            tools:itemCount="0"
+            tools:itemCount="4"
             tools:listitem="@layout/history_loan_item_view" />
 
         <TextView
