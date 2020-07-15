@@ -31,7 +31,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans_semibold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/daysLeft"
@@ -50,7 +50,7 @@
                 android:drawablePadding="4dp"
                 android:gravity="center|start"
                 android:text="@{loan.holder}"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/black"
                 app:drawableTint="@android:color/holo_blue_dark"
                 app:layout_constraintEnd_toStartOf="@+id/daysLeft"
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/received_on"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
                         android:textStyle="bold"
                         app:setReceivingTitle="@{loan.situation}" />
 
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@android:color/black"
                         app:setReceiveDate="@{loan.receivedOn}"
                         tools:text="Wed, 19 Dec, 2020" />
@@ -130,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/payment_on"
                         android:textColor="@android:color/darker_gray"
-                        android:textSize="12sp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textStyle="bold"
                         app:setPaymentTitle="@{loan.situation}" />
 
@@ -139,7 +139,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
                         android:textColor="@android:color/black"
                         app:setPaymentDate="@{loan}"
                         tools:text="Wed, 19 Dec, 2020" />
@@ -223,7 +223,7 @@
                 android:padding="8dp"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
-                android:textSize="12sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
