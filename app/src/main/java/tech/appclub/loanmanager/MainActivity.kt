@@ -41,14 +41,9 @@ class MainActivity : AppCompatActivity() {
         // Setting toolbar
         setSupportActionBar(this.binding.toolbar)
 
-        // View Model
-        loanViewModel = ViewModelProvider(this).get(LoanViewModel::class.java)
-
-        preferences = getSharedPreferences(Constants.COUNTRY_DATA, Context.MODE_PRIVATE)
-
         // Getting Navigation Host & Controller
         val host: NavHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = host.navController
 
         // Setting App Bar Configuration
@@ -67,6 +62,10 @@ class MainActivity : AppCompatActivity() {
         // Setting up Action Bar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        // View Model
+        loanViewModel = ViewModelProvider(this).get(LoanViewModel::class.java)
+
+        preferences = getSharedPreferences(Constants.COUNTRY_DATA, Context.MODE_PRIVATE)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
