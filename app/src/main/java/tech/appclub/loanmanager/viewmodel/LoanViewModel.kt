@@ -4,9 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.db.LoanRoomDatabase
 import tech.appclub.loanmanager.repo.LoanRepository
@@ -58,9 +56,9 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteHistory()
     }
 
-    fun deleteLoan(loan: Loan) = viewModelScope.launch {
-        repository.deleteLoan(loan)
-    }
+//    fun deleteLoan(loan: Loan) = viewModelScope.launch {
+//        repository.deleteLoan(loan)
+//    }
 
 
     fun updateLoan(loan: Loan) = viewModelScope.launch {
@@ -72,10 +70,10 @@ class LoanViewModel(application: Application) : AndroidViewModel(application) {
             repository.updateCurrency(code, currency, country, position)
         }
 
-    fun currentLoan(loanId: Int): Loan {
-        return runBlocking {
-            repository.currentLoan(loanId)
-        }
-    }
+//    fun currentLoan(loanId: Int): Loan {
+//        return runBlocking {
+//            repository.currentLoan(loanId)
+//        }
+//    }
 
 }

@@ -24,9 +24,9 @@ class LoanRepository(private val loanDAO: LoanDAO) {
         loanDAO.deleteAll()
     }
 
-    suspend fun deleteLoan(loan: Loan) {
-        loanDAO.deleteLoan(loan)
-    }
+//    suspend fun deleteLoan(loan: Loan) {
+//        loanDAO.deleteLoan(loan)
+//    }
 
     suspend fun updateLoan(loan: Loan) {
         loanDAO.updateLoan(loan)
@@ -36,9 +36,9 @@ class LoanRepository(private val loanDAO: LoanDAO) {
         loanDAO.updateCurrency(code, currency, country, position)
     }
 
-    suspend fun currentLoan(loanId: Int): Loan {
-        return loanDAO.getLoan(loanId)
-    }
+//    suspend fun currentLoan(loanId: Int): Loan {
+//        return loanDAO.getLoan(loanId)
+//    }
 
     suspend fun deleteAllPaidLoans() {
         return loanDAO.deleteAllPaidLoans()

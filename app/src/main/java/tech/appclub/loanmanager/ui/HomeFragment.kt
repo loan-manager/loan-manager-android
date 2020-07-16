@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import tech.appclub.loanmanager.MainActivity
 import tech.appclub.loanmanager.R
 import tech.appclub.loanmanager.adapters.LoanRecyclerAdapter

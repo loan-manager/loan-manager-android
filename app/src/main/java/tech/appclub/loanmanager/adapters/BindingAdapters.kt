@@ -1,8 +1,6 @@
 package tech.appclub.loanmanager.adapters
 
 import android.widget.LinearLayout
-import android.widget.RadioButton
-import android.widget.Spinner
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -30,10 +28,10 @@ fun setEditAmount(view: TextInputEditText, data: Loan) {
     view.setText(decimalFormat.format(data.amount), TextView.BufferType.EDITABLE)
 }
 
-@BindingAdapter("app:setCountry")
-fun setCountry(view: Spinner, data: Loan) {
-    view.setSelection(data.position!!)
-}
+//@BindingAdapter("app:setCountry")
+//fun setCountry(view: Spinner, data: Loan) {
+//    view.setSelection(data.position!!)
+//}
 
 @BindingAdapter("app:setReceiveDate")
 fun setReceiveDate(view: TextView, date: Date) {
