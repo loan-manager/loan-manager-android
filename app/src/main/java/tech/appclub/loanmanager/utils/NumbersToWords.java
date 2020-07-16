@@ -55,15 +55,10 @@ public class NumbersToWords {
         int thousands = Integer.parseInt(snumber.substring(9, 12));
 
         String tradBillions;
-        switch (billions) {
-            case 0:
-                tradBillions = "";
-                break;
-            case 1:
-                tradBillions = convertLessThanOneThousand(billions) + " billion ";
-                break;
-            default:
-                tradBillions = convertLessThanOneThousand(billions) + " billion ";
+        if (billions == 0) {
+            tradBillions = "";
+        } else {
+            tradBillions = convertLessThanOneThousand(billions) + " billion ";
         }
         String result = tradBillions;
 
