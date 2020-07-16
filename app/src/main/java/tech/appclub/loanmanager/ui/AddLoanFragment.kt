@@ -74,7 +74,7 @@ class AddLoanFragment : Fragment() {
 
         binding.borrowedRadioButton.setOnCheckedChangeListener { _, checked ->
             if (checked) {
-                binding.receivedDate.text = "Select Borrowed Date"
+                binding.receivedDate.text = getString(R.string.select_borrowed_date)
                 binding.paymentDate.text = getString(R.string.select_payment_date)
                 receiveDate = null
                 paymentDate = null

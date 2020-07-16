@@ -54,14 +54,14 @@ dependencies {
     // endregion
 
     // region Navigation Architecture
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0-rc01'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0-rc01'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
     // endregion
 
     // region Testing Navigation
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    androidTestImplementation 'androidx.navigation:navigation-testing:2.3.0-rc01'
+    androidTestImplementation 'androidx.navigation:navigation-testing:2.3.0'
 
     // endregion
 

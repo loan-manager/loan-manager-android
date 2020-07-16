@@ -10,14 +10,8 @@
     <!-- Text Sizes -->
     <dimen name="text_smallest">12sp</dimen>
     <dimen name="text_smaller">14sp</dimen>
-    <dimen name="text_small">16sp</dimen>
-    <dimen name="text_large">18sp</dimen>
-    <dimen name="text_larger">20sp</dimen>
-    <dimen name="text_largest">22sp</dimen>
 
     <!-- Background Round Radius -->
-    <dimen name="horizontal_radius">8dp</dimen>
-    <dimen name="vertical_radius">4dp</dimen>
     <dimen name="border_radius">4dp</dimen>
 
     <!-- TextInputLayout -->

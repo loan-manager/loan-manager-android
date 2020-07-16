@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">Loan Manager</string>
-
-    <!-- Fragment Titles   -->
     <string name="loan_menu_title">Active Loans</string>
     <string name="loan_menu_paid">Paid Loans</string>
     <string name="unpaid_menu_title">Unpaid Loans</string>
-    <string name="history_menu_title">History</string>
     <string name="history_fragment_title">Loan History</string>
     <string name="add_loan_fragment_title">Add New Loan</string>
     <string name="loan_holder_name">Name</string>
@@ -14,8 +11,6 @@
     <string name="select_lent_date">Select Lent Date</string>
     <string name="select_receiving_date">Select Receiving Date</string>
     <string name="select_payment_date">Select Payment Date</string>
-
-    <!-- Validation Errors -->
     <string name="empty_error">Field cannot be empty</string>
     <string name="edit">Edit</string>
     <string name="slogan">Keep track of your loans at a single place</string>
@@ -25,13 +20,11 @@
     <string name="copyright">Copyright © App Club 2020</string>
     <string name="settings_fragment_title">Settings</string>
     <string name="update">Update</string>
-    <string name="stats_menu_title">Statistics</string>
     <string name="received_on">Received</string>
     <string name="payment_on">Payment on</string>
     <string name="paid_on">Paid</string>
     <string name="cancelled_on">Cancelled</string>
     <string name="unknown_status">Unknown Status</string>
-    <string name="date_placeholder">----------------</string>
     <string name="total_unpaid_loans">Total unpaid loan amount</string>
     <string name="number_of_unpaid_loans">Total unpaid loans</string>
     <string name="total_paid_loans">Total paid loan amount</string>
@@ -44,10 +37,8 @@
     <string name="empty_history_list_msg">No Loan Activity Yet</string>
     <string name="empty_unpaid_list_msg">Yoho! No Unpaid Loans</string>
     <string name="delete_all">Delete all</string>
-    <string name="given">Given</string>
     <string name="borrowed">Borrowed</string>
     <string name="situation">Situation</string>
-    <string name="background">Background</string>
     <string name="close">Close</string>
     <string name="lent_on">Lent on</string>
     <string name="borrowed_on">Borrowed on</string>
@@ -56,11 +47,8 @@
     <string name="payment_due_till">Payment due till</string>
     <string name="lent">Lent</string>
     <string name="today">Today</string>
-    <string name="yesterday">Yesterday</string>
-    <string name="delete_loan">Delete Current Loan</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="history_del_msg">Are you sure you want to delete all your history which includes all your paid and unpaid loans</string>
     <string name="history_del_title">Delete History</string>
+    <string name="select_borrowed_date">Select Borrowed Date</string>
 
 </resources>
