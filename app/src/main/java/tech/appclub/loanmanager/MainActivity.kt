@@ -14,13 +14,14 @@ import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.hilt.android.AndroidEntryPoint
 import tech.appclub.loanmanager.data.Country
 import tech.appclub.loanmanager.databinding.ActivityMainBinding
 import tech.appclub.loanmanager.utils.Constants
 import tech.appclub.loanmanager.utils.FileHelper
 import tech.appclub.loanmanager.viewmodel.LoanViewModel
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     companion object {
