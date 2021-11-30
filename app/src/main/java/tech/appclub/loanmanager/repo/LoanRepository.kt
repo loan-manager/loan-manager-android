@@ -3,8 +3,9 @@ package tech.appclub.loanmanager.repo
 import androidx.lifecycle.LiveData
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.data.LoanDAO
+import javax.inject.Inject
 
-class LoanRepository(private val loanDAO: LoanDAO) {
+class LoanRepository @Inject constructor(private val loanDAO: LoanDAO) {
 
     val unpaidLoans: LiveData<List<Loan>> = loanDAO.getUnpaidLoans()
     val activeLoans: LiveData<List<Loan>> = loanDAO.getActiveLoans()

@@ -3,38 +3,29 @@ package tech.appclub.loanmanager.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import tech.appclub.loanmanager.data.Loan
 import tech.appclub.loanmanager.db.LoanRoomDatabase
 import tech.appclub.loanmanager.repo.LoanRepository
+import javax.inject.Inject
 
-class LoanViewModel(application: Application) : AndroidViewModel(application) {
-
+@HiltViewModel
+class LoanViewModel @Inject constructor(
     private val repository: LoanRepository
-    val unpaidLoans: LiveData<List<Loan>>
-    val activeLoans: LiveData<List<Loan>>
-    val historyLoans: LiveData<List<Loan>>
-    val paidLoans: LiveData<List<Loan>>
-    val unpaidLoanCount: LiveData<Int>
-    val unpaidLoanGrandTotal: LiveData<Double>
-    val paidLoanCount: LiveData<Int>
-    val paidLoanGrandTotal: LiveData<Double>
-    val allLoanCount: LiveData<Int>
+) : ViewModel() {
 
-    init {
-        val loanDao = LoanRoomDatabase.getDatabase(application).loanDao()
-        repository = LoanRepository(loanDao)
-        unpaidLoans = repository.unpaidLoans
-        activeLoans = repository.activeLoans
-        historyLoans = repository.historyLoans
-        paidLoans = repository.paidLoans
-        unpaidLoanCount = repository.unpaidLoanCount
-        unpaidLoanGrandTotal = repository.unpaidLoanGrandTotal
-        paidLoanCount = repository.paidLoanCount
-        paidLoanGrandTotal = repository.paidLoanGrandTotal
-        allLoanCount = repository.allLoanCount
-    }
+    val unpaidLoans: LiveData<List<Loan>> = repository.unpaidLoans
+    val activeLoans: LiveData<List<Loan>> = repository.activeLoans
+    val historyLoans: LiveData<List<Loan>> = repository.historyLoans
+    val paidLoans: LiveData<List<Loan>> = repository.paidLoans
+    val unpaidLoanCount: LiveData<Int> = repository.unpaidLoanCount
+    val unpaidLoanGrandTotal: LiveData<Double> = repository.unpaidLoanGrandTotal
+    val paidLoanCount: LiveData<Int> = repository.paidLoanCount
+    val paidLoanGrandTotal: LiveData<Double> = repository.paidLoanGrandTotal
+    val allLoanCount: LiveData<Int> = repository.allLoanCount
 
     fun insert(loan: Loan) = viewModelScope.launch {
         repository.insert(loan)
